@@ -21,6 +21,7 @@ public class Nonduplicates {
 			if (!flag) {
 				System.out.println(a[i]);
 			}
+
 		}
 
 	}

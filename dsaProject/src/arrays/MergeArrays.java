@@ -1,5 +1,7 @@
 package arrays;
 
+import java.util.Arrays;
+
 public class MergeArrays {
 	public static void main(String[] args) {
 		int[] a = { 3, 6, 9, 2, 5 };
@@ -15,8 +17,9 @@ public class MergeArrays {
 		for (int i = 0; i < b1; i++) {
 			c[i + a1] = b[i];
 		}
-		for (int i = 0; i < c1; i++) {
-			System.out.println(c[i]);
-		}
+//		for (int i = 0; i < c1; i++) {
+//			System.out.println(c[i]);
+//		}
+		System.out.println(Arrays.toString(c));
 	}
 }
