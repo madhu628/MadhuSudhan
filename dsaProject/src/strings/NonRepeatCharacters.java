@@ -1,4 +1,4 @@
-package Strings;
+package strings;
 
 import java.security.KeyStore.Entry;
 import java.util.HashMap;
