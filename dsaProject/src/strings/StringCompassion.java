@@ -1,4 +1,4 @@
-package Strings;
+package strings;
 
 public class StringCompassion {
 	public static void main(String[] args) {

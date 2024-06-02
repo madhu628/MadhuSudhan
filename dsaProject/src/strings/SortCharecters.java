@@ -1,4 +1,4 @@
-package Strings;
+package strings;
 
 public class SortCharecters {
 	public static void main(String[] args) {
