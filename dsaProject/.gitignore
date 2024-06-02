@@ -1,0 +1,12 @@
+*.class
+test1.txt
+
+# If you need to ignore specific directories, add them explicitly
+dsaProject/bin/oops/
+dsaProject/bin/collections/
+dsaProject/bin/streams/
+dsaProject/bin/strings/
+dsaProject/bin/maths/
+dsaProject/bin/searching/
+dsaProject/bin/arrays/
+dsaProject/bin/sortings/
