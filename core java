@@ -1,9 +1,9 @@
 Encapsulation : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
 behind a well defined interface.Encapsulation helps us to change implementation of a class without breaking other code.
 (or)
-It refers to the bundling of data (variables) and methods (functions) that operate on that data into a single unit, or class Encapsulation also involves restricting
-direct access to some of an object's components, which is a means of preventing accidental interference and misuse of the data. Instead, access to the data is 
-typically provided through public methods, often referred to as getters and setters.
+It refers to the bundling of data (variables) and methods (functions) that operate on that data into a single unit, or class Encapsulation also involves 
+restricting direct access to some of an object's components, which is a means of preventing accidental interference and misuse of the data. Instead,
+access to the data is typically provided through public methods, often referred to as getters and setters.
 
 Benefits of Encapsulation
 Control: Encapsulation provides control over the data by allowing you to define how it should be accessed and modified.
@@ -15,8 +15,8 @@ To achieve encapsulation in Java −
   -Declare the variables of a class as private.
   -Provide public setter and getter methods to modify and view the variables values.
 
-Abstraction:  hiding the complex implementation details and showing only the essential features of an object. The main purpose of abstraction is to reduce complexity 
-and allow the programmer to focus on interactions at a higher level.
+Abstraction:  hiding the complex implementation details and showing only the essential features of an object. The main purpose of abstraction is to reduce
+complexity and allow the programmer to focus on interactions at a higher level.
 
 Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user.
 In other words, the user will have the information on what the object does instead of how it does it.
@@ -78,8 +78,8 @@ Multiple Inheritance: A class inherits from more than one superclass (not direct
 
 why multiple inheritence not allowed in java?
 Multiple inheritance, where a class can inherit from more than one class, is not allowed in Java to avoid complexity and ambiguity that can arise from it
-when a class inherits from two classes that both inherit from a common superclass. This can lead to ambiguity in which version of a method from the common superclass
-should be inherited.
+when a class inherits from two classes that both inherit from a common superclass. This can lead to ambiguity in which version of a method from the 
+common superclass should be inherited.
 
 Exception handling
 Exception handling in Java is a powerful mechanism to handle runtime errors, ensuring the normal flow of the program's execution. An exception is an event that 
@@ -104,8 +104,8 @@ StringBuilder is not synchronized, making it faster and more efficient than Stri
 StringBuilder is faster than StringBuffer because it does not have the overhead of synchronization.
 
 how to create immutable class in java?
-Creating an immutable class in Java means designing a class whose instances cannot be modified after they are created. Immutable objects are inherently thread-safe,
-as their state cannot change once they are constructed. Here's how to create an immutable class in Java:
+Creating an immutable class in Java means designing a class whose instances cannot be modified after they are created. Immutable objects are inherently 
+thread-safe,as their state cannot change once they are constructed. Here's how to create an immutable class in Java:
 
 Steps to Create an Immutable Class
 Declare the class as final so it cannot be subclassed.
@@ -140,8 +140,101 @@ to provide meaningful comparison based on the content of the objects.
 == is used for reference comparison, while .equals() is used for content comparison.
 
 
+Java 8 Features:
+functional interface is an interface that contains only one abstract method. It serves as a blueprint for implementing lambda expressions or method references. 
+Functional interfaces enable the use of lambda expressions, which provide a concise way to represent anonymous functions.
+
+Characteristics of Functional Interfaces:
+Single Abstract Method (SAM): A functional interface contains exactly one abstract method. It may also contain default methods and static methods introduced
+in Java 8, but only one abstract method.
+
+Lambda Expression Compatibility: Functional interfaces are designed to be compatible with lambda expressions, allowing developers to represent instances of 
+single-method interfaces with a compact syntax.
+
+@FunctionalInterface Annotation: While not required, it's common practice to annotate functional interfaces with @FunctionalInterface. This annotation ensures
+that the interface contains exactly one abstract method, and if it contains more than one abstract method, it will result in a compilation error.
+
+A Predicate is a functional interface that represents a boolean-valued function of one argument
+
+A Function is a functional interface that represents a function that accepts one argument and produces a result.
+
+A Consumer is a functional interface that represents an operation that accepts a single input argument and returns no result.
+
+A Supplier is a functional interface that represents a supplier of results.
+
+Optional is a container object introduced in Java 8 that can hold a value or be empty. It is used to represent optional values and helps avoid null checks, 
+making the code more readable and less error-prone.
+
+Optional can be used to handle nullable values more gracefully and avoid NullPointerExceptions in Java.
+
+Date Time API
+API is comprehensive and offers many more classes and methods to handle date and time operations effectively.
+
+LocalDate - Represents a date without a time zone (e.g., 2024-06-03).
+LocalTime -Represents a time without a time zone (e.g., 14:30:00).
+LocalDateTime - Represents a date and time without a time zone (e.g., 2024-06-03T14:30:00)
+ZonedDateTime - Represents a date and time with a time zone (e.g., 2024-06-03T14:30:00+02:00[Europe/Paris])
+Period: Represents a date-based amount of time (e.g., 3 years, 2 months, 1 day).
+Duration: Represents a time-based amount of time (e.g., 5 hours, 30 minutes).
 
 
- 
 
+
+Collections:
+map
+map is a transformation operation that applies a function to each element of a stream and returns a new stream consisting of the results of applying the function 
+to each element.
+It transforms each element individually, and the result is a one-to-one mapping between the elements of the original stream and the elements of the resulting stream.
+The mapping function passed to map must return a value of the same type or subtype, as it performs a one-to-one transformation.
+
+flatMap
+flatMap is a transformation operation similar to map, but it is used when each element of the original stream contains another stream or collection of elements.
+It flattens the elements of nested streams or collections into a single stream. Instead of producing a stream of streams or collections, it produces a single 
+flat stream.
+The mapping function passed to flatMap must return a stream or collection, and it combines the elements of all the streams or collections returned by
+the mapping function into a single stream.
+
+reduce
+reduce is a terminal operation that combines all elements of a stream into a single result by repeatedly applying a binary operator.
+It takes an initial value (also known as the identity) and a binary operator as parameters. The binary operator is applied to each element of the stream 
+along with the accumulated result from previous operations.
+The result of reduce can be of a different type than the elements of the stream. For example, you can use it to calculate the sum of all elements, 
+find the maximum element, concatenate strings, etc.
+
+WeakHashMap:
+which allows you to store key-value pairs. It is similar to HashMap, but it uses weak references for its keys, meaning that if a key is not referenced anywhere 
+else in the program and is only referenced by the WeakHashMap, it may be garbage collected.
+
+IdentityHashMap:
+IdentityHashMap is a specialized implementation of the Map interface that uses reference equality (instead of object equality) when comparing keys. 
+This means that it compares keys using the == operator rather than the equals() method.
+
+
+Fail-Fast Collections
+Fail-fast iterators throw a ConcurrentModificationException if the underlying collection is structurally modified after the iterator is created.
+These collections are designed to immediately detect and prevent concurrent modifications during iteration.
+Examples of fail-fast collections include ArrayList, HashMap, HashSet, etc.
+
+
+Fail-Safe Collections
+Fail-safe iterators do not throw ConcurrentModificationException even if the underlying collection is modified during iteration.
+These collections make a copy of the underlying data structure (e.g., array) when the iterator is created, and the iteration is performed on this copied data structure.
+Examples of fail-safe collections include ConcurrentHashMap, CopyOnWriteArrayList, CopyOnWriteArraySet, etc.
+
+Fail-Fast Collections: Immediate detection and throwing of ConcurrentModificationException during iteration if the collection is modified.
+Fail-Safe Collections: Iteration is performed on a copied data structure, allowing modification during iteration without throwing exceptions.
+
+Comparable Interface
+The Comparable interface is used to define the natural ordering of objects.
+It contains a single method compareTo() that compares the current object with another object.
+Classes that implement Comparable can be sorted using the Collections.sort() method or by calling Arrays.sort().
+
+Comparator Interface
+The Comparator interface is used to define custom sorting orders for objects.
+It contains a single method compare() that compares two objects.
+Comparator instances are often used to sort objects in cases where the class itself does not implement Comparable, or when you want to use multiple sorting 
+orders for the same class.
+
+Comparable provides a way to define the natural ordering of objects within the class itself, while Comparator allows for defining custom sorting orders externally,
+without modifying the class itself. Both interfaces are widely used for sorting objects in Java collections.
 
