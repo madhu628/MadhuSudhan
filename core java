@@ -1,3 +1,147 @@
-Wrapping up of data and methods together is known as encapsulation. best example is class.
-Encapsulation is hiding the implementation of a class behind a well defined interface.
-Encapsulation helps us to change implementation of a class without breaking other code.
+Encapsulation : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
+behind a well defined interface.Encapsulation helps us to change implementation of a class without breaking other code.
+(or)
+It refers to the bundling of data (variables) and methods (functions) that operate on that data into a single unit, or class Encapsulation also involves restricting
+direct access to some of an object's components, which is a means of preventing accidental interference and misuse of the data. Instead, access to the data is 
+typically provided through public methods, often referred to as getters and setters.
+
+Benefits of Encapsulation
+Control: Encapsulation provides control over the data by allowing you to define how it should be accessed and modified.
+Flexibility: It allows the internal implementation of a class to be changed without affecting the code that uses the class.
+Maintainability: Encapsulated code is easier to maintain and understand.
+Security: It helps protect the integrity of the data by preventing unauthorized access and modification.
+
+To achieve encapsulation in Java −
+  -Declare the variables of a class as private.
+  -Provide public setter and getter methods to modify and view the variables values.
+
+Abstraction:  hiding the complex implementation details and showing only the essential features of an object. The main purpose of abstraction is to reduce complexity 
+and allow the programmer to focus on interactions at a higher level.
+
+Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user.
+In other words, the user will have the information on what the object does instead of how it does it.
+
+Abstraction is achieved in 2 ways:
+ -Abstract class  -----classes that cannot be instantiated on their own and must be subclassed
+ -Interfaces (Pure Abstraction)---contract of methods that a class must implement without providing the implementation itself.
+
+Abstract Class:
+ An abstract class must be declared with an abstract keyword.
+ It can have abstract and non-abstract methods.
+ It cannot be instantiated.
+ It can have constructors and static methods also.
+ It can have final methods which will force the subclass not to change the body of the method.
+
+Interfaces:
+  All the fields in interfaces are public, static and final by default.
+ All methods are public & abstract by default.
+ A class that implements an interface must implement all the methods declared in the
+interface.
+ Interfaces support the functionality of multiple inheritance
+
+if class is abstract,not mandatory to have abstract method
+if abstract method implemented ,class should be abstract
+
+Polymorphism
+Polymorphism is the ability to present the same interface for differing underlying forms (data types).With polymorphism, each of these classes will have different
+underlying data. Precisely, Poly means‘many’ and morphism means ‘forms’.
+Types of Polymorphism IMP
+1. Compile Time Polymorphism (Static)
+2. Runtime Polymorphism (Dynamic
+
+Compile Time Polymorphism: The polymorphism which is implemented at the compile time is known as compile-time polymorphism. Example - Method Overloading
+Method Overloading: Method overloading is a technique which allows you to have morethan one function with the same function name but with different functionality.
+Method overloading can be possible on the following basis:
+1. The return type of the overloaded function.
+2. The type of the parameters passed to the function.
+3. The number of parameters passed to the function.
+
+Runtime Polymorphism: Runtime polymorphism is also known as dynamic polymorphism.Function Overriding is an example of runtime polymorphism.
+Function Overriding means when the child class contains the method which is already present in the parent class. Hence, the child class overrides 
+the method of the parent class. In case of function overriding, parent and child classes both contain the same function with a different definition. 
+The call to the function is determined at runtime is known as runtime polymorphism
+
+Inheritence:
+Inheritance can be defined as the process where one class acquires the properties (methods andfields) of another. With the use of inheritance, the information
+is made manageable in a hierarchical order.The class which inherits the properties of other is known as subclass (derived class, child class) and the class whose 
+properties are inherited is known as superclass (base class, parent class).
+
+Types of inheritance in Java
+On the basis of class, there can be three types of inheritance in java: single, multilevel and   hierarchical.
+In java programming, multiple and hybrid inheritance is supported through interface only.
+
+Types of Inheritance
+Single Inheritance: A class inherits from one superclass.
+Multilevel Inheritance: A class inherits from a subclass, forming a chain.
+Hierarchical Inheritance: Multiple classes inherit from a single superclass.
+Multiple Inheritance: A class inherits from more than one superclass (not directly supported in Java, but can be achieved using interfaces).
+
+why multiple inheritence not allowed in java?
+Multiple inheritance, where a class can inherit from more than one class, is not allowed in Java to avoid complexity and ambiguity that can arise from it
+when a class inherits from two classes that both inherit from a common superclass. This can lead to ambiguity in which version of a method from the common superclass
+should be inherited.
+
+Exception handling
+Exception handling in Java is a powerful mechanism to handle runtime errors, ensuring the normal flow of the program's execution. An exception is an event that 
+disrupts the normal flow of the program. In Java, exceptions are objects that describe an exceptional (erroneous) condition that has occurred in a piece of code.
+
+Key Concepts of Exception Handling
+Try Block: The code that might throw an exception is placed inside the try block.
+Catch Block: The code that handles the exception is placed inside the catch block.
+Finally Block: This block is executed after the try and catch blocks, regardless of whether an exception was thrown or not.
+Throw: Used to explicitly throw an exception.
+Throws: Used in method signatures to declare the exceptions that a method can throw.
+
+
+Stringbuffer and String Builder:
+In Java, StringBuffer and StringBuilder are classes used to create mutable (modifiable) sequences of characters. Both are alternatives to the String class 
+when frequent modifications to strings are needed, as String objects are immutable.
+
+StringBuffer is synchronized, meaning it is thread-safe and can be used safely in a multi-threaded environment. Synchronization ensures that only one thread 
+can modify the StringBuffer object at a time.
+StringBuilder is not synchronized, making it faster and more efficient than StringBuffer in single-threaded scenarios, but it is not thread-safe.
+
+StringBuilder is faster than StringBuffer because it does not have the overhead of synchronization.
+
+how to create immutable class in java?
+Creating an immutable class in Java means designing a class whose instances cannot be modified after they are created. Immutable objects are inherently thread-safe,
+as their state cannot change once they are constructed. Here's how to create an immutable class in Java:
+
+Steps to Create an Immutable Class
+Declare the class as final so it cannot be subclassed.
+Make all fields private and final to ensure that their values cannot be modified after the object is constructed.
+Provide a constructor that initializes all the fields.
+Do not provide setters for any fields.
+Ensure that mutable objects are not directly accessible from outside the class. This can be achieved by:
+Returning copies of mutable objects rather than the objects themselves.
+Ensuring that any passed mutable objects are not modified after being used to construct the immutable object.
+
+Serialization:
+Serialization in Java is the process of converting an object's state into a byte stream so that the byte stream can be reverted back into a copy of the object.
+This process allows objects to be easily saved to files, sent over a network, or transferred between different components in a system.
+
+Key Concepts:
+Serializable Interface: An object can be serialized if its class or any of its superclasses implements the java.io.Serializable interface.
+This is a marker interface, which means it does not contain any methods.
+
+ObjectOutputStream and ObjectInputStream: These classes are used to write objects to and read objects from streams, respectively.
+
+SerialVersionUID: This is a unique identifier for each Serializable class. It is used during deserialization to ensure that a loaded class corresponds exactly 
+to a serialized object. If no matching class is found, an InvalidClassException is thrown.
+
+The == operator is used to compare primitive data types and object references in Java.
+When used with primitive data types (such as int, double, char, etc.), == checks if the values of the variables are equal
+When used with objects (non-primitive types), == compares the memory addresses (references) of the objects. It checks whether two object references point 
+to the same memory location.
+
+The .equals() method is used to compare the content or values of objects in Java. It is a method defined in the Object class and is overridden by most classes 
+to provide meaningful comparison based on the content of the objects.
+
+== is used for reference comparison, while .equals() is used for content comparison.
+
+
+
+
+ 
+
+
