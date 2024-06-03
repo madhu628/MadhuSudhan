@@ -1,0 +1,3 @@
+Wrapping up of data and methods together is known as encapsulation. best example is class.
+Encapsulation is hiding the implementation of a class behind a well defined interface.
+Encapsulation helps us to change implementation of a class without breaking other code.
