@@ -1,5 +1,8 @@
 package strings;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Panagram {
 
 //	public static void main(String[] args) {
@@ -27,22 +30,45 @@ public class Panagram {
 //        }
 //	}
 
+//	public static void main(String[] args) {
+//		String str = "The quick brown fox jumps over the lazy dog";
+//		System.out.println(isPanagram(str.toLowerCase()));
+//	}
+//
+//	private static boolean isPanagram(String s) {
+//		
+//		if (s == null || s.isEmpty()) {
+//            return false; // Handle null or empty input
+//        }
+//		
+//		if (s.length() < 26)
+//			return false;
+//		else {
+//			for (char ch = 'a'; ch <= 'z'; ch++) {
+//				if (s.indexOf(ch) < 0) {
+//					return false;
+//				}
+//
+//			}
+//			return true;
+//		}
+//	}
 	public static void main(String[] args) {
 		String str = "The quick brown fox jumps over the lazy dog";
-		System.out.println(isPanagram(str.toLowerCase()));
+		System.out.println(isPangram(str));
 	}
 
-	private static boolean isPanagram(String s) {
-		if (s.length() < 26)
-			return false;
-		else {
-			for (char ch = 'a'; ch <= 'z'; ch++) {
-				if (s.indexOf(ch) < 0) {
-					return false;
-				}
-
-			}
-			return true;
+	private static boolean isPangram(String s) {
+		if (s == null || s.isEmpty()) {
+			return false; // Handle null or empty input
 		}
+
+		Set<Character> uniqueChars = new HashSet<>();
+		for (char ch : s.toLowerCase().toCharArray()) {
+			if (ch >= 'a' && ch <= 'z') {
+				uniqueChars.add(ch);
+			}
+		}
+		return uniqueChars.size() == 26;
 	}
 }

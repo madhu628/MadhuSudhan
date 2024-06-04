@@ -20,16 +20,24 @@ public class ReverseElemnts {
 	public static void main(String[] args) {
 		int a[] = { 1, 2, 3, 4, 5, 6 };
 		int n = a.length;
-		int a1[] = reverse(a, n);
-		for (int i = 0; i < a1.length; i++) {
-			System.out.println(a1[i]);
+		reverse(a, n);
+
+		// Print the reversed array
+		for (int element : a) {
+			System.out.print(element + " ");
 		}
+
+//		for (int i = 0; i < a1.length; i++) {
+//			System.out.println(a1[i]);
+//		}
 //		System.out.println(a1);
 
 	}
 
-	private static int[] reverse(int[] a, int n) {
+	private static void reverse(int[] a, int n) {
 		int s = 0, e = n - 1;
+
+		// Swap elements from the start and end until the middle is reached
 		while (s < e) {
 			int temp = a[s];
 			a[s] = a[e];
@@ -37,7 +45,6 @@ public class ReverseElemnts {
 			s++;
 			e--;
 		}
-		return a;
 
 	}
 

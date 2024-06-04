@@ -14,13 +14,13 @@ public class Duplicates {
 
 	static List<Integer> listDuplicateUsingMap(List<Integer> list) {
 		List<Integer> duplicates = new ArrayList<>();
-		Map<Integer, Integer> frequencyMap = new HashMap<>();
-		for (Integer number : list) {
-			frequencyMap.put(number, frequencyMap.getOrDefault(number, 0) + 1);
+		Map<Integer, Integer> map = new HashMap<>();
+		for (Integer num : list) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
-		for (int number : frequencyMap.keySet()) {
-			if (frequencyMap.get(number) != 1) {
-				duplicates.add(number);
+		for (int num : map.keySet()) {
+			if (map.get(num) != 1) {
+				duplicates.add(num);
 			}
 		}
 		return duplicates;

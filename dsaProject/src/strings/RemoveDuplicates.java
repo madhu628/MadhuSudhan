@@ -23,20 +23,45 @@ public class RemoveDuplicates {
 //		}
 //		System.out.println(sb);
 //	}
+//	public static void main(String[] args) {
+//        String s = " madam";
+//        char[] a = s.toCharArray();
+//        StringBuilder sb = new StringBuilder();
+//        Set<Character> seen = new HashSet<>();
+//
+//        for (char c : a) {
+//            if (!seen.contains(c)) {
+//                sb.append(c);
+//                seen.add(c);
+//            }
+//        }
+//
+//        System.out.println(sb.toString());
+//    }
+
 	public static void main(String[] args) {
-        String s = " madam";
-        char[] a = s.toCharArray();
-        StringBuilder sb = new StringBuilder();
-        Set<Character> seen = new HashSet<>();
+		String s = " madam";
+		String result = removeDuplicates(s);
+		System.out.println(result);
+	}
 
-        for (char c : a) {
-            if (!seen.contains(c)) {
-                sb.append(c);
-                seen.add(c);
-            }
-        }
+	private static String removeDuplicates(String s) {
+		if (s == null || s.isEmpty()) {
+			return s; // Return the input string if it's null or empty
+		}
 
-        System.out.println(sb.toString());
-    }
+		StringBuilder sb = new StringBuilder();
+		Set<Character> seen = new HashSet<>();
+
+		for (char c : s.toCharArray()) {
+			if (seen.add(c)) { 
+				// add() returns false if the element is already in the set This eliminates the need for an explicit
+				//check using contains().
+				sb.append(c);
+			}
+		}
+
+		return sb.toString();
+	}
 
 }

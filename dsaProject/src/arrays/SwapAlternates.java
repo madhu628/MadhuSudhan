@@ -26,12 +26,10 @@ public class SwapAlternates {
 
 	private static void swap(int[] a, int n) {
 
-		for (int i = 0; i < n; i++) {
-			if (i + 1 < n) {
+		for (int i = 0; i < n-1; i+=2) {
 				int temp = a[i];
 				a[i] = a[i + 1];
 				a[i + 1] = temp;
-			}
 		}
 
 	}
