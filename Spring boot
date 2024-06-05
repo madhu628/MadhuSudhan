@@ -143,7 +143,7 @@ DevTools: Enhances development productivity.
 Embedded Servers: Run applications standalone.
 Initializr: Quick project setup.
 
-
+FEATURES OF SPRING BOOT:
 Key Features of Spring Boot
 1.Auto-Configuration:
 Automatically configures your application based on the dependencies on the classpath.
@@ -174,6 +174,18 @@ Integrates easily with Spring Security for securing applications.
 
 10.Microservices Support:
 Facilitates building and deploying microservices with features like embedded servers and easy integration with cloud platforms.
+
+Summary
+Auto-Configuration: Reduces manual setup.
+Starters: Simplify dependency management.
+Embedded Servers: Run apps standalone.
+CLI: Rapid development.
+Actuator: Monitoring and management.
+Initializr: Quick project setup.
+DevTools: Enhances development productivity.
+Externalized Configuration: Easy configuration management.
+Security: Easy integration with Spring Security.
+Microservices Support: Ideal for microservices architecture.
 
 
 
@@ -801,7 +813,48 @@ Summary
 In Spring Boot, passwords are securely stored by hashing them with a password encoder such as BCryptPasswordEncoder. This involves hashing the password before saving it to the database and
 verifying the hashed password during authentication.
 
+Connecting MySQL Database with a Spring Boot Application:
 
+Add dependencies: Include Spring Data JPA and MySQL connector.
+Configure datasource: Set database properties in application.properties or application.yml.
+Define entity: Create an entity class for your database table.
+Create repository: Create a JPA repository interface for CRUD operations.
+Use repository: Inject and use the repository in your service or controller.
+
+
+HOW TO SECURE SB APPLICATION:
+ Add Dependencies: Include spring-boot-starter-security in pom.xml.
+ Configure Security: Create a SecurityConfig class  a configuration class to customize security settings.(SecurityConfig extends WebSecurityConfigurerAdapter)(configure and passwordEncoder method)
+ UserDetailsService: Implement custom UserDetailsService to load user-specific data.(CustomUserDetailsService implements UserDetailsService)
+ User Entity: Define a user entity and repository to store user details.
+ Login/Register Pages: Create HTML forms for login and registration pages to handle user authentication.
+ Controller: Handle user registration in a controller.
+
+
+SPRING BOOT ACTUATORS: Spring Boot Actuator provides production-ready features to help you monitor and manage your application.
+
+Key Features
+1.Endpoints:
+ Health: /actuator/health - Shows application health information.
+ Info: /actuator/info - Displays arbitrary application info.
+ Metrics: /actuator/metrics - Exposes various application metrics.
+ Env: /actuator/env - Exposes environment properties.
+ HTTP Trace: /actuator/httptrace - Displays HTTP request-response trace.
+
+ 2.Auto-Configuration:
+ Actuator endpoints are auto-configured and can be easily customized.
+
+ 3.Security:
+ Endpoints can be secured using Spring Security.
+
+Quick Setup:
+
+1.Add Dependency:Add the Actuator dependency in your pom.xml
+2.Enable Endpoints: Configure the application to expose Actuator endpoints in application.properties (management.endpoints.web.exposure.include=*)
+3.Access Endpoints: Start your application and access the Actuator endpoints via http://localhost:8080/actuator
+ 
+Security: Secure endpoints using Spring Security (Actuator Endpoints) 
+Customization: Customize endpoints via properties.management.(endpoint.health.show-details=always , management.endpoint.metrics.enabled=true).
 
 
 
