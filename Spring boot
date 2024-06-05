@@ -856,7 +856,51 @@ Quick Setup:
 Security: Secure endpoints using Spring Security (Actuator Endpoints) 
 Customization: Customize endpoints via properties.management.(endpoint.health.show-details=always , management.endpoint.metrics.enabled=true).
 
+HOW TO DEPLOY SB APPLICATION JAR FILE IN PIVOTAL CLOUD FOUNDARY
 
+1.Prerequisites:
+ Ensure you have a Pivotal Cloud Foundry (PCF) account.
+ Install the Cloud Foundry CLI from here.
+2'Build Your Spring Boot Application:
+  package your Spring Boot application into a JAR file using Maven or Gradle.(mvn clean package)
+3.Create a manifest.yml File:
+   Create a manifest.yml file in the root directory of your project to define the deployment parameters.
+    applications:
+  - name: your-app-name
+   memory: 512M
+   instances: 1
+   path: target/your-app-name.jar
+   buildpacks:
+    - java_buildpack
+
+4.Login to Cloud Foundry:
+   Open your terminal and log in to your PCF account(cf login -a https://api.run.pivotal.io)
+   Follow the prompts to enter your email, password, and select the organization and space.
+5.Deploy the Application:
+
+  Use the cf push command to deploy your application to PCF(cf push)
+6.Verify Deployment:
+  After deployment, verify that your application is running by accessing the URL provided by Cloud Foundry.
+
+HOW TO DEPLOY SB APPLICATION JAR FILE IN VIRTUAL MACHINE:
+
+Summary
+Build the JAR: mvn clean package or ./gradlew clean build.
+Setup VM: Install Java if needed.
+Transfer JAR: Use scp to move the JAR to the VM.(Use scp (secure copy) to transfer the JAR file from your local machine to the VM)(scp /path/to/your-app.jar user@vm-ip-address:/path/on/vm)
+Run Application: java -jar your-app.jar.  1.SSH into your VM 2.Navigate to the directory where you transferred the JAR file 3.Run the JAR file using the java -jar command.
+(Optional) Background Service: Use nohup or systemd.
+Reload systemd and start the service:
+  sudo systemctl daemon-reload
+  sudo systemctl start your-app
+  sudo systemctl enable your-app
+
+HOW TO DEPLOY SB APPLICATION JAR FILE IN local MACHINE:
+Summary
+ Build the JAR: mvn clean package or ./gradlew clean build.
+ Ensure Java is Installed: Verify Java with java -version.
+ Run Application: Navigate to the JAR location and run java -jar your-app.jar.
+ Access the Application: Open a web browser and go to http://localhost:8080.
 
 
 
