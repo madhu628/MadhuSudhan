@@ -33,13 +33,22 @@ public class ReverseString {
 //		return new String(str);
 //	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		String str = "madhu";
-		StringBuilder reverseStr = new StringBuilder("");
-
-		for (int i = str.length() - 1; i >= 0; i--) {
-			reverseStr.append(str.charAt(i));
+		if (str == null) {
+			System.out.println("Input is null");
+			return;
 		}
+
+		StringBuilder reverseStr = new StringBuilder(str);
+		
+		reverseStr.reverse();  // Using built-in reverse method
+
+
+//		for (int i = str.length() - 1; i >= 0; i--) {
+//			reverseStr.append(str.charAt(i));
+//		}
 		System.out.println(reverseStr);
 	}
 
