@@ -1,4 +1,4 @@
-Encapsulation : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
+ENCAPSULATION : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
 behind a well defined interface.Encapsulation helps us to change implementation of a class without breaking other code.
 (or)
 It refers to the bundling of data (variables) and methods (functions) that operate on that data into a single unit, or class Encapsulation also involves 
@@ -15,7 +15,7 @@ To achieve encapsulation in Java −
   -Declare the variables of a class as private.
   -Provide public setter and getter methods to modify and view the variables values.
 
-Abstraction:  hiding the complex implementation details and showing only the essential features of an object. The main purpose of abstraction is to reduce
+ABSTRACTION:  hiding the complex implementation details and showing only the essential features of an object. The main purpose of abstraction is to reduce
 complexity and allow the programmer to focus on interactions at a higher level.
 
 Abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user.
@@ -42,7 +42,7 @@ interface.
 if class is abstract,not mandatory to have abstract method
 if abstract method implemented ,class should be abstract
 
-Polymorphism
+POLYMORPHISM:
 Polymorphism is the ability to present the same interface for differing underlying forms (data types).With polymorphism, each of these classes will have different
 underlying data. Precisely, Poly means‘many’ and morphism means ‘forms’.
 Types of Polymorphism IMP
@@ -61,7 +61,7 @@ Function Overriding means when the child class contains the method which is alre
 the method of the parent class. In case of function overriding, parent and child classes both contain the same function with a different definition. 
 The call to the function is determined at runtime is known as runtime polymorphism
 
-Inheritence:
+INHERITENCE:
 Inheritance can be defined as the process where one class acquires the properties (methods andfields) of another. With the use of inheritance, the information
 is made manageable in a hierarchical order.The class which inherits the properties of other is known as subclass (derived class, child class) and the class whose 
 properties are inherited is known as superclass (base class, parent class).
@@ -81,7 +81,7 @@ Multiple inheritance, where a class can inherit from more than one class, is not
 when a class inherits from two classes that both inherit from a common superclass. This can lead to ambiguity in which version of a method from the 
 common superclass should be inherited.
 
-Exception handling
+EXCEPTIONAL HANDLING:
 Exception handling in Java is a powerful mechanism to handle runtime errors, ensuring the normal flow of the program's execution. An exception is an event that 
 disrupts the normal flow of the program. In Java, exceptions are objects that describe an exceptional (erroneous) condition that has occurred in a piece of code.
 
@@ -93,7 +93,7 @@ Throw: Used to explicitly throw an exception.
 Throws: Used in method signatures to declare the exceptions that a method can throw.
 
 
-Stringbuffer and String Builder:
+STRING BUFFER AND BUILDER:
 In Java, StringBuffer and StringBuilder are classes used to create mutable (modifiable) sequences of characters. Both are alternatives to the String class 
 when frequent modifications to strings are needed, as String objects are immutable.
 
@@ -103,32 +103,33 @@ StringBuilder is not synchronized, making it faster and more efficient than Stri
 
 StringBuilder is faster than StringBuffer because it does not have the overhead of synchronization.
 
-how to create immutable class in java?
+HOW TO CREATE IMMUTABLE CLASS IN JAVA
 Creating an immutable class in Java means designing a class whose instances cannot be modified after they are created. Immutable objects are inherently 
 thread-safe,as their state cannot change once they are constructed. Here's how to create an immutable class in Java:
 
 Steps to Create an Immutable Class
-Declare the class as final so it cannot be subclassed.
-Make all fields private and final to ensure that their values cannot be modified after the object is constructed.
-Provide a constructor that initializes all the fields.
-Do not provide setters for any fields.
-Ensure that mutable objects are not directly accessible from outside the class. This can be achieved by:
-Returning copies of mutable objects rather than the objects themselves.
-Ensuring that any passed mutable objects are not modified after being used to construct the immutable object.
+ Declare the class as final so it cannot be subclassed.
+ Make all fields private and final to ensure that their values cannot be modified after the object is constructed.
+ Provide a constructor that initializes all the fields.
+ Do not provide setters for any fields.
+ Ensure that mutable objects are not directly accessible from outside the class. This can be achieved by:
+ Returning copies of mutable objects rather than the objects themselves.
+ Ensuring that any passed mutable objects are not modified after being used to construct the immutable object.
 
-Serialization:
-Serialization in Java is the process of converting an object's state into a byte stream so that the byte stream can be reverted back into a copy of the object.
-This process allows objects to be easily saved to files, sent over a network, or transferred between different components in a system.
+SERIALIZATION:
+ Serialization in Java is the process of converting an object's state into a byte stream so that the byte stream can be reverted back into a copy of the object.
+ This process allows objects to be easily saved to files, sent over a network, or transferred between different components in a system.
 
 Key Concepts:
-Serializable Interface: An object can be serialized if its class or any of its superclasses implements the java.io.Serializable interface.
-This is a marker interface, which means it does not contain any methods.
+ Serializable Interface: An object can be serialized if its class or any of its superclasses implements the java.io.Serializable interface.
+ This is a marker interface, which means it does not contain any methods.
 
-ObjectOutputStream and ObjectInputStream: These classes are used to write objects to and read objects from streams, respectively.
+ ObjectOutputStream and ObjectInputStream: These classes are used to write objects to and read objects from streams, respectively.
 
-SerialVersionUID: This is a unique identifier for each Serializable class. It is used during deserialization to ensure that a loaded class corresponds exactly 
-to a serialized object. If no matching class is found, an InvalidClassException is thrown.
+ SerialVersionUID: This is a unique identifier for each Serializable class. It is used during deserialization to ensure that a loaded class corresponds exactly 
+  to a serialized object. If no matching class is found, an InvalidClassException is thrown.
 
+== OPERATOR AND .EQULAS METHOD DIFFERECNCE:
 The == operator is used to compare primitive data types and object references in Java.
 When used with primitive data types (such as int, double, char, etc.), == checks if the values of the variables are equal
 When used with objects (non-primitive types), == compares the memory addresses (references) of the objects. It checks whether two object references point 
@@ -138,3 +139,242 @@ The .equals() method is used to compare the content or values of objects in Java
 to provide meaningful comparison based on the content of the objects.
 
 == is used for reference comparison, while .equals() is used for content comparison.
+
+JDK VS JRE VS JVM:
+JVM (Java Virtual Machine)
+  Purpose: Executes Java bytecode.
+  Functionality: Provides platform independence, handles bytecode interpretation, just-in-time (JIT) compilation, and memory management (garbage collection).
+  Components: Includes the bytecode verifier, interpreter, and JIT compiler.
+  Contains: JVM alone does not include any development tools or libraries.
+JRE (Java Runtime Environment)
+  Purpose: Provides the environment to run Java applications.
+  Functionality: Includes the JVM along with core libraries and other components needed to run Java applications.
+  Components: Consists of the JVM, core libraries, and supporting files.
+  Contains: All necessary components to run Java applications but no development tools like compilers.
+JDK (Java Development Kit)
+  Purpose: Provides tools to develop and run Java applications.
+  Functionality: Includes the JRE and additional development tools.
+  Components: Consists of the JRE, compilers (javac), debuggers, documentation tools, and other tools necessary for Java development.
+  Contains: Everything in the JRE plus tools for development.
+Summary
+  JVM: Executes bytecode, ensuring Java's platform independence.
+  JRE: Contains JVM and libraries to run Java applications.
+  JDK: Includes JRE and tools for developing Java applications (e.g., compiler, debugger).
+
+WHAT IS PLATFORM INDEPENDENT:
+ Platform independence in Java means that Java applications can run on any operating system or hardware that has a compatible Java Virtual Machine (JVM). This is achieved by compiling Java source code into
+ bytecode, which the JVM interprets and executes, ensuring that the same compiled Java program can run on different platforms without modification.
+
+WHAT IS CASTING AND ITS TYPES OF CASTING:
+Casting in Java is the process of converting a variable from one data type to another. There are two main types of casting:
+Primitive Type Casting:
+  Widening (implicit, no data loss)-Automatically converts a smaller data type to a larger data type-Example: int to long, float to double.
+  Narrowing (explicit, potential data loss)-Manually converts a larger data type to a smaller data type-Example: double to float, long to int.
+
+Reference Type Casting:
+  Upcasting (implicit, safe)-Converts a subclass type to a superclass type.-Example: Dog to Animal.
+  Downcasting (explicit, requires type check, potential for ClassCastException)-Converts a superclass type to a subclass type-Example: Animal to Dog.
+                   - Explicit and requires type checking (using instanceof).
+                   - Can throw ClassCastException if the object is not actually of the subclass type.
+
+WHAT ARE WRAPPER CLASSES AND ITS TYPES:
+  Wrapper classes in Java provide a way to use primitive data types (like int, char, etc.) as objects. Each primitive type has a corresponding wrapper class in the java.lang package.
+  Wrapper classes in Java convert primitive data types into objects, allowing them to be used in contexts where objects are required, such as collections or generics. 
+  The types include Byte, Short, Integer, Long, Float, Double, Character, and Boolean.
+
+
+DIFFERENCE BETWEEN CHECKED AND UNCHECKED EXCEPTIONS:
+Checked Exceptions:
+  Definition: Exceptions that are checked at compile-time.
+  Handling Requirement: Must be either caught or declared in the method signature using throws.
+  Examples: IOException, SQLException.
+  Usage: Typically used for recoverable conditions and external issues (e.g., file I/O, database access).
+Unchecked Exceptions:
+  Definition: Exceptions that are not checked at compile-time.
+  Handling Requirement: Do not need to be caught or declared thrown.
+  Examples: NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException.
+  Usage: Typically used for programming errors (e.g., logic errors, improper use of API).
+Summary:
+  Checked Exceptions: Must be handled or declared, used for recoverable issues, checked at compile-time.
+  Unchecked Exceptions: Do not need to be handled or declared, used for programming errors, checked at runtime.
+
+WHAT IS AN ENUM:
+It is a special data type that represents a group of constants. It is used to define collections of constants in a type-safe manner.
+    Definition: A type that consists of a fixed set of constants (e.g., days of the week, directions, etc.).
+    Usage: Improves code readability and safety by providing meaningful names for fixed values.
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+
+SINGLETON CLASS:
+A Singleton class in Java ensures that only one instance of the class is created and provides a global point of access to that instance.
+   Single Instance: Only one instance of the class is created throughout the application's lifecycle.
+   Global Access: The single instance is globally accessible.
+   Usage: Commonly used in scenarios where a single object is needed to coordinate actions across the system (e.g., configuration settings, logging).
+
+public class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {
+        // private constructor to prevent instantiation
+    }
+
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+
+CAN YOU OVERRIDE A PRIVATE METHOD IN JAVA:
+No, you cannot override a private method in Java. Private methods are not accessible outside the class in which they are declared, so they cannot be overridden by subclasses.
+
+WILL FINALLY BLOCK EXECUTE IF YOU PUT Sysytem.exit() in try or catch block:
+   No, the finally block will not execute if System.exit() is called within the try or catch block. When System.exit() is invoked, it immediately terminates the JVM and bypasses any remaining code execution, 
+   including the finally block.
+
+WHY DO WE NEED IMMUTABLE IN JAVA:
+Immutable objects in Java are beneficial because they provide the following advantages:
+Thread Safety: Immutable objects are inherently thread-safe because their state cannot be changed after creation, eliminating the need for synchronization.
+Concurrent Access: Immutable objects can be shared among multiple threads without risk of data corruption, making concurrent programming simpler.
+Cacheability: Immutable objects can be cached effectively because their state cannot change, leading to performance improvements in memory-constrained environments.
+Security: Immutable objects are less prone to security vulnerabilities such as tampering or injection attacks because their state cannot be modified.
+Simplicity: Immutable objects simplify code by eliminating the need for defensive copying or synchronization mechanisms, leading to cleaner and more maintainable code.
+
+EXPLAIN THE DESIGN PATTERNS AVAILABLE IN JAVA
+Design patterns in Java are reusable solutions to common problems encountered during software development.
+
+Creational Patterns:
+Singleton: Ensures that a class has only one instance and provides a global point of access to it.
+Factory Method: Defines an interface for creating objects but allows subclasses to alter the type of objects that will be created.
+Builder: Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
+
+Structural Patterns:
+Adapter: Allows incompatible interfaces to work together by converting the interface of a class into another interface clients expect.
+Decorator: Adds new functionality to an object dynamically without altering its structure.
+Facade: Provides a simplified interface to a set of interfaces in a subsystem, making it easier to use.
+
+Behavioral Patterns:
+Observer: Defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.
+Strategy: Defines a family of algorithms, encapsulates each one, and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+Template Method: Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
+
+WHAT ARE GENERICS IN JAVA AND WHY WE ARE USING THAT.
+ Generics in Java allow you to create classes, interfaces, and methods that operate on types specified at compile time. They provide type safety and enable code reusability by allowing 
+ classes and methods to work with any data type.
+
+Key Points:
+  Type Safety: Generics ensure that operations are type-safe at compile time, reducing the risk of runtime errors.
+  Code Reusability: Generics enable you to write reusable code that can work with different types without duplication.
+  Compile-Time Checks: Type parameters are checked at compile time, providing early detection of type-related errors.
+  Eliminates Casting: Generics reduce the need for explicit casting, making code cleaner and easier to read.
+
+// Generic class
+class Box<T> {
+    private T value;
+    public void setValue(T value) {
+        this.value = value;
+    }
+    public T getValue() {
+        return value;
+    }
+}
+
+// Usage
+Box<Integer> intBox = new Box<>();
+intBox.setValue(10);
+int value = intBox.getValue(); // No casting required
+
+EXPALIN SPRING CONSTANT POOL IN JAVA;
+  In Java, the constant pool is a table of symbolic references used by the JVM to store string literals, class and interface names, method and field names, and other constants. 
+  It's a part of the class file format and is loaded into memory when a class is loaded by the JVM. The constant pool facilitates efficient memory management and runtime optimizations 
+  by storing and reusing frequently used constants throughout the program.
+
+WHAT IS STRING CLASS AND ITS IMMUTABLE NATURE IN JAVA
+  The String class in Java represents a sequence of characters. It is widely used for text manipulation and processing. In Java, strings are immutable, meaning once created,
+  their values cannot be changed. This immutability ensures thread safety, enhances security, and simplifies memory management. Any operation that appears to modify a string actually 
+  creates a new string object with the modified value, leaving the original string unchanged.
+
+MULTITHREADING IN JAVA:
+Multithreading in Java refers to the ability of a program to execute multiple threads concurrently. Threads are lightweight processes that execute independently within a program, 
+allowing tasks to be performed simultaneously. Multithreading enables efficient utilization of CPU resources and improves responsiveness by allowing programs to perform multiple 
+tasks concurrently. It is commonly used in applications that require parallel execution of tasks, such as web servers, GUI applications, and background processing.
+
+
+LIFE CYCLE OF A THREAD:
+1.New: The thread is created but not yet started.
+2.Runnable: The thread is ready to run and waiting for CPU time.
+3.Running: The thread is executing its task.
+4.Blocked/Waiting: The thread is temporarily inactive, waiting for a resource or condition to continue.
+5.Terminated: The thread has finished its execution or has been stopped.
+
+WAYS TO CREATE A THREAD IN JAVA:
+Extending the Thread class:
+  Define a class that extends the Thread class and override the run() method to define the thread's behavior.
+  Instantiate the class and call the start() method to begin execution.
+
+Implementing the Runnable interface:
+  Define a class that implements the Runnable interface and implements the run() method to define the thread's behavior.
+  Create an instance of the class and pass it to a Thread object as a parameter.
+  Call the start() method on the Thread object to begin execution.
+
+Using lambda expressions (Java 8 and later):
+  Create a Thread object and pass a lambda expression or method reference defining the thread's behavior to the constructor.
+  Call the start() method on the Thread object to begin execution.
+
+HIERARACHY OF THE EXCEPTION HANDLING CLASSES:
+Throwable:
+  Root class for all exceptions and errors.
+
+Error:
+  Represents serious problems that are usually not recoverable by the application, such as OutOfMemoryError or StackOverflowError.
+
+Exception:
+  Represents exceptional conditions that are recoverable by the application.
+
+RuntimeException:
+  Represents exceptions that occur at runtime and are not checked by the compiler, such as NullPointerException or IndexOutOfBoundsException.
+
+Checked Exceptions:
+  Subclasses of Exception that must be declared in the method signature or handled using a try-catch block.
+  Examples include IOException, SQLException, etc.
+
+Unchecked Exceptions:
+  Subclasses of RuntimeException that do not need to be declared or caught explicitly.
+  Examples include NullPointerException, ArrayIndexOutOfBoundsException, etc.
+
+DIFFERENCE BETWEEN STATIC METHOD AND INSTANCE METHOD IN JAVA
+
+Static Method:
+Associated with the class rather than instances of the class.
+Can be called directly using the class name.
+Cannot access instance variables directly.
+Often used for utility methods or operations that do not depend on instance state.
+
+Instance Method:
+Associated with instances of the class.
+Must be called on an instance of the class.
+Can access instance variables and other instance methods directly.
+Often used to manipulate the state of individual objects and perform instance-specific operations.
+
+WHAT ARE THE MEMORY STORAGES AVAILABLE IN JVM:
+Heap Memory:
+ Used for storing objects and their corresponding instance variables.
+ Managed by garbage collection to reclaim unused memory.
+
+Stack Memory:
+ Stores method invocations and local variables.
+ Each thread has its own stack, which is created when the thread is started and destroyed when it terminates.
+
+Method Area (PermGen/Metaspace):
+ Stores class metadata, static variables, and method bytecode.
+ PermGen (Permanent Generation) was used in older JVM versions; Metaspace is its replacement in modern JVMs.
+
+Program Counter (PC) Register:
+Stores the address of the currently executing instruction.
+Each thread has its own PC register.
+
+
+
+
