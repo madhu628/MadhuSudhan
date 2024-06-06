@@ -903,27 +903,150 @@ Summary
  Access the Application: Open a web browser and go to http://localhost:8080.
 
 
+HANDLING EXCEPTIONS IN SPRING BOOT APPLICATION:
+1.Global Exception Handling: Use @ControllerAdvice and @ExceptionHandler to handle exceptions globally across all controllers.
+2. Custom Exceptions: Define custom exception classes for specific error scenarios.
+        public class ResourceNotFoundException extends RuntimeException {
+         public ResourceNotFoundException(String message) {
+           super(message);
+         }
+       }
+
+3.Controller-Level Exception Handling: Use @ExceptionHandler within controllers for controller-specific exception handling.
+4.Custom Error Responses: Create custom error response structures for consistent error responses.
+                          Use this custom error response in your global exception handle
+
+                 public class ErrorResponse {
+                  private String message;
+                 private Date timestamp;
+                 private String details;
+
+            // Constructors, getters and setters
+            }
+
+ENABLING LOGGING IN SPRING BOOT APPLICATIONS:
+Spring Boot uses Spring Boot Logging which defaults to Logback for logging. Here are the steps to enable and configure logging:
+
+1.Default Logging: Spring Boot logs to the console at INFO level by default.
+2.Customize Log Levels: Set log levels in application.properties or application.yml.
+        logging.level.root=INFO
+        logging.level.org.springframework.web=DEBUG
+        logging.level.com.yourpackage=TRACE
+3.Log to a File: Configure file logging in application.properties or application.yml.
+    logging.file.name=app.log
+    logging.file.path=/var/logs
+4.Advanced Configuration: Use logback-spring.xml for detailed log configurations.(Create a logback-spring.xml file in the src/main/resources directory for advanced logging configurations.)
+5.Programmatic Log Level Change: Use the LoggingSystem API to change log levels programmatically.
+
+CREATING SPRING BOOT PROJECT USING MAVEN:
+
+1.Install Prerequisites: Ensure Java and Maven are installed.
+2.Create Maven Project: Use mvn archetype:generate command following by details in cmd terminal and run and then navigate to directory.
+3.Add Dependencies: Update pom.xml with Spring Boot dependencies.
+4.Create Main Class: Define the main application class with @SpringBootApplication.
+5.Run Application: Use mvn spring-boot:run or build and run the JAR
+                mvn clean package
+                java -jar target/my-spring-boot-app-1.0-SNAPSHOT.jar
+
+ADDING A FILTER TO SPRING BOOT APPLICATION: Filters are used in web applications to perform various tasks such as logging, authentication, and modifying requests and responses.
+
+1.Create a Filter Class: Implement javax.servlet.Filter interface and override the doFilter method.(CustomFilter implements Filter )(init ,doFilter and destroy methods)
+2.Register the Filter:
+       As a @Bean in a configuration class using FilterRegistrationBean.
+       Or, using @WebFilter annotation for declarative configuration.
+3.Run the Application: Start the Spring Boot application to see the filter in action.
+
+CONNECTING SPRING BOOT TO A MYSQL DATABASE USING JPA:
+Summary
+1.Add Dependencies: Include Spring Boot JPA and database driver dependencies.(data-jpa,web,mysql)
+2.Configure Database: Add database settings in application.properties or application.yml.(url,username,password)
+3.Define Entity: Create a JPA entity class.(Define an entity class that maps to a database table)
+4.Create Repository: Extend JpaRepository in a repository interface.
+5.Service Layer: (Optional) Implement a service layer for business logic.
+6.Create Controller: Implement a REST controller to handle HTTP requests
+
+HOW TO CHANGE JDK VERSION USED IN A SPRING BOOT APPLICATION
+1.specify the Java version in the <properties> section of your pom.xml file
+  Additionally, if you're using the Maven compiler plugin, you can configure the Java version in its configuration:
+2.refresh project dependencies to ensure that your IDE and build tools recognize the new Java version.
 
 
+USING JDBC FOR SPRING BOOT DATA BASE CONNECTION 
+Add Dependencies: Include spring-boot-starter-jdbc and the appropriate database driver dependency(MYSQL).
+Configure Database: Add database connection settings in application.properties or application.yml.(url,username,password)
+Use JdbcTemplate: Inject JdbcTemplate into your Spring components to interact with the database for database operations.(In repository class)
+Run the Application: Start the Spring Boot application, and JDBC will automatically configure and manage the  database connection based on the configuration.
 
 
+CREATING JAR FILE FOR A SPRING BOOT APPLICATIONS:
+1.Ensure Main Class: Verify that you have a main application class annotated with @SpringBootApplication.
+2.Add Maven Plugin: Include the Spring Boot Maven plugin in your pom.xml.
+3Build the Project: Run mvn clean package to build the project and create the JAR file.
+Locate JAR File: Find the JAR file in the target directory.
 
+CONFIGURING HIBERNATE IN SPRING BOOT:
+1.Add Dependencies: Include spring-boot-starter-data-jpa and the appropriate database driver.
+2.Configure Database: Add database connection settings in application.properties or application.yml.(url,username,password)
+3.Define Entity: Create a JPA entity class that maps to a database table.
+4.Create Repository: Extend JpaRepository in a repository interface.
+5.Run Application: Start the application Hibernate will automatically configure based on your settings..
 
+SPRING DATA REST:
+Spring Data REST is a project within the Spring ecosystem that automatically creates RESTful APIs based on your Spring Data repositories. It simplifies the creation of RESTful services by eliminating 
+the need to write controller code manually for CRUD operations. Here are the key points:
 
+1.Automatic REST Endpoints:
+    It automatically generates RESTful endpoints for your repository interfaces.
+    No need to write boilerplate code for basic CRUD operations.
+2.HAL (Hypertext Application Language):
+    Responses are formatted using HAL, which provides a standardized way to represent resources and their links, making the API self-descriptive.
+3.Customization:
+    Endpoints can be customized through annotations and configuration.
+    Allows fine-grained control over the exposed endpoints and their behavior.
+4.Event Hooks:
+    Provides hooks for custom logic before and after repository methods are called, such as @HandleBeforeCreate, @HandleAfterCreate, etc.
+5.Paging and Sorting:
+    Supports pagination and sorting out-of-the-box for large data sets.
+    Easily configurable via query parameters.
 
+1.Add Dependency:
+   Add spring-boot-starter-data-rest to your pom.xml
+2.Define Entity and Repository:
+   Create a JPA entity and a corresponding repository (@RepositoryRestResource)
+3.Run the Application:
+   Start your Spring Boot application, and Spring Data REST will automatically expose CRUD endpoints for the Person entity at /people.
 
+GETTING THE LIST OF BEANS IN A SPRING BOOT APPLICATION:
+To get the list of all beans in your Spring Boot application, you can use the ApplicationContext and its method getBeanDefinitionNames()
 
+1.Create CommandLineRunner:
+  Implement a CommandLineRunner bean to fetch and print bean names when the application starts..
 
+2.Use ApplicationContext:
+  Inject ApplicationContext and call getBeanDefinitionNames() in CommandLineRunner bean.
 
-   
+3.Run the Application:
+  Start the spring boot  application the CommandLineRunner will execute and print the list of all beans..
 
+BUILDING A REST API WITH SPRING BOOT:
+1.Set Up Project: Use Spring Initializr to create a Spring Boot project with necessary dependencies(web,data JPA,mysql)
+2.Main Application: Create the main class with @SpringBootApplication.
+3.Define Entity: Create a JPA entity class that maps to a database table.
+4.Repository Interface: Create an interface extending JpaRepository.
+5.Service Layer: (Optional) Implement a service layer to handle business logic.
+6.REST Controller: Create a REST controller with CRUD or HTTP endpoints.
+7.Database Configuration: Add database settings in application.properties or application.yml.(url,username,password)
+8.Run Application: Start the application and test the API endpoints using a tool like Postman or curl.
 
+HIBERNATE AS DEFALUT JPA IMPLEMENTATION IN SPRING BOOT:
+reasons:
+1.spring Boot Starters: spring-boot-starter-data-jpa includes Hibernate as the default JPA provider. This starter packs everything needed to set up a JPA implementation using Hibernate.
+2.Auto-Configuration: Automatically configures Hibernate as the JPA provider if Hibernate is  on the classpath.
+                      The auto-configuration class (HibernateJpaAutoConfiguration) gets activated and sets up Hibernate as the JPA provider by default.
+3.Dependency Management: Ensures Hibernate is included and properly configured.ensuring that a compatible version of Hibernate is included when you use spring-boot-starter-data-jpa.
+4.Zero Configuration: As long as Hibernate is included via the starter, you don’t need any extra configuration to make it work. Spring Boot uses sensible defaults to configure Hibernate for you.
 
-
-   
-
-
-
+By simply including the spring-boot-starter-data-jpa dependency, Hibernate is automatically chosen and configured as the default JPA provider in Spring Boot applications.
 
 
 
