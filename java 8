@@ -1,0 +1,33 @@
+Java 8 Features:
+functional interface is an interface that contains only one abstract method. It serves as a blueprint for implementing lambda expressions or method references. 
+Functional interfaces enable the use of lambda expressions, which provide a concise way to represent anonymous functions.
+
+Characteristics of Functional Interfaces:
+Single Abstract Method (SAM): A functional interface contains exactly one abstract method. It may also contain default methods and static methods introduced
+in Java 8, but only one abstract method.
+
+Lambda Expression Compatibility: Functional interfaces are designed to be compatible with lambda expressions, allowing developers to represent instances of 
+single-method interfaces with a compact syntax.
+
+@FunctionalInterface Annotation: While not required, it's common practice to annotate functional interfaces with @FunctionalInterface. This annotation ensures
+that the interface contains exactly one abstract method, and if it contains more than one abstract method, it will result in a compilation error.
+
+A Predicate is a functional interface that represents a boolean-valued function of one argument
+A Function is a functional interface that represents a function that accepts one argument and produces a result.
+A Consumer is a functional interface that represents an operation that accepts a single input argument and returns no result.
+A Supplier is a functional interface that represents a supplier of results.
+
+Optional is a container object introduced in Java 8 that can hold a value or be empty. It is used to represent optional values and helps avoid null checks, 
+making the code more readable and less error-prone.
+
+Optional can be used to handle nullable values more gracefully and avoid NullPointerExceptions in Java.
+
+Date Time API
+API is comprehensive and offers many more classes and methods to handle date and time operations effectively.
+
+LocalDate - Represents a date without a time zone (e.g., 2024-06-03).
+LocalTime -Represents a time without a time zone (e.g., 14:30:00).
+LocalDateTime - Represents a date and time without a time zone (e.g., 2024-06-03T14:30:00)
+ZonedDateTime - Represents a date and time with a time zone (e.g., 2024-06-03T14:30:00+02:00[Europe/Paris])
+Period: Represents a date-based amount of time (e.g., 3 years, 2 months, 1 day).
+Duration: Represents a time-based amount of time (e.g., 5 hours, 30 minutes).
