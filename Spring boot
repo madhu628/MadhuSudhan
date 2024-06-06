@@ -1280,7 +1280,7 @@ Summary:
 7.Repository Layer: Interacts with the database.
 8.Response Generation: Prepares the response object.
 9.View Resolution (if applicable): Renders HTML if necessary.
-10.Response Return: Response is encrypted and sent back to the client
+10.Response Return: Response is encrypted and sent back to the client.
 
 
 
