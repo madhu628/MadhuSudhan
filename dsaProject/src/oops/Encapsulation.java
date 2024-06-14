@@ -1,10 +1,12 @@
 package oops;
 
 class EncapTest {
+	//Declare the variables of a class as private
 	private String name;
 	private String idNum;
 	private int age;
 
+	//Provide public setter and getter methods to modify and view the variables values
 	public int getAge() {
 		return age;
 	}

@@ -18,10 +18,11 @@ public class ExceptionHandlingExample {
 		try {
 			int[] arr = new int[5];
 			arr[10] = 50; // This will throw ArrayIndexOutOfBoundsException
+			System.out.println("This line will not be executed.");
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("ArrayIndexOutOfBoundsException caught: " + e.getMessage());
 		} catch (Exception e) {
-			System.out.println("General exception caught: " + e.getMessage());
+			System.out.println("General exception caught: " + e.getMessage()); 
 		}
 
 		// Throwing an exception

@@ -1,4 +1,4 @@
-package streams;
+ package streams;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +21,10 @@ public class DistinctDept {
 
 		// Print the distinct departments
 		distinctDepartments.forEach(System.out::println);
+		
+		System.out.println();
+		
+		distinctDepartments.forEach(x->System.out.println(x));
 		
 		System.out.println("***********************************");
 

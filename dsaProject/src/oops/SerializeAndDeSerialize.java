@@ -7,6 +7,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+
+//Serialization in Java is the process of converting an object's state into a byte stream so that the byte stream can be
+//reverted back into a copy of the object.
+
 //public class SerializeAndDeSerialize {
 //	public static void main(String[] args) {
 //		Person person = new Person("John Doe", 30);

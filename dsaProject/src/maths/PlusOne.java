@@ -2,7 +2,7 @@ package maths;
 
 public class PlusOne {
 	public static void main(String[] args) {
-		int[] a = { 1, 3, 4, 5 };
+		int[] a = { 9 };
 		int[] result = plusOne(a);
 		for (int num : result) {
 			System.out.print(num + " ");
@@ -16,12 +16,12 @@ public class PlusOne {
 				a[i]++;
 				return a;
 			} else {
-				a[i] = 0;
+				a[i] = 1;
 			}
 		}
-		int[] a1 = new int[a.length + 1];
-		a[0] = 1;
-		return a1;
+		int[] digits = new int[a.length + 1];
+		digits[0] = 1;
+		return digits;
 	}
 
 }

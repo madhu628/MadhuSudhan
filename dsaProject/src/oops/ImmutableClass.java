@@ -2,7 +2,10 @@ package oops;
 
 import java.util.Date;
 
+//Declare the class as final so it cannot be subclassed/inherited
 public final class ImmutableClass {
+	
+	// Make all fields private and final to ensure that their values cannot be modified after the object is constructed
 	private final String name;
 	private final int age;
 	private final Date dateOfBirth;
@@ -14,7 +17,8 @@ public final class ImmutableClass {
 		// Make a defensive copy of the mutable object
 		this.dateOfBirth = new Date(dateOfBirth.getTime());
 	}
-
+	
+	//Do not provide setters for any fields
 	// Getter for name
 	public String getName() {
 		return name;
@@ -26,6 +30,7 @@ public final class ImmutableClass {
 	}
 
 	// Getter for dateOfBirth (returns a defensive copy)
+	//For mutable objects, provide a defensive copy in the constructor and getters.
 	public Date getDateOfBirth() {
 		return new Date(dateOfBirth.getTime());
 	}

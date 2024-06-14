@@ -2,20 +2,34 @@ package strings;
 
 public class CheckPalindrome {
 	public static void main(String[] args) {
-		String s = "madam";
-		int n = s.length();
+		String s = "A man, a plan, a canal: Panama";
+		
 
-		System.out.println(checkPalindrome(s, n));
+		System.out.println(checkPalindrome(s));
 	}
 
-	private static boolean checkPalindrome(String s, int n) {
+	private static boolean checkPalindrome(String s) {
 
+		
 		if (s == null || s.length() == 0)
 			return false;
+		
+		// s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
+		
+		// Convert to lowercase and filter out non-alphanumeric characters
+		//Move left towards the right and right towards the left,
+		StringBuilder sb = new StringBuilder();
+		for (char c : s.toCharArray()) {
+			if (Character.isLetterOrDigit(c)) {
+				sb.append(Character.toLowerCase(c));
+			}
+		}
+		System.out.println(sb);
 
-		int start = 0, end = n - 1;
-		while (start <= end) {
-			if (s.charAt(start) != s.charAt(end)) {
+		 // Check for palindrome using two pointers
+		int start = 0, end = sb.length() - 1;
+		while (start < end) {
+			if (sb.charAt(start) != sb.charAt(end)) {
 				return false;
 			}
 			start++;

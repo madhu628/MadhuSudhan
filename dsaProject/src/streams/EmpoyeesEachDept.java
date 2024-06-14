@@ -17,6 +17,8 @@ public class EmpoyeesEachDept {
 
 		Map<String, List<Employee10>> employeesByDepartment = employees.stream()
 				.collect(Collectors.groupingBy(Employee10::getDepartment));
+		
+		System.out.println(employeesByDepartment);
 
 		Set<Entry<String, List<Employee10>>> entrySet = employeesByDepartment.entrySet();
 

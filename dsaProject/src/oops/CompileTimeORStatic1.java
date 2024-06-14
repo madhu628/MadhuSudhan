@@ -21,6 +21,7 @@ class Calculator {
 	}
 }
 
+//Main class to test method overloading
 public class CompileTimeORStatic1 {
 	public static void main(String[] args) {
 		Calculator calc = new Calculator();

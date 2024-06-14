@@ -20,6 +20,8 @@ public class AvgTotalSalary {
 		System.out.println(salary.getAverage());
 
 		System.out.println(salary.getSum());
+		
+		System.out.println();
 
 		double totalSalary = employees.stream().mapToDouble(Employee11::getSalary).sum();
 

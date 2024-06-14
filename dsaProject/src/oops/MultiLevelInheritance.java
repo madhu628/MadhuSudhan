@@ -1,17 +1,20 @@
 package oops;
 
+//Superclass
 class Shape5 {
 	public void area() {
 		System.out.println("Displays Area of Shape");
 	}
 }
 
+//Intermediate subclass
 class Triangle5 extends Shape5 {
 	public void area(int h, int b) {
 		System.out.println(0.5 * b * h);
 	}
 }
 
+//Subclass
 class EquilateralTriangle extends Triangle5 {
 	int side;
 
@@ -26,7 +29,7 @@ class EquilateralTriangle extends Triangle5 {
 		System.out.println("Area of Equilateral Triangle: " + area);
 	}
 }
-
+//Main class to test multilevel inheritance
 public class MultiLevelInheritance {
 	public static void main(String[] args) {
 		Shape5 shape = new Shape5();

@@ -19,6 +19,9 @@ public class CountEmpEachDept {
 
 		Map<String, Long> employeeCountByDepartment = employees.stream()
 				.collect(Collectors.groupingBy(Employee5::getDepartment, Collectors.counting()));
+		
+		
+		System.out.println(employeeCountByDepartment);
 
 		Set<Entry<String, Long>> entrySet = employeeCountByDepartment.entrySet();
 		for (Entry<String, Long> entry : entrySet) {

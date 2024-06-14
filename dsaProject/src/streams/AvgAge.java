@@ -1,5 +1,7 @@
 package streams;
 
+//find the average age of male and female employees 
+
 //Employee::getDept == e->e.getDept
 //condition - filter 
 //System.out::println == x->system.out.println(x)

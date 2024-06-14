@@ -28,6 +28,7 @@ class Circle extends Shape {
 	}
 }
 
+//Main class to test method overriding
 public class RuntimeORDynamic {
 
 	public static void main(String[] args) {

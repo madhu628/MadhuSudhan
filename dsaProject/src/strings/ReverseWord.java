@@ -3,17 +3,17 @@ package strings;
 public class ReverseWord {
 //	public static void main(String[] args) {
 //		String s = "java code";
-//		String[] words = s.split("");
-//		String output = " ";
+//		String[] words = s.split(" ");// Split by space to get words
+//		String output = ""; // Initialize output as an empty string
 //		for (String w : words) {
-//			String rev = " ";
+//			String rev = "";// Initialize rev as an empty string for each word
 //			for (int i = w.length() - 1; i >= 0; i--) {
-//				rev = rev + w.charAt(i);
+//				rev = rev + w.charAt(i);// Build the reversed word
 //
 //			}
-//			output = output + rev + "";
+//			output = output + rev + " ";// Add the reversed word to output with a space
 //		}
-//		System.out.println(output);
+//		System.out.println(output.trim());// Trim to remove trailing space
 //	}
 
 	// Using string builder
@@ -42,12 +42,13 @@ public class ReverseWord {
 		}
 
 		String[] arr = str.trim().split("\\s+"); // Split by one or more spaces
-		StringBuilder result = new StringBuilder();
+		StringBuilder result = new StringBuilder(str.length());
 
+		
 		for (int i = arr.length - 1; i >= 0; i--) {
 			result.append(arr[i]);
 			if (i != 0) {
-				result.append(" ");
+				result.append(" ");// Append a space after each word except the last one
 			}
 		}
 

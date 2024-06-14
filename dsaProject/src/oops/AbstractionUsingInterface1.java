@@ -1,12 +1,16 @@
 package oops;
 
 interface Shape2 {
+	// All the fields in interfaces are public, static and final by default
+	//All methods are public & abstract by default.
+	//Interfaces support the functionality of multiple inheritance
 	double area();
 
 	String getColor();
 }
 
 class Circle2 implements Shape2 {
+	//A class that implements an interface must implement all the methods declared in the interface
 	private String color;
 	private double radius;
 
@@ -47,6 +51,7 @@ class Rectangle1 implements Shape2 {
 	}
 }
 
+//Main class to test abstraction
 public class AbstractionUsingInterface1 {
 	public static void main(String[] args) {
 		Shape2 circle = new Circle2("Red", 5.5);

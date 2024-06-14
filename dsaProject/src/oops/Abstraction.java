@@ -1,6 +1,7 @@
 package oops;
 
 abstract class Animal1 {
+
 	abstract void walk();
 
 	void breathe() {

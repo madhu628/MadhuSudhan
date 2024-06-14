@@ -1,23 +1,27 @@
 package oops;
 
+//super class
 class Shape4 {
 	public void area() {
 		System.out.println("Displays Area of Shape");
 	}
 }
 
+//Subclass
 class Triangle4 extends Shape4 {
 	public void area(int h, int b) {
 		System.out.println(0.5 * b * h);
 	}
 }
 
+//Another Subclass
 class Circle4 extends Shape4 {
 	public void area(int r) {
 		System.out.println((3.14) * r * r);
 	}
 }
 
+//Main class to test hierarchical inheritance
 public class HierarachicalInheritance {
 
 	public static void main(String[] args) {

@@ -23,6 +23,7 @@ class Cat extends Animal {
 	}
 }
 
+//Main class to test method overriding
 public class RuntimeORDynamic1 {
 	public static void main(String[] args) {
 		// Reference variable of type Animal, but it refers to an instance of Dog

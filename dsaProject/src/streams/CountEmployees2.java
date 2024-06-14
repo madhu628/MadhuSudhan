@@ -19,6 +19,9 @@ public class CountEmployees2 {
 
 		Map<String, List<Employee9>> employeesByGender1 = employees.stream()
 				.collect(Collectors.groupingBy(Employee9::getGender));
+		
+		
+		System.out.println(employeesByGender1);
 
 		System.out.println("Male Employees:");
 		employeesByGender1.getOrDefault("Male", Arrays.asList()).forEach(System.out::println);

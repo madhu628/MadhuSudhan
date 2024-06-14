@@ -7,6 +7,7 @@ class Student1 {
     private int age;
 
     // Public getter method for 'name'
+    //Provide public setter and getter methods to modify and view the variables values
     public String getName() {
         return name;
     }
@@ -35,6 +36,7 @@ class Student1 {
 
 public class Encapsulation1 {
 	public static void main(String[] args) {
+		//// Creating an instance of Student
         Student1 student = new Student1();
 
         // Setting values using setter methods
@@ -42,6 +44,7 @@ public class Encapsulation1 {
         student.setAge(20);
 
         // Getting values using getter methods
+        //// Accessing and modifying private fields via public methods
         System.out.println("Student Name: " + student.getName());
         System.out.println("Student Age: " + student.getAge());
     }
