@@ -33,6 +33,10 @@ public class Anagram {
 	    }
 	}
 
+
+//Time Complexity: O(n log n) due to sorting.
+//Space Complexity: O(n) due to additional space for character arrays.
+
 //	public static void main(String[] args) {
 //		String s1 = "Cat";
 //		String s2 = "Act";
