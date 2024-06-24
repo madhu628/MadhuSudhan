@@ -22,3 +22,42 @@ int index = Arrays.binarySearch(arr, key);
 
 Rotate Array by K Positions
 Collections.rotate(Arrays.asList(arr), k);
+
+Arrays
+General Strategies
+Use Multiple Pointers:
+Useful for problems involving sorting or subarray/window calculations.
+Example: left and right pointers for finding pairs with a given sum.
+
+Sliding Window:
+Ideal for problems involving contiguous subarrays or sequences.
+Example: Maximum sum subarray of size k.
+
+Frequency Count:
+Useful for problems involving duplicates or element frequency.
+Example: Finding the majority element.
+
+Sort When Possible:
+Sorting can simplify logic for finding pairs, triplets, or managing ranges.
+Example: Two Sum problem with sorted array.
+
+Binary Search:
+Use for searching or finding elements in a sorted array.
+Example: Finding the insertion position.
+
+Optimization Techniques
+Space Optimization:
+Avoid using extra space if the problem can be solved in place.
+Example: Removing duplicates from a sorted array.
+
+Time Complexity Awareness:
+Aim for O(n) or O(n log n) solutions where possible.
+Example: Use hash maps for counting instead of nested loops.
+
+Edge Cases Handling:
+Always consider empty arrays, single elements, maximum/minimum values.
+Example: Handling arrays of length 0 or 1.
+
+
+
+
