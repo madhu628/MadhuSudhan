@@ -94,7 +94,40 @@ Character Checks: Use simple if-else conditions for character checks and manipul
 Avoid Collections: Stick to arrays and manual array manipulations instead of using collections like ArrayList, HashSet, etc.
 Buffer Usage: Use StringBuilder for efficient string manipulations, especially in a loop.
 
+Strings
+General Strategies
+Two Pointers:
+Effective for problems involving substring search, palindromes, etc.
+Example: Finding the longest palindromic substring.
 
+Character Count/Frequency:
+Useful for anagram checks or character frequency problems.
+Example: Checking if two strings are anagrams.
+
+Sliding Window:
+Ideal for problems involving substrings or contiguous sequences.
+Example: Finding the smallest substring containing all characters of another string.
+
+In-place Modifications:
+Modify the string using StringBuilder to handle mutable changes efficiently.
+Example: Removing specific characters from a string.
+
+Optimization Techniques
+Use Hash Maps:
+For frequency counts or character mappings.
+Example: Longest substring without repeating characters.
+
+StringBuilder for Concatenation:
+Avoid using + for concatenation inside loops.
+Example: Building a result string from parts.
+
+Regular Expressions:
+Use cautiously for pattern matching but be mindful of performance.
+Example: Matching or replacing patterns in a string.
+
+Avoid Redundant Work:
+Break early from loops when conditions are met to save time.
+Example: Early exit in substring search.
 
 
 
