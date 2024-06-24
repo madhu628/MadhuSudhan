@@ -1,0 +1,24 @@
+Check if Array is Sorted
+boolean sorted = IntStream.range(0, arr.length - 1).allMatch(i -> arr[i] <= arr[i + 1]);
+
+Find Union of Two Arrays
+Set<Integer> set = new HashSet<>();
+set.addAll(Arrays.asList(arr1));
+set.addAll(Arrays.asList(arr2));
+Integer[] union = set.toArray(new Integer[0]);
+
+Find Intersection of Two Arrays
+Set<Integer> set = new HashSet<>(Arrays.asList(arr1));
+set.retainAll(Arrays.asList(arr2));
+Integer[] intersection = set.toArray(new Integer[0]);
+
+Merge Two Arrays
+int[] merged = new int[arr1.length + arr2.length];
+System.arraycopy(arr1, 0, merged, 0, arr1.length);
+System.arraycopy(arr2, 0, merged, arr1.length, arr2.length);
+
+Binary Search
+int index = Arrays.binarySearch(arr, key);
+
+Rotate Array by K Positions
+Collections.rotate(Arrays.asList(arr), k);
