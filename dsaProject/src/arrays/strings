@@ -1,0 +1,34 @@
+Convert String to Integer
+int number = Integer.parseInt(str);
+
+Convert Integer to String
+String strNumber = Integer.toString(num);
+
+Check if String Contains Only Digits
+boolean isDigit = str.chars().allMatch(Character::isDigit);
+
+Replace Substring
+String replaced = str.replace("old", "new");
+
+Split String by Delimiter
+String[] parts = str.split(",");
+
+Join Strings
+String joined = String.join(",", listOfStrings);
+
+String Formatting
+String formatted = String.format("Hello, %s!", name);
+
+
+Lambda Expressions: Use lambda expressions and streams for concise array and string manipulations.
+Regular Expressions: Use String.replaceAll for complex string replacements.
+Collections: Use collections like HashSet, ArrayList, or LinkedList for efficient data operations and transformations.
+Utility Methods: Utilize utility methods from Arrays, Collections, and String classes for common tasks.
+Character Operations: Use Character methods for character-level checks and transformations.
+Handling Nulls: Always check for nulls in input to avoid NullPointerException.
+
+
+
+
+
+
