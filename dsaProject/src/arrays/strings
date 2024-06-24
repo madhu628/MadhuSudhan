@@ -1,24 +1,85 @@
 Convert String to Integer
 int number = Integer.parseInt(str);
 
+int number = 0;
+for (int i = 0; i < str.length(); i++) {
+    number = number * 10 + (str.charAt(i) - '0');
+}
+
 Convert Integer to String
 String strNumber = Integer.toString(num);
+
+StringBuilder sb = new StringBuilder();
+int num = number;
+boolean isNegative = num < 0;
+if (isNegative) num = -num;
+do {
+    sb.append((char) ('0' + (num % 10)));
+    num /= 10;
+} while (num > 0);
+if (isNegative) sb.append('-');
+String strNumber = sb.reverse().toString();
 
 Check if String Contains Only Digits
 boolean isDigit = str.chars().allMatch(Character::isDigit);
 
+boolean isDigit = true;
+for (int i = 0; i < str.length(); i++) {
+    if (!Character.isDigit(str.charAt(i))) {
+        isDigit = false;
+        break;
+    }
+}
+
 Replace Substring
 String replaced = str.replace("old", "new");
+
+StringBuilder sb = new StringBuilder();
+String target = "old";
+String replacement = "new";
+for (int i = 0; i < str.length();) {
+    if (str.startsWith(target, i)) {
+        sb.append(replacement);
+        i += target.length();
+    } else {
+        sb.append(str.charAt(i));
+        i++;
+    }
+}
+String replaced = sb.toString();
 
 Split String by Delimiter
 String[] parts = str.split(",");
 
+List<String> parts = new ArrayList<>();
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < str.length(); i++) {
+    if (str.charAt(i) == ',') {
+        parts.add(sb.toString());
+        sb.setLength(0);
+    } else {
+        sb.append(str.charAt(i));
+    }
+}
+parts.add(sb.toString());
+
 Join Strings
 String joined = String.join(",", listOfStrings);
+
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < list.size(); i++) {
+    sb.append(list.get(i));
+    if (i < list.size() - 1) {
+        sb.append(",");
+    }
+}
+String joined = sb.toString();
+
 
 String Formatting
 String formatted = String.format("Hello, %s!", name);
 
+String formatted = "Hello, " + name + "!";
 
 Lambda Expressions: Use lambda expressions and streams for concise array and string manipulations.
 Regular Expressions: Use String.replaceAll for complex string replacements.
@@ -26,6 +87,12 @@ Collections: Use collections like HashSet, ArrayList, or LinkedList for efficien
 Utility Methods: Utilize utility methods from Arrays, Collections, and String classes for common tasks.
 Character Operations: Use Character methods for character-level checks and transformations.
 Handling Nulls: Always check for nulls in input to avoid NullPointerException.
+
+Manual Loops: Use manual loops (for, while, do-while) for operations typically handled by built-in methods.
+Basic Operations: Implement basic operations such as indexOf, substring, replace, split, etc., using loops and conditionals.
+Character Checks: Use simple if-else conditions for character checks and manipulations.
+Avoid Collections: Stick to arrays and manual array manipulations instead of using collections like ArrayList, HashSet, etc.
+Buffer Usage: Use StringBuilder for efficient string manipulations, especially in a loop.
 
 
 
