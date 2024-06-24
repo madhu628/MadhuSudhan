@@ -1,0 +1,201 @@
+General Tips for Java 8 Streams
+1. Understand the Basics
+Stream Operations:
+Intermediate: Transform a stream into another stream (map, filter, sorted, etc.).
+Terminal: Produce a result or a side-effect (collect, forEach, reduce, etc.).
+Short-Circuiting: Stops the processing once the condition is met (findFirst, anyMatch, etc.).
+
+Lazy Evaluation:
+Streams are lazy and operations are not executed until a terminal operation is invoked.
+
+2. Know When to Use Streams
+Suitable For: Functional transformations, aggregations, and pipelines.
+Not Ideal For: Operations needing index-based access, nested loops with break/continue, or where state modification is required.
+
+  Stream Creation
+  from collections:
+  List<Integer> list = Arrays.asList(1, 2, 3);
+  Stream<Integer> stream = list.stream();
+
+From Arrays:
+  int[] array = {1, 2, 3};
+IntStream intStream = Arrays.stream(array);
+
+From Values:
+  Stream<String> stream = Stream.of("a", "b", "c");
+
+From Files:
+Stream<String> lines = Files.lines(Paths.get("file.txt"));
+
+Common Stream Operations:
+Filtering
+Example: Filter even numbers:
+List<Integer> evenNumbers = list.stream()
+    .filter(n -> n % 2 == 0)
+    .collect(Collectors.toList());
+
+Mapping
+Example: Square each number:
+List<Integer> squares = list.stream()
+    .map(n -> n * n)
+    .collect(Collectors.toList());
+
+Flattening: Use flatMap for nested structures
+List<List<Integer>> nestedList = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4));
+List<Integer> flatList = nestedList.stream()
+    .flatMap(Collection::stream)
+    .collect(Collectors.toList());
+
+Reduction:
+Example: Sum of elements
+int sum = list.stream()
+    .reduce(0, Integer::sum);
+
+Collecting
+Example: Collecting into a List
+List<String> collected = stream.collect(Collectors.toList());
+
+Grouping:
+Map<Integer, List<String>> groupedByLength = stream
+    .collect(Collectors.groupingBy(String::length));
+
+Joining:
+String joined = stream.collect(Collectors.joining(", "));
+
+Short-Circuiting Operations:
+Example: Find first matching element
+Optional<Integer> firstEven = list.stream()
+    .filter(n -> n % 2 == 0)
+    .findFirst();
+
+Example: Check if any match:
+boolean hasNegative = list.stream()
+    .anyMatch(n -> n < 0);
+
+Advanced Tips
+1. Use Primitive Streams for Performance
+Example: Sum of an int array using IntStream
+int sum = IntStream.of(array)
+    .sum();
+Example: Operations on double values using DoubleStream
+  DoubleStream.of(1.1, 2.2, 3.3)
+    .average()
+    .ifPresent(System.out::println);
+
+
+2. Parallel Streams for Large Data Sets:
+Enable Parallel Processing:
+List<Integer> largeList = ...;
+largeList.parallelStream()
+    .filter(n -> n % 2 == 0)
+    .forEach(System.out::println);
+
+
+3.Avoid Side Effects:
+Do Not Modify State:
+List<String> results = new ArrayList<>();
+stream.forEach(results::add);  // Avoid side effects
+
+Use collect Instead:
+List<String> results = stream.collect(Collectors.toList());
+
+4.Handle Null Values:
+Filter Nulls:
+List<String> nonNullList = list.stream()
+    .filter(Objects::nonNull)
+    .collect(Collectors.toList());
+
+5.Exception Handling in Streams:
+Wrap Checked Exceptions:
+list.stream()
+    .map(e -> {
+        try {
+            return someMethodThatThrowsException(e);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    })
+    .forEach(System.out::println);
+
+
+6.Stream of Optionals
+Filter Non-Empty Optionals:
+List<Optional<String>> optionalList = ...;
+List<String> filtered = optionalList.stream()
+    .filter(Optional::isPresent)
+    .map(Optional::get)
+    .collect(Collectors.toList());
+
+7. Combining Multiple Streams
+Concatenate Streams:
+Stream<String> combined = Stream.concat(stream1, stream2);
+
+Flat Mapping Streams:
+Stream<String> flatMapped = Stream.of(list1, list2)
+    .flatMap(List::stream);
+
+8. Custom Collectors
+Create Custom Collector:
+Collector<String, ?, List<String>> toUpperCaseCollector = 
+    Collector.of(ArrayList::new,
+        (list, item) -> list.add(item.toUpperCase()),
+        (list1, list2) -> { list1.addAll(list2); return list1; });
+
+List<String> upperCased = stream.collect(toUpperCaseCollector);
+
+9. Handling Infinite Streams
+Generate Infinite Streams:
+Stream.iterate(0, n -> n + 1)
+    .limit(10)  // Limiting infinite stream
+    .forEach(System.out::println);
+
+Use generate:
+Stream.generate(Math::random)
+    .limit(5)
+    .forEach(System.out::println);
+
+
+Common Patterns with Streams:
+Filtering and Mapping:
+List<String> result = list.stream()
+    .filter(s -> s.length() > 3)
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());
+
+Group and Count:
+Map<Integer, Long> countByLength = list.stream()
+    .collect(Collectors.groupingBy(String::length, Collectors.counting()));
+
+Partitioning:
+Map<Boolean, List<String>> partitioned = list.stream()
+    .collect(Collectors.partitioningBy(s -> s.length() > 3));
+
+Convert List to Map:
+Map<String, Integer> map = list.stream()
+    .collect(Collectors.toMap(Function.identity(), String::length));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
