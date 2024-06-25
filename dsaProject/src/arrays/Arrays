@@ -1,8 +1,85 @@
+ArraySum:
+sum += arr[i]
+
+BinarySorting:
+mid=0->swap low and mid then low++ and mid++; mid=1->mid++;mid=2->swap mid and hign then high--
+
+Delete Element:
+1.if a[i] == element from that position j = i; j < n - 1; j++ shift left break then print upto the last.
+2.take new arr a2 with 1 less size If index i is not equal  element,copies  from a1 to a2 at index k and then increments k,this skips the element
+3.take pos i = pos - 1; i < n - 1; i++ shifts  left  a[i] = a[i + 1];starting from the specified position,pos - 1, which converts the 1-based index to a 0-based index
+
+print duplicates:
+1.take list,map and iterate list and update the count in map ,iterate map using keyset if value !=1 add to duplicate list.
+
+FibonnacciSeries:
+1.first print two numbers iterate from 2 then add first and second to third then print third and assign first with second and second with third.
+
+InsertElement:
+1.create arr with one additional length,Copy elements up to new arr  the pos then Insert the new element then copy the remaining elements from pos and new array.
+
+MajorityElement:
+1.take hashmap update countof each element ,if any element is greater than n/2 return that num else return null
+
+MaxElement:
+1.take max as first element if any element greater than max return that element.
+
+MaximumSubArray:
+1.take max as first element ierate array add sum all elemnts if max less than sum update max ,if sum less than 0 update sum =0,then return max;
+
+MergeArrays:
+1.take new arr with sum of 1 and 2 arr lengths,iterate 1st arr add all eles in 1st arr to 3rd,iterate 2nd array add 2nd elements form that pos to 3rd then print 3rd
+
+MissingElement:
+1.difference between sum of elements in array and natural sum of elements then we will get missing element.
+
+MoveZeros:
+Swap non-zero elements with  first zero element encountered ,If i and j equal, means current element is already in the correct,position, and no swap is necessary.
+
+Nonduplicates:
+1.sort arr and take linkedhashset ,iterate arr add unique elements to set,iterate unique elements and print elements.
+2.iterate arr i and iterate arr j upto i if  a[i] == a[j] true break ,else print array.
+
+ProductExceptSelf:
+1.take new array and initilizes the new array with 1s and Multiply with the right products
+
+RemoveDupicatesFromSortedArray:
+1.sort array if not,take a new array and add the first element to new array,iterate from second element ,if element not equals to prev array add ele to new array.
+  then iterate and  print new array.
+
+RemoveElement:
+1.take count,iterate array if array != element inceament the count and print the array with new length
+
+ReverseElemnts:
+1.take start and end then Swap elements from the start and end until the middle is reached then print.
+2.iterate array ,then swap first and last element then decrement last.
+
+RotateArray:
+1.create new arr ,iterate arr add elements to new arr from k pos temp[(i + k) % n] = a[i] then add the temp elements to arr.
+2.Reverse the entire array,Reverse the first k elements to correct their order,Reverse the remaining n - k elements to correct their order
+
+SearchElement:
+1.iterate array if a[i] == temp return index and break;
+
+Sorting:
+1.take  i and j ,iterate the array if a[j] > a[j + 1] swap the elements and return true;then print the array.
+
+SumofTwoArrays:
+1.add to sum from last if i>=0 and j>=0 update the ans with modulus 10 ,carry is equal to sum divide by 10 ,then return ans;
+
+SwapAlternates:
+1.iterate array with 2 steps int i = 0; i < n-1; i+=2 and swap the two elements.
+
+UnionArrays:
+1.create a new with length of 1 and 2nd array ,iterate the first array and the elements to new array.iterate the 2nd nested with 1st if (arr2[j] == arr1[i])
+  true and break ,if not found add the 2nd array elements to new array.
+
+
 Check if Array is Sorted
 boolean sorted = IntStream.range(0, arr.length - 1).allMatch(i -> arr[i] <= arr[i + 1]);
 
 Find Union of Two Arrays
-Set<Integer> set = new HashSet<>();
+Set<Integer> set = new HashSet<>();i
 set.addAll(Arrays.asList(arr1));
 set.addAll(Arrays.asList(arr2));
 Integer[] union = set.toArray(new Integer[0]);
