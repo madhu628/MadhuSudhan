@@ -1,3 +1,88 @@
+Employee::getDept == e->e.getDept
+condition - filter 
+System.out::println == x->system.out.println(x)
+youngest/highest - optional --comparator/maxBy
+particular - collect---sop
+each -  collect--sop--entryset
+all - foreach
+
+ActiveInactive: partitioningBy - isActive - get(true);
+AddressListType-(list): filter -tolist
+                        filter - foreach
+AvgAge:averagingDouble
+AvgSalaryEachDept:averagingDouble-entryset-getkey and getvalue;
+                  averagingDouble-foreach(a,b)->sop(a,b);
+AvgTotalSalary:(DoubleSummaryStatistics) return type -summarizingDouble -getAverage()-getSum();
+CountEmpEachDept:counting-entryset-getkey and getvalue
+                  counting-foreach(a,b)->sop(a,b);
+DistinctDept:(set)-map - distinct - toset 
+                   map - distinct - foreach
+EmpoyeesEachDept:groupingBy
+                groupingBy -entryset-getkey and getvalue-
+                (list)- groupingBy - mapping-tolist -foreach -(a,b)->{ sop(a); b.foreach-> n->sop(n);
+FilterDisease-filter - foreach
+              (list)- filter - tolist -   list.foreach(so:p)
+FilterEmployees:filter - foreach
+              (list)- filter - tolist -   list.foreach(so:p)
+FilterEven:num -> num % 2 == 0-tolist- list.foreach(so:p)
+           num -> num % 2 == 0 -filter - foreach
+findDuplicates: hs1 ,hs2 - !hs1.add(n)- foreach
+ remove duplicates:n -> !hs1.add(n) - toSet()-foreach;
+                        n -> hs1.add(n)- foreach
+reverseOreder:sorted(Collections.reverseOrder()-forEach
+HighestPaid:Optional-Collectors.maxBy(Comparator.comparingDouble)
+            Optional-max((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()
+
+IncreamentSalary:map -condition-return emp- then tolist
+IntStartsWith:map-filter-forEach
+              (list)-filter - tolist-list.foreach(so:p)
+LimitSkip:skip -limit - tolist-list.foreach(so:p)
+          skip -limit-foreach
+MapSorting:entrySet-sorted(Map.Entry.comparingByKey()-Collectors.toMap-ap.Entry::getKey, Map.Entry::getValue-e1, e2) -> e1, LinkedHashMap::new
+MaximumSalary:groupingBy-Collectors.maxBy((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary())) - foreach(a,b)->sop(a,b);
+              groupingBy-collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Employee17::getSalary)), Optional::get))-foreach(a,b)->sop(a,b);
+
+MostWorkingExperience-sorted(Comparator.comparing(Employee8::getJoinDate)).findFirst();
+                      filter -sorted().collect(Collectors.toList()-list.foreach(so:p)
+NameAllDepts:map - distinct- foreach
+             map - toset
+OldestEmployee:max((e1, e2) -> Integer.compare(e1.getAge(), e2.getAge())
+               max(Comparator.comparingInt(Employee13::getAge))
+
+PrintDetailsBasedDept:groupingBy-tolist-foreach(entry->{sop(key,value)
+                      groupingBy-(a,b)->{ sop(a); b.foreach-> n->sop(n)
+SeparateEmployees:partitioningBy - get(true)-list.foreach(so:p)
+                  partitioningBy - getkey ,getvalue and print
+SortedOnIDs:filter-sorted((emp1, emp2) -> emp1.getEmpId() - emp2.getEmpId()- foreach
+YoungestEmployee:Optional-filter - min(Comparator.comparingInt
+                 Optional-filter - min((e1, e2) -> Integer.compare(e1.getAge(), e2.getAge())
+
+
+Get Biggest value from the IntStream value: sort - tolist- print last element - soretedLst.size() - 1)
+cubes of odd integers:n -> (n % 2 != 0)).map(n -> n * n * n)
+maximum integer from the list: sort descending -limit 1-
+                               max(Integer::compareTo);
+Removing duplicates:distinct
+find Duplicates:take hashset,n -> !hs.add(n)
+second highest element:sort descending limit 2 then sort asecnding limi 1 then print
+printing the minimum value:reduce(Integer::min).get()
+printing the minimum value:reduce((n1, n2) -> Integer.max(n1, n2)).get())
+sum of 1 to 5 numbers:
+1.iterate(1, n -> n <= 5, n -> n + 1).reduce(0, Integer::sum
+2.iterate(1, n -> n + 1).limit(5).reduce(0, Integer::sum)
+3.rangeClosed(1, 5).reduce(0, Integer::sum)
+
+
+
+
+
+
+
+
+
+
+
+
 General Tips for Java 8 Streams
 1. Understand the Basics
 Stream Operations:
