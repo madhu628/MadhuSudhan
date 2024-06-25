@@ -1,4 +1,122 @@
-Convert String to Integer
+Aangram:if rearranging the letters of a different word using all the original letters exactly once is equal the strings are anagram.
+1)Sorting Method
+ Convert strings to lowercase,Sort the characters of each string,Compare the sorted arrays,if equal-> anagram
+2)Frequency Count Using Array:
+Convert strings to lowercase,Use an integer array to count character frequencies,assuming the input consists of ASCII characters.Compare the frequency arrays.
+3)Frequency Count Using HashMap
+Convert strings to lowercase,Use a HashMap to count character frequencies for each string,Compare the two frequency maps
+4)Using Java 8 Streams
+Convert strings to lowercase,Convert to character streams and sort,Compare sorted arrays
+
+palindrome:
+1)using built-in funtion
+2)take sb,trim string use two pointers compare first ,last increment decrement first and last;
+3)take sb iterate fron right,and check with original
+4)in streams use built-in function.
+
+convertToUpper:
+1.take sb,check lower and append upper
+2.take sb,check with ascii numbers range ,subtract 32 ,append and add casting.
+
+copyStringtoAnother:
+take sb ,iterate string and append characters to sb.
+
+removeDuplictates:
+1. Using LinkedHashSet, to maintain the order of characters while removing duplicates
+2.using streams,Convert the string to a stream of characters, filter out duplicates, and collect the result.
+3. Using a Boolean Array (ASCII only), Use a boolean array to track seen characters. This method assumes the input contains ASCII characters only.
+4.Using Frequency Array (Fixed Size),Use an integer array to count the frequency of each character and append only the first occurrence.
+5.take sb, if result.indexOf(String.valueOf(c)) == -1 then append
+6.Use regular expressions to remove consecutive duplicate -str.replaceAll("(.)\\1+", "$1")
+7.Using Recursion-result.indexOf(current) == -1 Recursively process the string, appending unique characters to the result.and add recursive function.
+8.Using a Set with StringBuilder ,Use a HashSet to track characters and StringBuilder to construct the result
+9.in string compare with next character if equal->true;
+
+printDuplicates:
+1.Using Set to Track Duplicates -two hashsets - Use a Set to keep track of seen characters and another Set for duplicates Then, print the duplicates.
+2. Using HashMap ,Use a HashMap to count the frequency of each character. Then, iterate through the map to print characters with a count greater than 1.
+3.Using an Array (Fixed Character Set),Use an integer array to count the frequency of characters. Print characters with frequency greater than 1
+  This approach assumes the string contains only ASCII characters.
+4.streams-Convert the string to a stream of characters, collect frequency data using Collectors.groupingBy, and then filter and print duplicates.
+5.Use nested loops to count and print characters that appear more than once
+  take first character as current and check if equals increase count.
+  and then check count > 1 && str.indexOf(current) == i print count;
+
+InttoRoman:
+use string arrays for 1000,100,10,1 's and use remiander and divider
+
+LaregestSubstring:abbac -> bac
+1.take linkedHashmap and iterate string if char not contains put the char and index in map,else index update and clear map;
+  check if map size is greater than largest size then update largest size and also print largest;
+2.if char  contains update the start position to map.get(ch) + 1 else put chat with index in map and update the current length.
+
+LengthOfLastWord:
+s = s.trim();int lastIndex = s.lastIndexOf(' ') + 1;return s.length() - lastIndex;
+
+LongestCommonPrefix:
+store  first character and iterate the string if // If out of bounds or mismatch found update the substring
+  i >= strs[j].length() || strs[j].charAt(i) != c ; return strs[0].substring(0, i);
+
+lowercase convert : (char) (ch + 'a' - 'A');
+uppercase convert : (char) (ch - 'A' + 'a');
+
+MaximumOccrringCharacter:
+store the first character and iterate ,compare and increament the frequency and reset freq to 0  for the new character
+  
+NonRepeatCharacters:
+1.use linkedHashmap and store the character count use entryset and check count ==1  to get first no repeating character.
+2.using streams - chars - linkedHashmap -collect - counting -entrySet - filter -(value==1) findfirst.
+3.Using a freq Array (ASCII only),freq array to count characters. if character count == 1 print that char.method assumes the input contains ASCII characters only
+
+OccrenceInString:
+1.use map and increment count if char contains in map.
+2.streams - chars- filter - count 
+
+Panagram:all alphabets in a sentence 
+1.hashset - convert string to lower case and iterate check if  ch >= 'a' && ch <= 'z') add char to hashset.
+2.iterate char a to z and check s.indexOf(ch) < 0  then false ;
+3.use boolean array iterate string and check ch >= 'a' && ch <= 'z') update value and check characters if not present 
+
+
+remove occurences:
+while ((index = sb.indexOf(part)) != -1) {
+			sb.delete(index, index + part.length());
+
+RemoveSpcaes:
+1.take sb if(not whiteSpace)->append 
+2.s.replaceAll("\\s", "")
+
+RemoveSpecialCharacters:
+s.replaceAll("[a-zA-Z0-9]", "  ");
+
+RemoveVowels:
+1.s.replaceAll("[AEIOUaeiou]", "")
+2.take sb ("AEIOUaeiou".indexOf(c) == -1) then append
+
+ReplaceCharacter:
+1.take sb if (c == ch)  result.append(count); count++; else append char
+2. if(c==ch) s=s.replaceFirst(String.valueOf(ch), String.valueOf(count));
+
+ReplaceSpaces:
+s.charAt(i) == ' ' --append;
+
+ReverseString:
+1.iterate from backside and print
+2.swap start and end and increment start and decrement end 
+3.use built in function
+
+ReverseWord:
+1.trim string ,take sb,iterate from back append word if i!=0 append space
+
+RomanTOInt:
+use hashmap and iterate string from back check the condition   if (curr < prev) -> ans = ans - curr;
+                                                               else   ->           ans = ans + curr; and set prev =curr;
+
+SortCharecters:
+1.a[i]>a[j]) -> swap 
+2.use built function to swap
+
+Convert String to Integer:
 int number = Integer.parseInt(str);
 
 int number = 0;
@@ -6,7 +124,7 @@ for (int i = 0; i < str.length(); i++) {
     number = number * 10 + (str.charAt(i) - '0');
 }
 
-Convert Integer to String
+Convert Integer to String:
 String strNumber = Integer.toString(num);
 
 StringBuilder sb = new StringBuilder();
@@ -20,7 +138,7 @@ do {
 if (isNegative) sb.append('-');
 String strNumber = sb.reverse().toString();
 
-Check if String Contains Only Digits
+Check if String Contains Only Digits:
 boolean isDigit = str.chars().allMatch(Character::isDigit);
 
 boolean isDigit = true;
@@ -31,7 +149,7 @@ for (int i = 0; i < str.length(); i++) {
     }
 }
 
-Replace Substring
+Replace Substring:
 String replaced = str.replace("old", "new");
 
 StringBuilder sb = new StringBuilder();
@@ -48,7 +166,7 @@ for (int i = 0; i < str.length();) {
 }
 String replaced = sb.toString();
 
-Split String by Delimiter
+Split String by Delimiter:
 String[] parts = str.split(",");
 
 List<String> parts = new ArrayList<>();
@@ -63,7 +181,7 @@ for (int i = 0; i < str.length(); i++) {
 }
 parts.add(sb.toString());
 
-Join Strings
+Join Strings:
 String joined = String.join(",", listOfStrings);
 
 StringBuilder sb = new StringBuilder();
@@ -76,7 +194,7 @@ for (int i = 0; i < list.size(); i++) {
 String joined = sb.toString();
 
 
-String Formatting
+String Formatting:
 String formatted = String.format("Hello, %s!", name);
 
 String formatted = "Hello, " + name + "!";
