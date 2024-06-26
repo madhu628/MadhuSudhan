@@ -411,7 +411,25 @@ super and this keywords in Java:
 super refers to the superclass of the current object and is used to call superclass methods and constructors.
 this refers to the current object and is used to access class members and constructors
 
+ difference between synchronized and Lock in Java:
+synchronized is a keyword that locks the method or block it is applied to, while Lock is a more flexible and powerful interface 
+that provides explicit lock control with methods like lock, tryLock, and unlock.
 
+Explain the concept of thread safety and ways to achieve it in Java:
+Thread safety ensures that shared data is accessed and modified by multiple threads in a controlled manner. 
+It can be achieved using synchronized blocks, locks, atomic variables, and concurrent collections.
+
+What is the ExecutorService and how is it used:
+ExecutorService is part of the java.util.concurrent package and provides methods to manage a pool of threads, 
+submit tasks, and handle their execution and termination.
+
+Describe Callable and Future in Java:
+Callable is an interface similar to Runnable but allows returning a result and throwing checked exceptions. 
+Future represents the result of an asynchronous computation and provides methods to check its status and retrieve the result.
+
+differences between wait, notify, and notifyAll:
+wait makes the current thread release the lock and wait until another thread calls notify or notifyAll. 
+notify wakes up a single waiting thread, while notifyAll wakes up all waiting threads
 
 
 
