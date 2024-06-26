@@ -431,6 +431,87 @@ differences between wait, notify, and notifyAll:
 wait makes the current thread release the lock and wait until another thread calls notify or notifyAll. 
 notify wakes up a single waiting thread, while notifyAll wakes up all waiting threads
 
+Explain OOP Principles.
+Answer: Object-Oriented Programming (OOP) principles include:
+Encapsulation: Bundling the data (variables) and code (methods) together into a single unit, e.g., a class.
+Inheritance: Deriving new classes from existing ones, promoting code reusability.
+Polymorphism: Ability to process objects differently based on their data type or class.
+Abstraction: Hiding the implementation details from the user, only showing the functionality.
+
+ concept of "static" in Java:
+static keyword is used for memory management. It can be applied to variables, methods, blocks, and nested classes. Static members belong to the class
+rather than any instance.
+
+What are the types of exceptions in Java:
+Checked Exceptions: These are checked at compile-time (e.g., IOException).
+Unchecked Exceptions: These are checked at runtime (e.g., NullPointerException).
+Errors: Severe problems that are not meant to be caught by applications (e.g., OutOfMemoryError)
+
+ How does Java handle memory management and garbage collection?
+Java uses an automatic garbage collection mechanism to manage memory. The Garbage Collector (GC) frees up memory by removing objects that are no longer reachable.
+
+final, finally, and finalize() keywords.
+final: Used to declare constants, prevent method overriding, and inheritance.
+finally: A block that is executed after a try-catch block, used for cleanup code.
+finalize(): A method used by the Garbage Collector to clean up before reclaiming an object's memory.
+
+What are Java Collections and their benefits?
+Java Collections Framework provides a set of classes and interfaces for storing and manipulating groups of data as a single unit. 
+Benefits include dynamic sizing, easy access to data, and a variety of data structures like lists, sets, and maps.
+
+What is the difference between ArrayList and LinkedList?
+ArrayList: Better for random access due to its backing array.
+LinkedList: Better for insertions and deletions as it uses a doubly-linked list.
+
+How does HashMap work in Java?
+HashMap uses an array of buckets to store key-value pairs. It uses the hash code of the key to determine the bucket.
+Collisions are handled using chaining (linked lists) or probing.
+
+What are the differences between HashMap and Hashtable
+HashMap is unsynchronized and allows null keys and values.
+Hashtable is synchronized and doesn’t allow null keys or values.
+
+
+Explain the concept of multithreading in Java.
+Multithreading in Java allows concurrent execution of two or more threads. Java provides Thread class and Runnable interface for creating threads.
+
+What is a deadlock and how can it be avoided?
+ A deadlock occurs when two or more threads are waiting for each other to release resources, causing them to remain in a blocked state. 
+Avoid deadlocks by careful resource management and acquiring locks in a consistent order.
+
+Describe synchronized keyword and its usage:
+synchronized ensures that only one thread can access a block of code or an object at a time, preventing race conditions.
+
+What is the volatile keyword in Java?
+volatile keyword ensures that the value of a variable is always read from main memory and not from a thread's local cache, 
+providing visibility of changes across threads.
+
+Explain the use of Java 8 Stream API.
+Stream API provides a functional approach to processing collections of objects with methods like filter, map, reduce, etc.
+List<String> names = Arrays.asList("John", "Jane", "Jack");
+names.stream().filter(name -> name.startsWith("J")).forEach(System.out::println);
+
+How do you implement a Singleton pattern in Java?
+Singleton ensures that only one instance of a class is created. It can be implemented using: Eager Initialization ,Lazy Initialization
+
+ What is the Optional class in Java 8?
+Optional is a container object which may or may not contain a non-null value. It helps avoid NullPointerException.
+
+Explain the Functional Interface in Java.
+A functional interface is an interface with exactly one abstract method. It can be implemented using lambda expressions.
+
+What are default methods in interfaces?
+Default methods are methods in interfaces with an implementation. They provide a way to add new methods to interfaces without breaking existing implementations.
+
+What are the differences between Comparator and Comparable?
+Comparable: Defines the natural order of objects via compareTo method.
+Comparator: Defines a custom order via compare method.
+
+
+
+
+
+
 
 
 
