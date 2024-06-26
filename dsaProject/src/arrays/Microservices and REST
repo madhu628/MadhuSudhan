@@ -1,0 +1,23 @@
+Microservices and REST:
+What is a microservice and how does it differ from a monolithic architecture:
+A microservice is a small, independently deployable service that focuses on a single business function. Unlike monolithic architecture, microservices allow
+for decentralized data management,independent scaling, and deployment
+
+
+Explain how RESTful web services work:
+RESTful web services use HTTP methods (GET, POST, PUT, DELETE) to perform CRUD operations. They represent resources as URIs and use stateless communication for
+interoperability between clients and servers
+
+What is Feign in the context of Spring Cloud:
+Feign is a declarative web service client that simplifies HTTP API client creation by reducing boilerplate code and integrating seamlessly with Spring Cloud for 
+load balancing and fault tolerance.
+
+Describe the purpose of Hystrix and how it works:
+Hystrix is a library for latency and fault tolerance in distributed systems. It isolates points of access to external systems, provides fallback mechanisms, 
+and prevents cascading failures.
+
+How does Spring Boot handle configuration management:
+ Spring Boot handles configuration through application properties or YAML files, allowing externalized configuration and supporting profiles for 
+environment-specific settings.
+
+
