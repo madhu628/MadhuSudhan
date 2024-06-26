@@ -31,3 +31,32 @@ LocalDateTime - Represents a date and time without a time zone (e.g., 2024-06-03
 ZonedDateTime - Represents a date and time with a time zone (e.g., 2024-06-03T14:30:00+02:00[Europe/Paris])
 Period: Represents a date-based amount of time (e.g., 3 years, 2 months, 1 day).
 Duration: Represents a time-based amount of time (e.g., 5 hours, 30 minutes).
+
+the advantages of using Java Streams:
+Streams provide a declarative way to process collections and sequences of data. They support functional programming, lazy evaluation, and parallel processing
+
+ difference between intermediate and terminal operations in Java Streams:
+intermediate operations (e.g., filter, map) return a new stream and are lazy, 
+while terminal operations (e.g., collect, forEach) produce a result or side-effect and complete the stream pipeline.
+
+What are lambdas and functional interfaces in Java:
+Lambdas are anonymous functions that can be used to implement functional interfaces (interfaces with a single abstract method). 
+They provide a more concise way to represent instances of single-method interfaces.
+
+Optional class and its use cases:
+Optional is a container object used to represent the presence or absence of a value, helping to avoid NullPointerException and providing methods
+for conditional retrieval and default values.
+
+How does the reduce operation work in Java Streams:
+reduce combines elements of a stream into a single result by applying a binary operator repeatedly.
+It can be used for summing, concatenating, or other forms of aggregation.
+
+
+
+
+
+
+
+
+
+
