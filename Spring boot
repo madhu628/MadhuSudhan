@@ -1282,6 +1282,31 @@ Summary:
 9.View Resolution (if applicable): Renders HTML if necessary.
 10.Response Return: Response is encrypted and sent back to the client.
 
+ Dependency Injection and how does Spring implement it:
+Dependency Injection (DI) is a design pattern where an object’s dependencies are injected rather than instantiated by the object itself. 
+Spring implements DI through constructor injection, setter injection, and field injection
+
+@Component, @Service, @Repository, and @Controller annotations:
+@Component: Generic stereotype for any Spring-managed component.
+@Service: Indicates a service layer component.
+@Repository: Indicates a data access object (DAO) and enables exception translation.
+@Controller: Indicates a web controller for handling HTTP requests.
+
+
+Spring Boot and its benefits:
+Spring Boot simplifies Spring application development by providing pre-configured templates, 
+reducing boilerplate code, and facilitating embedded servers for standalone applications.
+
+ the concept of aspect-oriented programming (AOP) and how Spring supports it:
+AOP allows separation of cross-cutting concerns (e.g., logging, security) from business logic. Spring supports AOP through @Aspect, @Around, @Before, @After annotations, 
+and AspectJ integration
+
+How does Spring handle transactions:
+Spring manages transactions using @Transactional annotation and programmatic transaction management with PlatformTransactionManager. 
+It supports declarative transactions, controlling the propagation and isolation levels.
+
+
+
 
 
 
