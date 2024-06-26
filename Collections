@@ -1,3 +1,11 @@
+Core Java
+Object-Oriented Programming (OOP)
+Java Collections Framework
+Java Streams and Functional Programming
+Concurrency and Multithreading
+Spring Framework
+Microservices and REST
+
 Collections:
 map
 map is a transformation operation that applies a function to each element of a stream and returns a new stream consisting of the results of applying the function 
@@ -53,3 +61,32 @@ orders for the same class.
 
 Comparable provides a way to define the natural ordering of objects within the class itself, while Comparator allows for defining custom sorting orders externally,
 without modifying the class itself. Both interfaces are widely used for sorting objects in Java collections.
+
+differences between HashMap, TreeMap, and LinkedHashMap:
+HashMap provides O(1) time complexity for basic operations and does not maintain order. 
+TreeMap provides O(log n) time complexity and maintains a sorted order.
+LinkedHashMap maintains insertion order.
+
+difference between Set and List in Java:
+Set is an unordered collection that does not allow duplicate elements.
+List is an ordered collection that allows duplicate elements and maintains the insertion order
+
+differences between Iterator and ListIterator:
+Iterator allows traversal of a collection in a forward direction and allows element removal.
+ListIterator extends Iterator and allows bidirectional traversal, element modification, and addition
+
+how ConcurrentHashMap works:
+ConcurrentHashMap allows concurrent access to different segments of the map. It uses a combination of locks and CAS operations to provide thread-safe access 
+without locking the entire map.
+
+Comparator and Comparable interface differ:
+Comparable is used to define the natural ordering of objects and is implemented by the object class itself. 
+Comparator defines a custom order and is implemented externally.
+
+
+
+
+
+
+
+
