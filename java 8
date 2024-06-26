@@ -51,12 +51,67 @@ How does the reduce operation work in Java Streams:
 reduce combines elements of a stream into a single result by applying a binary operator repeatedly.
 It can be used for summing, concatenating, or other forms of aggregation.
 
+What are Java Streams?
+Java Streams are a sequence of elements that support functional-style operations such as map, filter, reduce, and collect. 
+They allow for declarative processing of collections of data.
 
+What are the key characteristics of Java Streams?
+Lazy evaluation: Operations are only performed when a terminal operation is invoked.
+Pipelining: Operations can be chained to form a pipeline of stream operations.
+Automatic parallelization: Streams can leverage parallel execution for improved performance.
 
+Explain the difference between intermediate and terminal operations in Java Streams.
+Intermediate operations: Operations like map, filter, sorted, etc., which return a new stream and are lazily evaluated.
+Terminal operations: Operations like forEach, collect, reduce, etc., which trigger the execution of the stream pipeline and produce a result or side effect.
 
+How do you create a Stream in Java?
+Streams can be created from collections using stream() method or parallelStream() for parallel streams, from arrays using Arrays.stream(array), 
+or from static factory methods like Stream.of().
 
+What is the purpose of the map function in Java Streams?
+The map function transforms each element in the stream into another object using the provided function. It returns a new stream consisting of the 
+transformed elements.
 
+What is the difference between findFirst() and findAny() in Java Streams?
+findFirst(): Returns the first element in the stream (or an Optional if the stream is empty).
+findAny(): Returns any element in the stream (or an Optional if the stream is empty). This is useful for parallel streams where multiple elements 
+can be processed concurrently.
 
+How does Java Streams handle parallelism?
+Java Streams API can leverage parallel execution automatically for certain operations using the parallel() or parallelStream() methods. 
+It internally uses the Fork/Join framework to split the workload across multiple threads.
 
+Explain the reduce operation in Java Streams.
+The reduce operation combines the elements of a stream into a single value. It takes an initial value (or identity) and
+a binary operator (a function that takes two operands and produces a result).
 
+Functional Programming Interview Questions:
+What is functional programming? How does it differ from imperative programming?
+Functional programming: Focuses on defining computations as mathematical functions and avoids changing state and mutable data.
+Imperative programming: Focuses on describing steps that change program state and modify data.
 
+What are lambda expressions in Java?
+Lambda expressions are anonymous functions that allow you to treat functionality as a method argument or create concise code.
+
+What are functional interfaces in Java?
+Functional interfaces are interfaces that contain exactly one abstract method. They can have multiple default or static methods.
+
+Explain the @FunctionalInterface annotation in Java.
+The @FunctionalInterface annotation is used to ensure that an interface is a functional interface, meaning it has exactly one abstract method. 
+It's optional but provides clarity and prevents accidental addition of more abstract methods.
+
+What are method references in Java?
+Method references provide a way to refer to methods or constructors without invoking them. They can be used to provide implementations for
+functional interfaces more concisely.
+
+What is immutability in the context of functional programming?
+Immutability means that once an object is created, its state cannot change. This prevents unintended side effects and makes programs easier to reason 
+about and parallelize.
+
+How does Java support functional programming constructs like Optional, Stream, and Function?
+Java provides these constructs in its standard library (java.util) to support functional programming paradigms. Optional helps avoid null pointer exceptions,
+Stream facilitates functional-style operations on collections, and Function provides a functional interface for representing a function.
+
+Why is functional programming gaining popularity in Java development?
+Functional programming promotes concise and readable code, supports parallelism, reduces the risk of side effects, and aligns well with modern trends 
+such as microservices and cloud computing.
