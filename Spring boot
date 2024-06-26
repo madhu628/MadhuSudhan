@@ -1305,19 +1305,55 @@ How does Spring handle transactions:
 Spring manages transactions using @Transactional annotation and programmatic transaction management with PlatformTransactionManager. 
 It supports declarative transactions, controlling the propagation and isolation levels.
 
+What is Spring Boot?
+Spring Boot is a framework built on top of the Spring framework that simplifies the process of building production-ready applications with minimal configuration.
 
+What are the key features of Spring Boot?
+Auto-configuration, standalone application development, embedded server support (Tomcat, Jetty, Undertow), production-ready metrics, and monitoring.
 
+Explain the advantages of using Spring Boot for application development.
+Simplified dependency management with starter dependencies, automatic configuration, embedded server support, and production-ready features out of the box.
 
+How does Spring Boot achieve auto-configuration?
+Spring Boot uses classpath scanning and conditionals to automatically configure the application based on the dependencies present in the project.
 
+What is Spring Boot Starter?
+Spring Boot Starters are a set of convenient dependency descriptors that you can include in your application to get a set of dependencies and auto-configuration
+for a specific use case (e.g., spring-boot-starter-web for web applications).
 
+How does Spring Boot support externalized configuration?
+Spring Boot allows configuration properties to be externalized from the application code using properties files (application.properties or application.yml), 
+environment variables, command-line arguments, or external configuration servers (Spring Cloud Config).
 
+Explain the difference between @Component, @Repository, @Service, and @Controller annotations in Spring.
+@Component: General stereotype annotation indicating a Spring-managed component.
+@Repository: Specialization of @Component used for persistence layer components (DAOs).
+@Service: Specialization of @Component used for service layer components.
+@Controller: Specialization of @Component used for MVC controller components (handles web requests).
 
+How do you create a RESTful API using Spring Boot?
+Define a controller class annotated with @RestController or @Controller, define handler methods annotated with @RequestMapping or related annotations, 
+and handle HTTP requests and responses using ResponseEntity or other Spring MVC annotations.
 
+What is Spring Boot Actuator?
+Spring Boot Actuator is a set of production-ready features provided by Spring Boot to help monitor and manage your application.
+It includes endpoints for health checks, metrics, environment details, etc.
 
+How do you deploy a Spring Boot application?
+Spring Boot applications can be deployed as executable JAR files using embedded servers (e.g., Tomcat, Jetty) or as WAR files deployed to external application 
+servers.
 
+What is Spring Boot DevTools?
+Spring Boot DevTools is a set of tools that improve the development experience by providing features like automatic restarts, live reload,
+and configuration properties reloading without needing a full application restart.
 
+Explain Spring Boot starters and give examples.
+Spring Boot starters are a set of convenient dependency descriptors that you can include in your application to quickly get started with certain dependencies
+and auto-configuration. Examples include spring-boot-starter-web, spring-boot-starter-data-jpa, spring-boot-starter-security, etc.
 
-
+How does Spring Boot support testing?
+Spring Boot provides support for unit testing and integration testing using JUnit, Mockito, and Spring’s testing annotations (@RunWith(SpringRunner.class),
+@SpringBootTest, @WebMvcTest, etc.) for testing different layers of the application.
 
 
 
