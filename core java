@@ -375,6 +375,44 @@ Program Counter (PC) Register:
 Stores the address of the currently executing instruction.
 Each thread has its own PC register.
 
+ differences between ArrayList and LinkedList:
+ArrayList provides constant-time positional access, but inserting or removing elements from the middle involves O(n) time. 
+LinkedList provides O(1) time insertions and deletions, but positional access requires O(n) time
+
+
+transient keyword in Java:it is  used to indicate that a field should not be serialized during the serialization process.
+difference between == and equals() in Java:
+== checks for reference equality, whereas equals() checks for value equality
+
+Explain how Java achieves platform independence:
+Java achieves platform independence through the use of the Java Virtual Machine (JVM), which abstracts the underlying operating system and hardware,
+allowing Java bytecode to run on any platform with a compatible JVM.
+
+
+purpose of the static keyword in Java:
+The static keyword denotes that a field, method, or nested class belongs to the class itself rather than instances of the class
+
+concept of a Java Reflection API:
+The Reflection API allows inspection and manipulation of classes, fields, methods, and constructors at runtime,
+enabling dynamic code execution and metadata analysis.
+
+What are Java annotations? Give examples of commonly used annotations:
+annotations provide metadata for Java code. Common annotations include @Override, @Deprecated, @SuppressWarnings, @FunctionalInterface, and custom annotations.
+
+What are checked and unchecked exceptions:
+Checked exceptions are checked at compile-time and must be handled or declared in the method signature (e.g., IOException).
+Unchecked exceptions are not checked at compile-time and include runtime exceptions (e.g., NullPointerException)
+
+difference between String, StringBuilder, and StringBuffer:
+String is immutable. StringBuilder is mutable and non-synchronized, offering better performance for single-threaded scenarios.
+StringBuffer is mutable and synchronized, suitable for multi-threaded scenarios
+
+super and this keywords in Java:
+super refers to the superclass of the current object and is used to call superclass methods and constructors.
+this refers to the current object and is used to access class members and constructors
+
+
+
 
 
 
