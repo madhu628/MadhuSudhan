@@ -1,0 +1,47 @@
+What is the difference between concurrency and parallelism?
+Concurrency: Refers to the ability of different parts or units of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the final outcome.
+Parallelism: Refers to the ability to execute multiple tasks simultaneously.
+
+Explain the difference between processes and threads.
+Process: An independent entity in the operating system that runs its own program.
+Thread: A unit of execution within a process. Threads share the process's resources (memory, files, etc.) and run concurrently.
+
+What is a thread-safe class? Can you give examples from the Java API?
+A thread-safe class is one that guarantees safe execution by multiple threads concurrently without causing data inconsistency or unexpected behavior.
+Examples from Java API: ConcurrentHashMap, CopyOnWriteArrayList, AtomicInteger, etc.
+
+What is synchronization in Java? Why is it important?
+Synchronization: The mechanism in Java to control the access of multiple threads to shared resources.
+It's important to ensure data consistency and avoid race conditions where multiple threads may access and modify shared data concurrently.
+
+Explain the concepts of race condition and deadlock.
+Race Condition: Occurs when two or more threads access shared data or resources in a way that leads to inconsistent state due to unpredictable interleaving of their executions.
+Deadlock: A situation where two or more threads are blocked forever, each waiting on the other to release a resource, preventing both from progressing.
+
+What are the different ways to achieve thread safety in Java?
+Using synchronized methods or blocks
+Using java.util.concurrent classes (e.g., Lock, Semaphore, CountDownLatch)
+Using thread-safe data structures
+
+What are the advantages of using java.util.concurrent over traditional synchronization mechanisms?
+java.util.concurrent provides higher-level concurrency utilities and avoids pitfalls such as deadlock and race conditions by offering thread-safe implementation
+of common data structures and synchronization utilities.
+
+Explain the volatile keyword in Java.
+volatile keyword is used to indicate that a variable's value may be changed by multiple threads. It ensures that any thread that reads the variable sees 
+the most recent value written to it.
+
+What is the Executor framework in Java?
+The Executor framework provides a higher-level abstraction for executing tasks asynchronously using thread pools. It decouples task submission from task execution,
+allowing better control and management of threads.
+
+How does Java handle thread priorities?
+Java provides thread priorities to influence scheduling decisions made by the JVM. Higher priority threads are scheduled more frequently than lower priority threads,
+though this behavior is platform-dependent and not guaranteed.
+
+
+
+
+
+
+
