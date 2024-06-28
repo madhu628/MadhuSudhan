@@ -1355,6 +1355,59 @@ How does Spring Boot support testing?
 Spring Boot provides support for unit testing and integration testing using JUnit, Mockito, and Spring’s testing annotations (@RunWith(SpringRunner.class),
 @SpringBootTest, @WebMvcTest, etc.) for testing different layers of the application.
 
+How to Use Spring Boot’s DevTools:
+Spring Boot DevTools provides features for developer productivity, such as automatic restarts and live reload.
+Add DevTools dependency in pom.xml
+Automatic Restart: Automatically restarts the application whenever files on the classpath change.
+LiveReload: Automatically refreshes the browser when resources change.
+DevTools is typically used during development and not in production.
+
+Explain How to Use Spring Boot with a Database (JPA/Hibernate)
+Add JPA dependency(data jpa)in pom.xml
+Configure database connection in application.properties(url,user,password)
+Define an entity
+Create a repository
+Use the repository in a service:
+
+Implement Spring Boot Security for a REST API:
+Add the security dependency in pom.xml
+Configure security(SecurityConfig extends WebSecurityConfigurerAdapter) (configure -method)
+
+ Explain and Implement Caching with Spring Boot:
+Add the caching dependency(cache) in pom.xml
+Enable caching and configure cache manager(method) in configuration class
+Use caching in a service 
+
+ Create a Custom Starter for Spring Boot:
+Create a Maven Project
+Create the Auto-Configuration Class
+Create the Service Class
+Create src/main/resources/META-INF/spring.factories
+Use the Starter in Another Project
+
+Demonstrate How to Use Spring Boot’s CommandLineRunner
+CommandLineRunner is used to execute code after the Spring application starts.lass MyCommandLineRunner implements CommandLineRunner (run method)
+
+Explain Spring Boot Actuator and Demonstrate its Use:
+Add the Actuator dependency in pom.xml
+Configure Actuator endpoints in application.properties
+Access endpoints
+Example of customizing the info endpoint
+
+ Implement Exception Handling in Spring Boot:
+GlobalExceptionHandler 
+ @ExceptionHandler(ResourceNotFoundException.class)
+ResourceNotFoundException extends RuntimeException(custom exception)
+
+
+Explain How to Use Profiles in Spring Boot:
+Profiles can be used to load environment-specific configurations
+application.properties:spring.profiles.active=dev
+application-dev.properties:server.port=8081
+application-prod.properties:server.port=8082
+Java Code to Load Profile-specific Beans: in configuration class : @Profile("dev"),@Profile("prod")
+
+
 
 
 
