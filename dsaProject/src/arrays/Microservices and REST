@@ -76,6 +76,69 @@ Methods include OAuth2, JWT (JSON Web Tokens), basic authentication, API keys, a
 What tools or frameworks have you used to develop RESTful APIs in Java?
 Examples include Spring MVC, JAX-RS (Java API for RESTful Web Services), Jersey, and Dropwizard.
 
+Create a Simple Microservice and Expose a REST Endpoint:
+create entity,repository,controller,application.properties,main class
+
+Inter-Service Communication with RestTemplate:
+Use RestTemplate to call another microservice’s REST API.
+service
+serviceApplication(Bean Configuration)
+
+Implementing Circuit Breaker with Resilience4j:
+Use Resilience4j to add a circuit breaker to your service.
+add resilience4j-spring-boot2 ,resilience4j-circuitbreaker Dependencies in pom.xml.
+implement service.java
+
+ API Gateway with Spring Cloud Gateway:
+Add Spring Cloud Gateway dependency in pom.xml.
+application.properties:gateway details(id,uri,predicates)
+main class
+
+Service Discovery with Eureka:
+Add Eureka Server Dependency in pom.xml(spring-cloud-starter-netflix-eureka-server)
+Add Eureka Client Dependency in pom.xml(spring-cloud-starter-netflix-eureka-client)
+server main class
+application.properties for Eureka Server(port,eurekha details)
+client main class
+
+Implement Paging and Sorting in REST API:
+Use Spring Data JPA’s Pageable and Sort interfaces.
+implement repository 
+implement controller
+
+Implementing HATEOAS:
+Add Spring HATEOAS dependency:(spring-boot-starter-hateoas)
+implement controller
+
+ Versioning REST APIs:
+Use URL, request parameter, or header for versioning.
+URL Versioning:@GetMapping("/api/v1/products/{id}")
+Parameter Versioning:@GetMapping(value = "/api/products/{id}", params = "version=1")
+Header Versioning:@GetMapping(value = "/api/products/{id}", headers = "X-API-VERSION=1")
+
+ Implementing Security with JWT:
+Use JWT for authentication and authorization.
+Add Dependencies:jjwt
+Generate JWT Token:Jwts.builder(),ignatureAlgorithm.HS256
+Validate JWT Token:Jwts.parser()
+Filter for JWT:JwtAuthenticationFilter extends OncePerRequestFilter (doFilterInternal method)(bearer)
+Security Configuration:SecurityConfig extends WebSecurityConfigurerAdapter(configure method) csrf().disable()
+
+Implementing Asynchronous Processing with @Async:
+Use Spring’s @Async annotation for asynchronous method execution
+Asynchronous Service:CompletableFuture<String> asyncMethod()
+Controller to Call Asynchronous Method:CompletableFuture<String> getAsync()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
