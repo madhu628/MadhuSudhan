@@ -15,11 +15,11 @@ public class FilterEven {
 		List<Integer> evenNumbers = numbers.stream().filter(num -> num % 2 == 0).collect(Collectors.toList());
 
 		// Print the filtered even numbers
-		evenNumbers.forEach(System.out::println);
+		evenNumbers.forEach(System.out::print);
 
 		System.out.println("****************");
 
-		numbers.stream().filter(num -> num % 2 == 0).forEach(System.out::println);
+		numbers.stream().filter(num -> num % 2 == 0).forEach(System.out::print);
 
 		System.out.println("****************");
 

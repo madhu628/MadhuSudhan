@@ -1,0 +1,130 @@
+Microservices and REST:
+What is a microservice and how does it differ from a monolithic architecture:
+A microservice is a small, independently deployable service that focuses on a single business function. Unlike monolithic architecture, microservices allow
+for decentralized data management,independent scaling, and deployment
+
+
+Explain how RESTful web services work:
+RESTful web services use HTTP methods (GET, POST, PUT, DELETE) to perform CRUD operations. They represent resources as URIs and use stateless communication for
+interoperability between clients and servers
+
+What is Feign in the context of Spring Cloud:
+Feign is a declarative web service client that simplifies HTTP API client creation by reducing boilerplate code and integrating seamlessly with Spring Cloud for 
+load balancing and fault tolerance.
+
+Describe the purpose of Hystrix and how it works:
+Hystrix is a library for latency and fault tolerance in distributed systems. It isolates points of access to external systems, provides fallback mechanisms, 
+and prevents cascading failures.
+
+How does Spring Boot handle configuration management:
+ Spring Boot handles configuration through application properties or YAML files, allowing externalized configuration and supporting profiles for 
+environment-specific settings.
+
+What are microservices? How do they differ from monolithic architectures?
+Microservices: Architectural style where an application is composed of small, independently deployable services that work together.
+Monolithic: Single-tiered software application where all components are interconnected and interdependent.
+
+What are the key benefits of using microservices architecture?
+Scalability, agility, resilience, technology diversity, and easier deployment and maintenance are among the advantages.
+
+Explain service discovery in microservices architecture.
+Service discovery is the mechanism by which microservices locate and communicate with each other without hard-coding service locations.
+Examples include tools like Netflix Eureka, Consul, and Kubernetes' service discovery features.
+
+How do microservices communicate with each other?
+Typically via lightweight protocols like HTTP/HTTPS using REST or messaging protocols like AMQP (Advanced Message Queuing Protocol) or Kafka.
+
+What is the role of API Gateways in microservices architecture?
+API Gateways act as a single entry point for clients to access various microservices. They handle routing, authentication, rate limiting, and protocol translation.
+
+Explain the challenges associated with microservices architecture.
+Distributed systems complexity, data consistency, network latency, monitoring, and managing inter-service communication are common challenges.
+
+How do you handle distributed transactions in microservices?
+Strategies include Saga pattern, two-phase commit (2PC), compensating transactions, and leveraging eventual consistency.
+
+What is circuit breaker pattern? Why is it used in microservices?
+Circuit breaker pattern prevents cascading failures in a distributed system. It monitors for failures and short-circuits calls to services that are likely to fail.
+
+What tools or frameworks have you used for building and managing microservices?
+Examples include Spring Boot, Netflix OSS (Eureka, Ribbon, Hystrix), Kubernetes, Docker, and Apache Kafka.
+
+REST Interview Questions:
+Explain RESTful architecture. What are its principles?
+REST (Representational State Transfer) is an architectural style for designing networked applications. Principles include stateless communication, uniform interface (HTTP verbs), and resource-based interactions.
+
+What are HTTP methods commonly used in RESTful APIs?
+GET (retrieve), POST (create), PUT (update), DELETE (delete), PATCH (partial update), OPTIONS (metadata), HEAD (header).
+
+What is HATEOAS (Hypermedia as the Engine of Application State) in REST?
+HATEOAS is a constraint in REST where the response from a server includes links to related resources, enabling navigation of the application state.
+
+Explain the difference between PUT and POST HTTP methods.
+PUT: Used to update a resource or create it if it doesn't exist, typically idempotent.
+POST: Used to create a new resource or perform custom actions that aren't covered by the standard CRUD operations.
+
+What is content negotiation in RESTful APIs? How is it achieved?
+Content negotiation allows clients and servers to agree on the format of the data being transferred (e.g., JSON, XML). 
+Achieved using Accept and Content-Type headers in HTTP requests and responses.
+
+What are RESTful best practices for designing URIs?
+Use nouns (resources) instead of verbs, use plural nouns for consistency, avoid deep nesting, use query parameters for filtering/sorting.
+
+How do you handle authentication and authorization in RESTful APIs?
+Methods include OAuth2, JWT (JSON Web Tokens), basic authentication, API keys, and role-based access control (RBAC).
+
+What tools or frameworks have you used to develop RESTful APIs in Java?
+Examples include Spring MVC, JAX-RS (Java API for RESTful Web Services), Jersey, and Dropwizard.
+
+Create a Simple Microservice and Expose a REST Endpoint:
+create entity,repository,controller,application.properties,main class
+
+Inter-Service Communication with RestTemplate:
+Use RestTemplate to call another microservice’s REST API.
+service
+serviceApplication(Bean Configuration)
+
+Implementing Circuit Breaker with Resilience4j:
+Use Resilience4j to add a circuit breaker to your service.
+add resilience4j-spring-boot2 ,resilience4j-circuitbreaker Dependencies in pom.xml.
+implement service.java
+
+ API Gateway with Spring Cloud Gateway:
+Add Spring Cloud Gateway dependency in pom.xml.
+application.properties:gateway details(id,uri,predicates)
+main class
+
+Service Discovery with Eureka:
+Add Eureka Server Dependency in pom.xml(spring-cloud-starter-netflix-eureka-server)
+Add Eureka Client Dependency in pom.xml(spring-cloud-starter-netflix-eureka-client)
+server main class
+application.properties for Eureka Server(port,eurekha details)
+client main class
+
+Implement Paging and Sorting in REST API:
+Use Spring Data JPA’s Pageable and Sort interfaces.
+implement repository 
+implement controller
+
+Implementing HATEOAS:
+Add Spring HATEOAS dependency:(spring-boot-starter-hateoas)
+implement controller
+
+ Versioning REST APIs:
+Use URL, request parameter, or header for versioning.
+URL Versioning:@GetMapping("/api/v1/products/{id}")
+Parameter Versioning:@GetMapping(value = "/api/products/{id}", params = "version=1")
+Header Versioning:@GetMapping(value = "/api/products/{id}", headers = "X-API-VERSION=1")
+
+ Implementing Security with JWT:
+Use JWT for authentication and authorization.
+Add Dependencies:jjwt
+Generate JWT Token:Jwts.builder(),ignatureAlgorithm.HS256
+Validate JWT Token:Jwts.parser()
+Filter for JWT:JwtAuthenticationFilter extends OncePerRequestFilter (doFilterInternal method)(bearer)
+Security Configuration:SecurityConfig extends WebSecurityConfigurerAdapter(configure method) csrf().disable()
+
+Implementing Asynchronous Processing with @Async:
+Use Spring’s @Async annotation for asynchronous method execution
+Asynchronous Service:CompletableFuture<String> asyncMethod()
+Controller to Call Asynchronous Method:CompletableFuture<String> getAsync()

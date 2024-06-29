@@ -22,7 +22,7 @@ public class DistinctDept {
 		// Print the distinct departments
 		distinctDepartments.forEach(System.out::println);
 		
-		System.out.println();
+		System.out.println(distinctDepartments);
 		
 		distinctDepartments.forEach(x->System.out.println(x));
 		

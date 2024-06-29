@@ -3,7 +3,7 @@ package maths;
 public class PowerOfTwo {
 
 	public static void main(String[] args) {
-		int n = 15;
+		int n = 16;
 
 		System.out.println(power(n));
 

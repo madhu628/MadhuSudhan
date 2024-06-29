@@ -8,7 +8,7 @@ public class SwapAlternates {
 
 		swap(a, 6);
 		for (int i = 0; i < 6; i++) {
-			System.out.println(a[i]);
+			System.out.print(a[i] + " ");
 		}
 		
 		System.out.println("**********************");
@@ -19,7 +19,7 @@ public class SwapAlternates {
 
 	private static void print(int[] a, int n) {
 		for (int i = 0; i < n; i++) {
-			System.out.println(a[i]);
+			System.out.print(a[i]);
 		}
 
 	}

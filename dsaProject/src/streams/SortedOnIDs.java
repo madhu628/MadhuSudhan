@@ -18,7 +18,7 @@ public class SortedOnIDs {
 		employeeList.add(e3);
 		employeeList.add(e4);
 
-		employeeList.stream().filter(e -> e.getExp() > 1).sorted((emp1, emp2) -> emp1.getEmpId() - emp1.getEmpId())
+		employeeList.stream().filter(e -> e.getExp() > 1).sorted((emp1, emp2) -> emp1.getEmpId() - emp2.getEmpId())
 				.forEach(emp -> System.out.println(emp.getEmpId()));
 
 		// Observe how System.out.println() used below

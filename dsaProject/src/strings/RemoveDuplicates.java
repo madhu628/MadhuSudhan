@@ -43,6 +43,20 @@ public class RemoveDuplicates {
 		String s = " madam";
 		String result = removeDuplicates(s);
 		System.out.println(result);
+
+		//approach -2
+//		StringBuilder sb = new StringBuilder();
+//		boolean[] seen = new boolean[256]; // Assuming ASCII
+//		for (int i = 0; i < s.length(); i++) {
+//			char c = s.charAt(i);
+//			if (!seen[c]) {
+//				sb.append(c);
+//				seen[c] = true;
+//			}
+//		}
+//		String result1 = sb.toString();
+//		System.out.println(result1);
+
 	}
 
 	private static String removeDuplicates(String s) {
@@ -54,9 +68,10 @@ public class RemoveDuplicates {
 		Set<Character> seen = new HashSet<>();
 
 		for (char c : s.toCharArray()) {
-			if (seen.add(c)) { 
-				// add() returns false if the element is already in the set This eliminates the need for an explicit
-				//check using contains().
+			if (seen.add(c)) {
+				// add() returns false if the element is already in the set This eliminates the
+				// need for an explicit
+				// check using contains().
 				sb.append(c);
 			}
 		}

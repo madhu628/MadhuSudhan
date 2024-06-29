@@ -60,9 +60,9 @@ public class streams2 {
 
 		System.out.println("*********************");
 
-		// sort descending limit 3 then sort asecnding limi 1 then print
+		// sort descending limit 2 then sort asecnding limi 1 then print
 		Stream<Integer> distinctElementStream1 = Stream.of(100, 32, 76, 11, 22, 4, 32, 11, 1);
-		distinctElementStream1.sorted((n1, n2) -> n2 - n1).limit(3).sorted().limit(1).forEach(System.out::println);
+		distinctElementStream1.sorted((n1, n2) -> n2 - n1).limit(2).sorted().limit(1).forEach(System.out::println);
 
 		System.out.println("****************");
 

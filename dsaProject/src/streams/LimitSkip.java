@@ -15,7 +15,7 @@ public class LimitSkip {
 
 		System.out.println("*********");
 
-		numbers.stream().skip(3).forEach(x -> System.out.println(x));
+		numbers.stream().skip(3).forEach(System.out::println);
 
 		System.out.println("*************");
 		numbers.stream().limit(3).forEach(x -> System.out.println(x));

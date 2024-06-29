@@ -10,9 +10,9 @@ public class GoodComparatorExample {
 	public static void main(String[] args) {
 
 		List<Student5> list = new ArrayList<>();
-		Student5 s1 = new Student5(24, 123, "Sai");
-		Student5 s2 = new Student5(25, 12445, "Charan");
-		Student5 s3 = new Student5(2, 33553, "Gupta");
+		Student5 s1 = new Student5(24, 123, "madhu");
+		Student5 s2 = new Student5(25, 12445, "sudhan");
+		Student5 s3 = new Student5(2, 33553, "reddy");
 
 		list.add(s1);
 		list.add(s2);

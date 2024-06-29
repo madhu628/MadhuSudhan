@@ -12,9 +12,13 @@ public class CombinedFunctionalInterfaceExample {
 
 		// Predicate to filter names starting with 'J'
 		Predicate<String> startsWithJ = (s) -> s.startsWith("J");
+		
+		System.out.println(startsWithJ.test("James"));
 
 		// Function to convert names to uppercase
 		Function<String, String> toUpperCase = (s) -> s.toUpperCase();
+		
+		System.out.println(toUpperCase.apply("madhu"));
 
 		// Combining Predicate and Function using Stream API
 		List<String> filteredAndUppercasedNames = names.stream().filter(startsWithJ).map(toUpperCase)

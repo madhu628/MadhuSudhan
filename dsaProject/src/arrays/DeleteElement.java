@@ -21,7 +21,7 @@ public class DeleteElement {
 		} else {
 			// Print the array after deletion
 			for (int i = 0; i < n - 1; i++) {
-				System.out.println(a[i] + " ");
+				System.out.print(a[i] + " ");
 			}
 		}
 	}

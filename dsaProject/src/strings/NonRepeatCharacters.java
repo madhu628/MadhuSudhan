@@ -2,6 +2,7 @@ package strings;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class NonRepeatCharacters {
 //	public static void main(String[] args) {
@@ -50,6 +51,29 @@ public class NonRepeatCharacters {
 		} else {
 			System.out.println("No non-repeating character found.");
 		}
+
+		// Using streams
+//		Map<Character, Long> charCount = s.chars().mapToObj(c -> (char) c)
+//				.collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()));
+//		char firstNonRepeated = charCount.entrySet().stream().filter(e -> e.getValue() == 1).map(Map.Entry::getKey)
+//				.findFirst().orElseThrow();
+//
+//		System.out.println(firstNonRepeated);
+
+		// approach -2
+		int[] count = new int[256]; // Assuming ASCII
+		for (int i = 0; i < s.length(); i++) {
+			count[s.charAt(i)]++;
+		}
+		char firstNonRepeated = '\0';
+		for (int i = 0; i < s.length(); i++) {
+			if (count[s.charAt(i)] == 1) {
+				firstNonRepeated = s.charAt(i);
+				break;
+			}
+		}
+		System.out.println(firstNonRepeated);
+
 	}
 
 	private static Character findFirstNonRepeatingCharacter(String str) {
@@ -59,11 +83,11 @@ public class NonRepeatCharacters {
 
 		Map<Character, Integer> charCountMap = new LinkedHashMap<>(); // maintains the insertion order
 		for (char ch : str.toCharArray()) {
-			charCountMap.put(ch, charCountMap.getOrDefault(ch, 0) + 1); //character counts.
+			charCountMap.put(ch, charCountMap.getOrDefault(ch, 0) + 1); // character counts.
 		}
 
 		for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
-			if (entry.getValue() == 1) {   //find the first entry with a value of 1, indicating a non-repeating character
+			if (entry.getValue() == 1) { // find the first entry with a value of 1, indicating a non-repeating character
 				return entry.getKey();
 			}
 		}

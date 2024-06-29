@@ -1,0 +1,301 @@
+SQL Queries Basics:
+Retrieve all records from a table named employees:
+SELECT * FROM employees;
+
+Select unique job titles from the employees table:
+SELECT DISTINCT job_title FROM employees;
+
+Find all employees whose last name starts with 'J':
+SELECT * FROM employees WHERE last_name LIKE 'J%';
+
+List the total number of employees in each department:
+SELECT department_id, COUNT(*) AS total_employees
+FROM employees
+GROUP BY department_id;
+
+Retrieve the first 10 employees sorted by hire date:
+SELECT * FROM employees ORDER BY hire_date LIMIT 10;
+
+Find all employees hired in the year 2023:
+SELECT * FROM employees WHERE YEAR(hire_date) = 2023;
+
+Retrieve employees with salaries between 50,000 and 100,000
+SELECT * FROM employees WHERE salary BETWEEN 50000 AND 100000;
+
+Calculate the average salary by department:
+SELECT department_id, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department_id;
+
+List employees with duplicate email addresses.
+SELECT email, COUNT(*)
+FROM employees
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+
+Retrieve employees who do not have a manager:
+SELECT * FROM employees WHERE manager_id IS NULL;
+
+
+Advanced SQL Queries:
+Find the second highest salary in the employees table.
+SELECT MAX(salary) AS second_highest_salary
+FROM employees
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+Get the list of employees who joined in the last 6 months:
+SELECT * FROM employees
+WHERE hire_date >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH);
+
+Show the department with the highest average salary:
+SELECT department_id, AVG(salary) AS average_salary
+FROM employees
+GROUP BY department_id
+ORDER BY average_salary DESC
+LIMIT 1;
+
+
+Retrieve employees whose salary is above the average salary:
+SELECT * FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+
+Display employees' names along with their manager's name.
+SELECT e.first_name AS employee, m.first_name AS manager
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.employee_id;
+
+Find the top 3 departments with the highest number of employees.
+SELECT department_id, COUNT(*) AS employee_count
+FROM employees
+GROUP BY department_id
+ORDER BY employee_count DESC
+LIMIT 3;
+
+Get the list of employees along with the department name:
+SELECT e.first_name, e.last_name, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id;
+
+Retrieve the number of employees hired each month for the last year:
+SELECT MONTH(hire_date) AS hire_month, COUNT(*) AS hires
+FROM employees
+WHERE hire_date >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)
+GROUP BY MONTH(hire_date);
+
+
+List all employees who have a higher salary than their manager.
+SELECT e.first_name AS employee, e.salary AS employee_salary, m.salary AS manager_salary
+FROM employees e
+JOIN employees m ON e.manager_id = m.employee_id
+WHERE e.salary > m.salary;
+
+Find employees who work in the same department as 'John Doe':
+SELECT * FROM employees
+WHERE department_id = (
+    SELECT department_id
+    FROM employees
+    WHERE first_name = 'John' AND last_name = 'Doe'
+);
+
+
+Complex SQL Queries:
+Rank employees by salary within their department:
+SELECT employee_id, first_name, department_id, salary,
+       RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS salary_rank
+FROM employees;
+
+Retrieve the cumulative salary of employees in each department:
+SELECT department_id, salary,
+       SUM(salary) OVER (PARTITION BY department_id ORDER BY salary) AS cumulative_salary
+FROM employees;
+
+Find employees who have the highest salary in their department:
+SELECT * FROM employees e
+WHERE salary = (SELECT MAX(salary) FROM employees WHERE department_id = e.department_id);
+
+List employees who have been with the company for more than 5 years.
+SELECT * FROM employees
+WHERE hire_date <= DATE_SUB(CURDATE(), INTERVAL 5 YEAR);
+
+
+Determine the difference in salary between the highest and lowest paid employees.
+SELECT MAX(salary) - MIN(salary) AS salary_difference
+FROM employees;
+
+Get the average salary of employees in each department excluding the highest and lowest salaries.
+SELECT department_id, AVG(salary) AS average_salary
+FROM employees
+WHERE salary NOT IN (SELECT MAX(salary) FROM employees GROUP BY department_id)
+  AND salary NOT IN (SELECT MIN(salary) FROM employees GROUP BY department_id)
+GROUP BY department_id;
+
+Show the names of employees who work on all projects:
+SELECT e.first_name, e.last_name
+FROM employees e
+JOIN project_assignments pa ON e.employee_id = pa.employee_id
+GROUP BY e.first_name, e.last_name
+HAVING COUNT(DISTINCT pa.project_id) = (SELECT COUNT(*) FROM projects);
+
+Retrieve employees with the most recent hire date in each department:
+SELECT department_id, employee_id, hire_date
+FROM (
+    SELECT department_id, employee_id, hire_date,
+           ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY hire_date DESC) AS rank
+    FROM employees
+) AS ranked
+WHERE rank = 1;
+
+Find the difference in days between the earliest and latest hire dates:
+SELECT DATEDIFF(MAX(hire_date), MIN(hire_date)) AS date_difference
+FROM employees;
+
+List employees who have been promoted (i.e., their salary increased):
+SELECT e.employee_id, e.first_name, e.last_name, j.old_salary, j.new_salary
+FROM employees e
+JOIN job_history j ON e.employee_id = j.employee_id
+WHERE j.new_salary > j.old_salary;
+
+
+ difference between INNER JOIN and OUTER JOIN:
+ INNER JOIN returns only the rows that have matching values in both tables. 
+ OUTER JOIN returns all rows from one table and the matched rows from the other. There are three types of outer joins: LEFT JOIN, RIGHT JOIN, and FULL JOIN
+
+ Explain the GROUP BY clause and its use:
+ The GROUP BY clause groups rows that have the same values in specified columns into summary rows.
+ It is often used with aggregate functions like COUNT, SUM, AVG, MAX, and MIN to produce summary reports
+
+ What is a primary key:
+ A primary key is a unique identifier for a record in a table. It must contain unique values and cannot contain NULL values. Each table can have only one primary key
+
+ What are foreign keys and their purpose:
+ A foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table. 
+ The purpose of a foreign key is to ensure referential integrity between tables.
+
+ How would you use the LIMIT clause:
+ The LIMIT clause restricts the number of rows returned by a query. For example, SELECT * FROM table LIMIT 5 returns only the first 5 rows from the table.
+
+ What is the difference between HAVING and WHERE clauses?
+The WHERE clause filters rows before grouping (used with SELECT and JOIN statements), while the HAVING clause filters groups after aggregation (used with GROUP BY).
+
+Explain the use of the DISTINCT keyword:
+The DISTINCT keyword removes duplicate rows from the result set. For example, SELECT DISTINCT column_name FROM table_name returns only unique values of column_name
+
+What are subqueries and how are they used:
+Subqueries are queries nested within another SQL query. They are used to perform operations in a hierarchical or dependent manner,
+such as filtering results based on a condition calculated by another query.
+
+Describe what a JOIN operation does:
+ A JOIN operation combines rows from two or more tables based on a related column between them. Types of joins include INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN
+
+How do you use the CASE statement in SQL?
+SELECT name,
+       CASE 
+           WHEN score >= 90 THEN 'A'
+           WHEN score >= 80 THEN 'B'
+           ELSE 'F'
+       END AS grade
+FROM students;
+
+
+Advanced SQL:
+What are indexes and how do they improve query performance?
+indexes are database objects that improve the speed of data retrieval operations on a table at the cost of additional space and slower writes. 
+They work by creating a data structure (like a B-tree) that allows fast lookups.
+
+Explain UNION vs. UNION ALL:
+UNION combines the result sets of two or more SELECT statements and removes duplicates. UNION ALL combines the result sets but does not remove duplicates,
+making it faster.
+
+What is normalization and why is it important:
+Normalization is the process of organizing data to reduce redundancy and improve data integrity. 
+It involves dividing a database into two or more tables and defining relationships between the tables.
+
+Describe a self join and its use case:
+Triggers are automatic actions executed in response to certain events on a table, such as INSERT, UPDATE, or DELETE. 
+They are used for tasks like auditing changes, enforcing business rules, and maintaining referential integrity.
+
+How can you optimize a slow SQL query?
+Optimizing a slow query can involve creating appropriate indexes, using EXPLAIN to analyze query performance, avoiding SELECT *, 
+breaking complex queries into simpler subqueries, and making sure the database schema is normalized.
+
+What are common table expressions (CTEs) and how are they used:
+ CTEs are temporary result sets defined within the execution scope of a single SELECT, INSERT, UPDATE, or DELETE statement. 
+ They are used to simplify complex queries by breaking them into more readable parts.
+
+ Explain the difference between ROWNUM and ROW_NUMBER():
+ ROWNUM is a pseudo-column in Oracle that assigns a unique number to each row in the result set, starting from 1. 
+ ROW_NUMBER() is a window function in SQL that assigns a unique sequential integer to rows within a partition of a result set.
+
+ What is a view and how does it differ from a table:
+ A view is a virtual table that is based on the result set of an SQL query. Unlike tables, views do not store data; 
+ they dynamically generate results from the base tables.
+
+ Describe how to use window functions:
+ Window functions perform calculations across a set of table rows related to the current row. They include functions like ROW_NUMBER(), RANK(), DENSE_RANK(), 
+ and NTILE(). For example
+ SELECT name, score,
+       ROW_NUMBER() OVER (PARTITION BY class ORDER BY score DESC) as rank
+FROM students;
+
+SQL Integration with Java:
+How do you connect to a database in Java?
+Use JDBC (Java Database Connectivity) API to connect to a database. This involves loading the JDBC driver, establishing a connection using DriverManager, 
+and executing SQL queries using Statement or PreparedStatement.
+
+
+Explain the difference between Statement and PreparedStatement in JDBC:
+Statement is used for executing static SQL queries without parameters. PreparedStatement is used for executing precompiled SQL queries with parameters, 
+providing better performance and security against SQL injection.
+
+What is a connection pool and why is it important:
+A connection pool is a cache of database connections maintained to avoid the overhead of opening and closing connections frequently. 
+It improves application performance and resource management.
+
+How can you handle transactions in JDBC:
+Use the Connection object's transaction management methods: setAutoCommit(false) to start a transaction, commit() to commit, and rollback() 
+to revert changes in case of errors
+
+Describe how to use ORM frameworks like Hibernate with SQL databases:
+ORM (Object-Relational Mapping) frameworks like Hibernate map Java objects to database tables and vice versa. They abstract the database interactions,
+allowing developers to work with Java objects instead of writing SQL queries.
+
+What is the use of ResultSet in JDBC?
+ResultSet is used to retrieve and navigate through the data returned by executing SQL queries. It provides methods for iterating over the result set and 
+accessing column values
+
+How do you handle database exceptions in Java:
+Use try-catch blocks to handle SQL exceptions (SQLException). Log the error details and use specific exception handling for known issues 
+(e.g., connection failures, constraint violations)
+
+Explain how to execute stored procedures in JDBC:
+ Use CallableStatement to execute stored procedures in JDBC. You can set input parameters and retrieve output parameters using registerOutParameter
+
+ What is SQL injection and how can you prevent it:
+ SQL injection is a security vulnerability where an attacker can execute arbitrary SQL code. Prevent it by using PreparedStatement or CallableStatement instead 
+ of string concatenation to build SQL queries.
+
+ Describe how to batch insert/update in JDBC;
+ Use addBatch() and executeBatch() methods in PreparedStatement to perform batch insert/update operations, reducing the number of database 
+ round trips and improving performance.
+
+ SQL Performance and Optimization:
+ What is a query plan and how do you analyze it:
+ A query plan (or execution plan) is a detailed step-by-step analysis generated by the database engine to execute a query. 
+ Use the EXPLAIN statement to review the plan and optimize the query based on its performance
+
+ How does indexing affect query performance?
+Indexing improves query performance by allowing faster retrieval of rows. However, it can slow down insert, update, and delete operations 
+due to the overhead of maintaining the index.
+
+Explain what denormalization is and why it might be used:
+Denormalization involves combining tables or introducing redundancy to optimize read performance. It’s used when read operations are more frequent
+than writes and performance is critical.
+
+What is a covering index:
+A covering index is an index that contains all the columns required by a query, thus preventing the need to access the actual table. 
+This can significantly speed up query performance.
+
+How would you handle large datasets in SQL:
+Handle large datasets by using pagination (LIMIT and OFFSET), indexing, partitioning tables, using appropriate data types, and optimizing queries 
+to retrieve only the necessary data.

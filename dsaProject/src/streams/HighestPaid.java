@@ -17,14 +17,14 @@ public class HighestPaid {
 				.collect(Collectors.maxBy(Comparator.comparingDouble(Employee3::getSalary)));
 		System.out.println(highestPaidEmployee.get().getName());
 
-//		Optional<Employee3> highestPaidEmployee1 = employees.stream()
-//				.max((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
-//
-//		if (highestPaidEmployee1.isPresent()) {
-//			System.out.println("Highest paid employee: " + highestPaidEmployee1.get());
-//		} else {
-//			System.out.println("No employees found.");
-//		}
+		Optional<Employee3> highestPaidEmployee1 = employees.stream()
+				.max((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
+
+		if (highestPaidEmployee1.isPresent()) {
+			System.out.println("Highest paid employee: " + highestPaidEmployee1.get());
+		} else {
+			System.out.println("No employees found.");
+		}
 	}
 
 }

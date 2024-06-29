@@ -41,6 +41,20 @@ public class OccrenceInString {
 		} else {
 			System.out.println("Input string is null or empty.");
 		}
+
+		// using streams
+//		long count = s.chars().filter(ch -> ch == 'l').count();
+//		System.out.println(count);
+
+		//count particular target
+		char target = 'l';
+		int count = 0;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == target) {
+				count++;
+			}
+		}
+		System.out.println(count);
 	}
 
 	private static Map<Character, Integer> getCharacterFrequency(String str) {
@@ -51,7 +65,8 @@ public class OccrenceInString {
 		Map<Character, Integer> frequencyMap = new HashMap<>();
 		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);//update logic by eliminating the need for a conditional check.
+			frequencyMap.put(ch, frequencyMap.getOrDefault(ch, 0) + 1);// update logic by eliminating the need for a
+																		// conditional check.
 		}
 
 		return frequencyMap;

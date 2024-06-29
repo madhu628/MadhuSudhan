@@ -36,7 +36,7 @@ public class PrintDetailsBasedDept {
 		System.out.println("************************");
 
 		Map<String, Long> empCountDept = employees.stream()
-				.collect(Collectors.groupingByConcurrent(Employee19::getDepartment, Collectors.counting()));
+				.collect(Collectors.groupingBy(Employee19::getDepartment, Collectors.counting()));
 
 		empCountDept.entrySet().forEach(entry -> {
 			System.out.println("dept" + entry.getKey() + "-----" + entry.getValue());

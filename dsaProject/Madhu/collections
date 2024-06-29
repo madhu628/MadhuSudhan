@@ -1,0 +1,215 @@
+
+Core Java
+Object-Oriented Programming (OOP)
+Java Collections Framework
+Java Streams and Functional Programming
+Concurrency and Multithreading
+Spring Framework
+Microservices and REST
+
+Collections:
+map
+map is a transformation operation that applies a function to each element of a stream and returns a new stream consisting of the results of applying the function 
+to each element.
+It transforms each element individually, and the result is a one-to-one mapping between the elements of the original stream and the elements of the resulting stream.
+The mapping function passed to map must return a value of the same type or subtype, as it performs a one-to-one transformation.
+
+flatMap
+flatMap is a transformation operation similar to map, but it is used when each element of the original stream contains another stream or collection of elements.
+It flattens the elements of nested streams or collections into a single stream. Instead of producing a stream of streams or collections, it produces a single 
+flat stream.
+The mapping function passed to flatMap must return a stream or collection, and it combines the elements of all the streams or collections returned by
+the mapping function into a single stream.
+
+reduce
+reduce is a terminal operation that combines all elements of a stream into a single result by repeatedly applying a binary operator.
+It takes an initial value (also known as the identity) and a binary operator as parameters. The binary operator is applied to each element of the stream 
+along with the accumulated result from previous operations.
+The result of reduce can be of a different type than the elements of the stream. For example, you can use it to calculate the sum of all elements, 
+find the maximum element, concatenate strings, etc.
+
+WeakHashMap:
+which allows you to store key-value pairs. It is similar to HashMap, but it uses weak references for its keys, meaning that if a key is not referenced anywhere 
+else in the program and is only referenced by the WeakHashMap, it may be garbage collected.
+
+IdentityHashMap:
+IdentityHashMap is a specialized implementation of the Map interface that uses reference equality (instead of object equality) when comparing keys. 
+This means that it compares keys using the == operator rather than the equals() method.
+
+Fail-Fast Collections
+Fail-fast iterators throw a ConcurrentModificationException if the underlying collection is structurally modified after the iterator is created.
+These collections are designed to immediately detect and prevent concurrent modifications during iteration.
+Examples of fail-fast collections include ArrayList, HashMap, HashSet, etc.
+
+Fail-Safe Collections
+Fail-safe iterators do not throw ConcurrentModificationException even if the underlying collection is modified during iteration.
+These collections make a copy of the underlying data structure (e.g., array) when the iterator is created, and the iteration is performed on this copied data structure.
+Examples of fail-safe collections include ConcurrentHashMap, CopyOnWriteArrayList, CopyOnWriteArraySet, etc.
+
+Fail-Fast Collections: Immediate detection and throwing of ConcurrentModificationException during iteration if the collection is modified.
+Fail-Safe Collections: Iteration is performed on a copied data structure, allowing modification during iteration without throwing exceptions.
+
+Comparable Interface
+The Comparable interface is used to define the natural ordering of objects.
+It contains a single method compareTo() that compares the current object with another object.
+Classes that implement Comparable can be sorted using the Collections.sort() method or by calling Arrays.sort().
+
+Comparator Interface
+The Comparator interface is used to define custom sorting orders for objects.
+It contains a single method compare() that compares two objects.
+Comparator instances are often used to sort objects in cases where the class itself does not implement Comparable, or when you want to use multiple sorting 
+orders for the same class.
+
+Comparable provides a way to define the natural ordering of objects within the class itself, while Comparator allows for defining custom sorting orders externally,
+without modifying the class itself. Both interfaces are widely used for sorting objects in Java collections.
+
+differences between HashMap, TreeMap, and LinkedHashMap:
+HashMap provides O(1) time complexity for basic operations and does not maintain order. 
+TreeMap provides O(log n) time complexity and maintains a sorted order.
+LinkedHashMap maintains insertion order.
+
+difference between Set and List in Java:
+Set is an unordered collection that does not allow duplicate elements.
+List is an ordered collection that allows duplicate elements and maintains the insertion order
+
+differences between Iterator and ListIterator:
+Iterator allows traversal of a collection in a forward direction and allows element removal.
+ListIterator extends Iterator and allows bidirectional traversal, element modification, and addition
+
+how ConcurrentHashMap works:
+ConcurrentHashMap allows concurrent access to different segments of the map. It uses a combination of locks and CAS operations to provide thread-safe access 
+without locking the entire map.
+
+Comparator and Comparable interface differ:
+Comparable is used to define the natural ordering of objects and is implemented by the object class itself. 
+Comparator defines a custom order and is implemented externally.
+
+
+What is the Java Collection Framework?
+The Java Collection Framework provides a unified architecture for storing and manipulating a group of objects. It includes interfaces, implementations, 
+and algorithms that help in managing collections of data.
+
+ What are the core interfaces of the Java Collections Framework:
+Collection: Root interface for all collections.
+List: Ordered collection (e.g., ArrayList, LinkedList).
+Set: Unordered collection with no duplicates (e.g., HashSet, TreeSet).
+Queue: Collection used to hold multiple elements prior to processing (e.g., LinkedList, PriorityQueue).
+Map: Collection of key-value pairs (e.g., HashMap, TreeMap).
+
+What is the difference between List, Set, and Map?
+List: Ordered collection that allows duplicate elements.
+Set: Unordered collection that does not allow duplicate elements.
+Map: Collection of key-value pairs where keys are unique.
+
+How does HashMap work internally?
+HashMap works based on hashing. It uses an array of buckets to store key-value pairs. When inserting, it calculates the hash code of the key and
+determines the bucket location. Collisions are handled using a linked list or tree structure within the bucket.
+
+What are HashSet and TreeSet, and how do they differ?
+HashSet: Implements the Set interface and uses a hash table. It does not maintain any order of elements.
+TreeSet: Implements the NavigableSet interface and uses a tree structure. It maintains elements in a sorted order
+
+What are the differences between ArrayList and LinkedList?
+ArrayList: Backed by a dynamic array. Provides fast random access and is better for storing and accessing data.
+LinkedList: Backed by a doubly linked list. Provides better performance for insertion and deletion operations.
+
+What are Comparable and Comparator, and how do they differ?
+Comparable: Used to define the natural ordering of objects through the compareTo method.
+Comparator: Used to define custom orderings through the compare method.
+
+public int compareTo(Person other) {
+        return this.name.compareTo(other.name);
+    }
+ public int compare(Person p1, Person p2) {
+        return Integer.compare(p1.getAge(), p2.getAge());
+    }
+
+How does HashSet ensure no duplicates?
+HashSet uses the hashCode() and equals() methods to determine if two objects are the same. When adding an element, 
+it checks these methods to ensure that no duplicate elements are inserted
+
+Explain the difference between HashMap and Hashtable.
+HashMap: Not synchronized, allows null keys and values, generally faster.
+Hashtable: Synchronized, does not allow null keys or values, legacy class.
+
+
+ How can you iterate over a collection
+Enhanced for-loop
+Iterator
+Stream API
+
+What is a PriorityQueue, and how does it work:
+PriorityQueue is a queue where elements are ordered based on their natural ordering or by a provided Comparator. 
+The head of the queue is the least element with respect to the specified ordering
+
+ConcurrentHashMap:
+ConcurrentHashMap is a thread-safe version of HashMap that allows concurrent read and write operations. It achieves this by dividing the map into segments, 
+each of which can be locked independently
+
+How does TreeMap maintain order:
+TreeMap maintains order by using a Red-Black tree structure. It sorts the entries based on their keys, either using the natural order or a specified Comparator
+
+What is the LinkedHashMap, and how is it different from HashMap
+LinkedHashMap maintains a doubly-linked list of the entries, preserving the insertion order or access order. Unlike HashMap, 
+it can maintain this order for iteration.
+
+What is the EnumMap, and how is it used?
+EnumMap is a specialized Map implementation for use with enum keys. It is more efficient than HashMap for enum keys.
+
+ How to remove duplicates from a List?
+you can use a Set to filter out duplicates or use Java 8 streams
+
+How does ArrayDeque differ from LinkedList as a Deque
+ArrayDeque is implemented using a resizable array and is usually faster than LinkedList for Deque operations since it doesn't involve node-pointer overhead.
+
+ How do you synchronize a collection in Java?
+ You can synchronize collections using Collections.synchronizedList(), synchronizedSet(), etc.
+
+Explain fail-fast and fail-safe iterators:
+Fail-fast: Iterators that immediately throw ConcurrentModificationException if the collection is modified (e.g., ArrayList, HashMap).
+Fail-safe: Iterators that operate on a copy of the collection, allowing modifications without throwing exceptions (e.g., CopyOnWriteArrayList, ConcurrentHashMap).
+
+How do you sort a List of objects using a Comparator:
+you can sort using the Collections.sort() method with a Comparator
+
+What is the difference between Iterator and ListIterator?
+Iterator: Provides forward traversal of a collection.
+ListIterator: Provides bidirectional traversal and the ability to modify the list during iteration.
+
+How does WeakHashMap work?
+WeakHashMap uses weak references for its keys, allowing the garbage collector to reclaim the keys if they are not in use elsewhere,
+leading to the automatic removal of entries.
+
+ How to convert a Map to a List:
+You can convert a Map to a List using streams or iteration.
+
+What are the differences between peek(), poll(), and remove() in Queue
+peek(): Retrieves but does not remove the head of the queue, returns null if the queue is empty.
+poll(): Retrieves and removes the head of the queue, returns null if the queue is empty.
+remove(): Retrieves and removes the head of the queue, throws NoSuchElementException if the queue is empty.
+
+How can you merge two Map instances?
+You can merge using the putAll() method or streams.
+map1.putAll(map2);
+
+How do you implement LRU Cache in Java
+LinkedHashMap can be used to implement an LRU Cache by overriding the removeEldestEntry method.
+
+class LRUCache<K, V> extends LinkedHashMap<K, V> {
+    private final int capacity;
+    
+    public LRUCache(int capacity) {
+        super(capacity, 0.75f, true);
+        this.capacity = capacity;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        return size() > capacity;
+    }
+}
+
+
+Explain the use of BlockingQueue and its implementations.
+BlockingQueue is used in producer-consumer scenarios. It blocks the producer if the queue is full and blocks the consumer if the queue is empty.
+Implementations include ArrayBlockingQueue, LinkedBlockingQueue, and PriorityBlockingQueue.

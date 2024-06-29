@@ -57,8 +57,8 @@ public class SumofTwoArrays {
 				sum += a[i--];
 			if (j >= 0)
 				sum += b[j--];
-			ans.add(sum % 10);
-			carry = sum / 10;
+			ans.add(sum % 10); // 0,4,2,1
+			carry = sum / 10; // 1,0,0,0
 		}
 		return ans;
 	}

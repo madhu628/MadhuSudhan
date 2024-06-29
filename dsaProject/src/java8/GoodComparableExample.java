@@ -11,9 +11,9 @@ public class GoodComparableExample {
 	public static void main(String[] args) {
 
 		List<Student4> list = new ArrayList<>();
-		Student4 s1 = new Student4(24, 123, "Sai");
-		Student4 s2 = new Student4(25, 12445, "Charan");
-		Student4 s3 = new Student4(2, 33553, "Gupta");
+		Student4 s1 = new Student4(24, 123, "madhu");
+		Student4 s2 = new Student4(25, 12445, "sudhan");
+		Student4 s3 = new Student4(2, 33553, "reddy");
 
 		list.add(s1);
 		list.add(s2);

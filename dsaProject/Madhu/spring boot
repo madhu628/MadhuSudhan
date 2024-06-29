@@ -1,0 +1,1408 @@
+I have x years of experience in Java and y years of experience in Spring Boot. I have worked on projects that involve building and deploying microservices, 
+creating REST APIs, and integrating with databases. I am also familiar with various Spring Boot modules such as Spring Data, Spring Security, and Spring MVC.
+
+ANNOTATIONS:
+@SpringBootApplication: A convenience annotation that combines @Configuration, @EnableAutoConfiguration, and @ComponentScan to enable auto-configuration, component scanning, and configuration for a SB application.
+@RestController: Combines @Controller and @ResponseBody to simplify the creation of RESTful web services.making the class a controller where every method returns a domain object instead of a view.
+@RequestMapping: Used to map web requests onto specific handler methods or classes in MVC and REST controllers. Supports specifying the HTTP method, path, and other attributes.
+@GetMapping: A shortcut for @RequestMapping(method = RequestMethod.GET), specifically mapping HTTP GET requests to handler methods.
+@PostMapping: A shortcut for @RequestMapping(method = RequestMethod.POST), specifically mapping HTTP POST requests to handler methods.
+@PutMapping: A shortcut for @RequestMapping(method = RequestMethod.PUT), specifically mapping HTTP PUT requests to handler methods.
+@DeleteMapping: A shortcut for @RequestMapping(method = RequestMethod.DELETE), specifically mapping HTTP DELETE requests to handler methods.
+@PatchMapping: A shortcut for @RequestMapping(method = RequestMethod.PATCH), specifically mapping HTTP PATCH requests to handler methods.
+@Component: Marks a Java class as a Spring component. Indicates that a class is a Spring component. It is a generic stereotype annotation for any Spring-managed component
+@Service: A specialization of @Component, indicating that a class belongs to the service layer. It is used to annotate service classes
+@Repository: A specialization of @Component, indicating that a class belongs to the data access layer. It also enables exception translation for database operations.
+@Autowired: Automatically injects dependencies by type. It can be used on constructors, methods, and fields.
+@Value: Injects property values from external sources (like properties files) into fields, method parameters, and constructor arguments.
+@Configuration: Indicates that a class declares one or more @Bean methods and can be processed by the Spring container to generate bean definitions.
+@Bean: Indicates that a method produces a bean to be managed by the Spring container. It is used within @Configuration classes
+@EnableAutoConfiguration: Enables Spring Boot’s auto-configuration mechanism, attempting to configure your application automatically based on the dependencies you have added.
+@Entity: Specifies that the class is an entity and is mapped to a database table. It is a JPA annotation
+@Table: Specifies the table in the database that the entity is mapped to. It is used in conjunction with @Entity
+@Id: Specifies the primary key of an entity. It is a JPA annotation
+@GeneratedValue: Specifies how the primary key should be generated (e.g., AUTO, IDENTITY, SEQUENCE, TABLE). It is used in conjunction with @Id
+@Column: Specifies the details of the column to which a field or property will be mapped. It is used in JPA entities
+@EnableScheduling: Enables Spring’s scheduled task execution capability, allowing you to use @Scheduled to schedule tasks.
+@Scheduled: Indicates that a method should be scheduled to run at specific intervals. It requires @EnableScheduling to be enabled.
+@EnableCaching: Enables Spring’s annotation-driven cache management capability, allowing you to use caching annotations like @Cacheable.
+@Cacheable: Indicates that the result of a method call should be cached. If the same method is called with the same parameters, the cached result is returned.
+@CacheEvict: Indicates that one or more caches should be cleared when a method is called.
+@Transactional: Indicates that a method or class should be executed within a transaction context. It ensures that the method is executed with transaction management.
+@RestControllerAdvice: Provides centralized exception handling across all @RestController components. It is a combination of @ControllerAdvice and @ResponseBody.
+@ExceptionHandler: Defines a method to handle specific exceptions thrown by request handling methods in controllers or globally in @ControllerAdvice classes
+@SpringBootTest: Indicates that the class is a Spring Boot test, loading the complete application context for integration tests. It can be configured to run with different properties and profiles
+
+
+JPA Annotations: @OneToOne, @OneToMany, @ManyToOne, @ManyToMany
+@OneToOne:
+  @Entity
+public class User {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @OneToOne
+    private Profile profile;
+}
+
+@Entity
+public class Profile {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @OneToOne(mappedBy = "profile")
+    private User user;
+}
+
+
+@OneToMany: and @ManyToOne
+@Entity
+public class User {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+}
+
+@Entity
+public class Order {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+}
+
+
+@ManyToMany:
+@Entity
+public class Student {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "student_course",
+        joinColumns = @JoinColumn(name = "student_id"),
+        inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
+}
+
+@Entity
+public class Course {
+    @Id @GeneratedValue
+    private Long id;
+    
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students;
+}
+
+@OneToOne: One entity relates to one other entity.
+@OneToMany: One entity relates to many other entities.
+@ManyToOne: Many entities relate to one other entity.
+@ManyToMany: Many entities relate to many other entities
+
+COMPONENTS IN SPRING BOOT:
+1.Spring Boot Starter:
+Definition: Pre-configured sets of dependencies for building specific types of applications.
+Example: spring-boot-starter-web, spring-boot-starter-data-jpa.
+
+2.Spring Boot Auto-Configuration:
+Definition: Automatically configures Spring applications based on the dependencies present in the classpath.
+Example: Configures a DataSource bean if H2 or another database dependency is found.
+
+3.Spring Boot CLI:
+Definition: A command-line tool for running and testing Spring Boot applications.
+Example: Allows you to quickly run Groovy scripts.
+
+4.Spring Boot Actuator:
+Definition: Provides production-ready features to help monitor and manage applications.
+Example: Endpoints for health checks, metrics, and environment info.
+
+5.Spring Boot DevTools:
+Definition: Provides additional development-time features to aid in development.
+Example: Automatic restart, live reload, and configurations for development environment.
+
+6.Embedded Servers:
+Definition: Embedded web servers like Tomcat, Jetty, or Undertow that allow running Spring Boot applications as standalone applications.
+Example: Run applications without needing a separate application server.
+
+7.Spring Initializr:
+Definition: A web-based tool to bootstrap a new Spring Boot project with dependencies and configurations.
+Example: https://start.spring.io/ to generate a new project.
+
+Summary
+Starters: Simplify dependency management.
+Auto-Configuration: Reduces boilerplate configuration.
+CLI: Quick development with Groovy.
+Actuator: Adds monitoring and management endpoints.
+DevTools: Enhances development productivity.
+Embedded Servers: Run applications standalone.
+Initializr: Quick project setup.
+
+FEATURES OF SPRING BOOT:
+Key Features of Spring Boot
+1.Auto-Configuration:
+Automatically configures your application based on the dependencies on the classpath.
+
+2.Spring Boot Starters:
+Pre-configured dependency descriptors for various use cases to simplify Maven/Gradle configuration.
+
+3.Embedded Servers:
+Includes embedded web servers (Tomcat, Jetty, Undertow) so you can run applications as standalone JARs.
+
+4.Spring Boot CLI:
+Command-line interface for rapid development and testing using Groovy scripts.
+
+5.Spring Boot Actuator:
+Adds production-ready features like monitoring, metrics, and health checks.
+
+6.Spring Initializr:
+Web-based tool to quickly bootstrap a new Spring Boot project with dependencies and configurations.
+
+7.Spring Boot DevTools:
+Provides additional development-time features such as automatic restarts, live reload, and configurations for the development environment.
+
+8.Externalized Configuration:
+Allows configuring application behavior via properties or YAML files.
+
+9.Security:
+Integrates easily with Spring Security for securing applications.
+
+10.Microservices Support:
+Facilitates building and deploying microservices with features like embedded servers and easy integration with cloud platforms.
+
+Summary
+Auto-Configuration: Reduces manual setup.
+Starters: Simplify dependency management.
+Embedded Servers: Run apps standalone.
+CLI: Rapid development.
+Actuator: Monitoring and management.
+Initializer: Quick project setup.
+DevTools: Enhances development productivity.
+Externalized Configuration: Easy configuration management.
+Security: Easy integration with Spring Security.
+Microservice Support: Ideal for microservices architecture.
+
+
+
+HOW SPRING BOOT WORKS INTERNALLY:
+Spring Boot simplifies the development of Spring-based applications by providing a set of conventions and default configurations. 
+
+Starter Dependencies: Spring Boot offers starter dependencies (e.g., spring-boot-starter-web) to include a curated set of dependencies for a specific functionality, reducing the need for manual dependency management.
+
+Auto-Configuration: At runtime, Spring Boot's auto-configuration mechanism uses @EnableAutoConfiguration to automatically configure beans and settings based on the classpath and defined beans in the context.
+                    This is achieved through a series of conditional configurations specified in META-INF/spring.factories.
+
+Embedded Servers: For web applications, Spring Boot provides embedded servers (e.g., Tomcat, Jetty) that can run the application directly without needing external server deployment. 
+                  This is configured through the spring-boot-starter-web dependency.
+
+SpringApplication: The SpringApplication class is the entry point for launching a Spring Boot application. It sets up the default configuration, starts the Spring context, performs classpath scans,
+                    and launches the embedded server if needed.
+
+Application Context: Spring Boot initializes the Spring Application Context, which is a central interface to the Spring framework's Inversion of Control (IoC) container. 
+                     It manages beans and their dependencies, life cycle, and configuration.
+
+Configuration Properties: Spring Boot simplifies external configuration through properties files (application.properties or application.yml). The @Value and @ConfigurationProperties annotations are used 
+                          to inject configuration properties into beans.
+
+Profiles: Spring Boot supports profiles to allow different configurations for different environments (e.g., development, testing, production). Profiles can be activated via properties or environment variables, 
+          enabling context-specific beans and configurations.
+
+Actuator: Spring Boot Actuator provides production-ready features like monitoring and managing applications through various endpoints (e.g., health checks, metrics).
+
+Spring Initializer: Spring Boot applications are often created using Spring Initializr,which provides a web-based interface to generate a Spring Boot project structure with necessary dependencies & configurations.
+
+Convention Over Configuration: Spring Boot follows principle of convention over configuration, providing sensible defaults to reduce the need for explicit configuration while allowing customization when necessary.
+
+MAJOR STARTER DEPENDENCIES:
+Spring Boot provides a range of starter dependencies to simplify the setup of common frameworks and functionalities.
+
+spring-boot-starter-web: Includes dependencies for building web applications, both RESTful and traditional MVC. It includes Spring MVC, Tomcat (as the default embedded container), Jackson for JSON processing, 
+                        and validation support.
+
+spring-boot-starter-data-jpa: Provides support for the Java Persistence API (JPA) using Spring Data JPA with Hibernate as the default ORM provider. It includes dependencies for database interaction,
+                              ORM, and transaction management.
+
+spring-boot-starter-security: Adds Spring Security for authentication and authorization. It includes common security practices, configurations, and filters to secure web applications.
+
+spring-boot-starter-thymeleaf: Integrates the Thymeleaf templating engine, making it easy to build server-side rendered HTML views with Spring MVC.
+
+spring-boot-starter-test: Includes testing libraries and frameworks like JUnit, Spring Test, AssertJ, Hamcrest, Mockito, and JSONassert, providing comprehensive support for writing unit and integration tests.
+
+spring-boot-starter-actuator: Provides production-ready features for monitoring and managing applications, including endpoints for health checks, metrics, and environment information.
+
+spring-boot-starter-logging: Configures logging with Logback as the default logger, including SLF4J for logging abstraction.
+
+spring-boot-starter-data-mongodb: Adds support for MongoDB, including Spring Data MongoDB to simplify database operations with MongoDB.
+
+spring-boot-starter-validation: Provides support for bean validation using Hibernate Validator as the default implementation of the Bean Validation (JSR-380) API.
+
+spring-boot-starter-aop: Adds support for Aspect-Oriented Programming (AOP) with Spring AOP and AspectJ.
+
+spring-boot-starter-batch: Simplifies the setup of Spring Batch for processing large volumes of data, including reading, processing, and writing data.
+
+spring-boot-starter-mail: Adds support for sending emails using the JavaMailSender interface, including dependencies for JavaMail and Spring’s email utilities.
+
+
+HOW TO CONFIGURE SPRING BOOT EXTERNALLY:
+
+ 1)application.properties or application.yml
+   Place a file named application.properties or application.yml in the src/main/resources directory.
+   Define key-value pairs or YAML structure for configuration settings (server port and data source URL)
+
+2)Environment Variables
+  Set environment variables to override Spring Boot properties.(export SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/mydb)
+
+3)Application Profiles(spring.profiles.active=dev)
+  Use profiles to manage different configurations for different environments.
+  Define profile-specific properties files (e.g., application-dev.properties, application-prod.properties).
+  Activate a profile using environment variables, command-line arguments, or within the properties file.
+
+4)Spring Cloud Config(spring.cloud.config.uri=http://config-server:8888)
+  Use Spring Cloud Config to externalize configuration to a centralized server.
+  Store configurations in a remote Git repository or other supported storage.
+  Configure your application to fetch configurations from the Spring Cloud Config Server
+
+
+5). ConfigurationProperties
+   Use @ConfigurationProperties to bind external properties to a Java bean
+
+   @ConfigurationProperties(prefix = "app")
+   public class AppConfig {
+    private String name;
+    private String description;
+    // getters and setters
+}
+
+External configuration in Spring Boot is achieved through properties or YAML files, environment variables, command-line arguments, application profiles, and Spring Cloud Config, providing flexibility
+and separation of concerns for different deployment environments.
+
+INVERSION OF CONTROL:
+Inversion of Control (IoC) is a design principle in which the control of object creation and dependency management is transferred from the application code to a container or framework. In Spring, 
+the IoC container is responsible for instantiating, configuring, and managing the lifecycle of beans (objects).
+
+Types of IoC Containers in Spring:
+1.BeanFactory:
+
+Description: The simplest container that provides basic IoC functionality.
+Features: Lazy initialization (beans are created when needed).
+          
+2.ApplicationContext:
+
+Description: Extends BeanFactory and adds more enterprise-specific functionality.
+Features: Eager initialization (beans are created at startup), support for event propagation, internationalization, and more.
+          Common Implementations:
+ClassPathXmlApplicationContext: Loads context from an XML file located in the classpath.
+FileSystemXmlApplicationContext: Loads context from an XML file in the file system.
+AnnotationConfigApplicationContext: Loads context from Java-based configuration using annotations.
+
+Summary:
+The IoC container in Spring manages the creation, configuration, and lifecycle of beans. The main types are BeanFactory for basic needs and ApplicationContext for advanced features,
+facilitating flexible and decoupled application development.
+
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+
+public class MyService {
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        MyService myService = context.getBean(MyService.class);
+        myService.doSomething();
+    }
+}
+
+DEPENDENCY INJECTION:
+Dependency Injection (DI) is a design pattern used in software development to achieve Inversion of Control (IoC) between classes and their dependencies. It allows objects to receive their dependencies 
+from an external source rather than creating them internally, promoting loose coupling and easier testing.
+
+1.Constructor Injection: Dependencies are provided through a class constructor.
+
+public class MyService {
+    private final MyRepository repository;
+
+    public MyService(MyRepository repository) {
+        this.repository = repository;
+    }
+}
+
+2.Setter Injection: Dependencies are provided through setter methods
+
+public class MyService {
+    private MyRepository repository;
+
+    public void setRepository(MyRepository repository) {
+        this.repository = repository;
+    }
+}
+3.Field Injection: Dependencies are provided directly into fields (typically using annotations like @Autowired in Spring).
+
+public class MyService {
+    @Autowired
+    private MyRepository repository;
+}
+
+Summary
+Dependency Injection inverts the control of managing dependencies from the class itself to an external container or framework, enhancing modularity and testability.
+   
+APPLICATION.PROPERTIES FILE IN SPRING BOOT:
+
+The application.properties file in Spring Boot is used to configure application settings and externalize configuration. This file allows developers to set various properties for the application, 
+including server settings, database connections, logging configurations, and more.
+
+Key Features
+Configuration: Define various application-level settings.
+Externalization: Keep configurations outside the codebase for different environments (development, testing, production).
+
+1.Server Configuration:
+server.port=8081
+
+2.Database Configuration:
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=password
+
+3.Logging Configuration:
+logging.level.org.springframework=DEBUG
+
+4.Profile-Specific Properties: Use application-{profile}.properties for environment-specific configurations.
+spring.profiles.active=dev
+
+Summary
+The application.properties file is a central place to define application configurations in Spring Boot, enabling easy management and customization of settings without changing the codebase.
+
+
+FLOW OF SPRING BOOT APPLICATION:
+1.Initialization:The application starts with the main method, which invokes SpringApplication.run().
+  @SpringBootApplication
+public class MyApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+    }
+}
+2.Auto-Configuration:
+
+  Spring Boot’s auto-configuration mechanism scans the classpath and applies default configurations based on the dependencies found.
+  This is enabled by the @SpringBootApplication annotation, which combines @EnableAutoConfiguration, @ComponentScan, and @Configuration.
+
+3.Application Context Setup:
+  An ApplicationContext (usually a WebApplicationContext for web apps) is created.
+  Spring beans are instantiated, configured, and wired together based on the configurations provided.
+
+4.Embedded Server Startup:
+
+  For web applications, an embedded server (e.g., Tomcat, Jetty) is started automatically.
+  The server listens for incoming HTTP requests.
+
+5.Controller Mapping:
+
+  @RestController or @Controller classes define endpoints using @RequestMapping, @GetMapping, etc.
+  Requests are mapped to the appropriate controller methods.
+
+6.Request Handling:
+
+  Incoming requests are handled by DispatcherServlet, which delegates them to the appropriate controllers.
+  Controllers process the request, interact with service and repository layers as needed, and return a response.
+
+7.Response:
+
+  The response is returned to the client (e.g., JSON response in a RESTful application).
+  View templates (e.g., Thymeleaf) may be rendered for web applications.
+
+8.Lifecycle Management:
+
+  The application context manages the lifecycle of beans, handling initialization and destruction.
+  Beans can be annotated with @PostConstruct and @PreDestroy for custom initialization and cleanup.
+
+Summary
+The flow of a Spring Boot application involves starting with SpringApplication.run(), applying auto-configuration, setting up the application context, starting an embedded server,
+handling requests via controllers, and managing the lifecycle of beans. This flow leverages Spring’s powerful dependency injection and IoC capabilities to streamline application development.
+
+HIBERNATE VS JPA:
+Hibernate vs JPA: A Concise Comparison
+JPA (Java Persistence API)
+  Specification: JPA is a specification for object-relational mapping (ORM) in Java, providing a set of interfaces and abstract methods for ORM.
+  Standardization: It standardizes the way Java objects are mapped to database tables and how queries are constructed.
+  Vendor-Neutral: JPA does not provide implementation; it requires an ORM tool for implementation (like Hibernate).
+Hibernate:
+  Implementation: Hibernate is a popular ORM framework that implements the JPA specification.
+  Additional Features: Beyond JPA, Hibernate offers additional features like caching, lazy loading, and a more powerful query language (HQL).
+  Direct Use: Hibernate can be used directly without JPA, utilizing its own API
+
+Key Points
+JPA:
+  Standard API for ORM.
+  Vendor-neutral.
+  Requires an implementation (e.g., Hibernate, EclipseLink).
+Hibernate:
+  Full-fledged ORM framework.
+  Implements JPA.
+  Provides additional features not covered by JPA.
+
+JPA (Abstract):
+  @Entity
+  public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
+    // getters and setters
+}
+
+Hibernate (Implementation):
+Session session = sessionFactory.openSession();
+Transaction tx = session.beginTransaction();
+User user = new User();
+user.setName("John");
+session.save(user);
+tx.commit();
+session.close();
+
+Summary
+JPA is a specification that defines the standard for ORM in Java, while Hibernate is an ORM framework that implements JPA and provides additional features. JPA provides a unified approach to ORM, 
+and Hibernate enhances it with more robust capabilities.
+
+SESSION VS SESSION FACTORY:
+
+SessionFactory:
+Definition: A heavyweight object that provides a thread-safe way to create Session instances.
+Lifecycle: Created once per application (typically during startup) and kept for the entire lifecycle of the application.
+Configuration: Configured using Hibernate configuration files or programmatically.
+Purpose: Manages and configures database connections, provides Session instances, and serves as a factory for Session objects.
+
+Session:
+Definition: A lightweight, non-thread-safe object that represents a single unit of work with the database.
+Lifecycle: Short-lived; created and closed per request or transaction.
+Usage: Used to perform CRUD operations (Create, Read, Update, Delete) on persistent objects.
+Transaction Management: Each Session instance is associated with a database transaction.
+
+Key Points
+
+SessionFactory:
+Scope: Application-wide, one instance for the entire application.
+Responsibility: Configuring Hibernate and providing Session objects.
+Performance: Heavyweight, costly to create, should be created once and reused.
+
+Session:
+Scope: Per transaction or request, multiple instances can exist simultaneously.
+Responsibility: Managing the persistence operations for a single unit of work.
+Performance: Lightweight, designed to be created and closed frequently.
+
+
+SessionFactory:
+SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+Session:
+Session session = sessionFactory.openSession();
+Transaction tx = session.beginTransaction();
+// Perform database operations
+tx.commit();
+session.close();
+
+
+Summary
+SessionFactory: A heavyweight, thread-safe object created once per application to manage database connections and provide Session objects.
+Session: A lightweight, non-thread-safe object created per transaction or request to perform CRUD operations and manage a single unit of work with the database.
+
+
+PROFILE IN SPRING:
+In Spring, a profile is a way to segregate parts of your application configuration and make it available only in certain environments. Profiles are typically used to define different configurations 
+for different environments like development, testing, and production.
+
+Key Points about Profiles in Spring
+Definition: Profiles allow you to group beans and configuration settings so that they are only activated in a specific environment.
+Activation: Profiles can be activated using environment variables, command-line arguments, or configuration files.
+
+How to Use Profiles:
+1. Annotate Beans:
+   Use @Profile to specify the profile(s) in which a bean should be active.
+
+@Configuration
+@Profile("dev")
+public class DevConfig {
+    // Beans and configuration for development
+}
+
+@Configuration
+@Profile("prod")
+public class ProdConfig {
+    // Beans and configuration for production
+}
+
+
+2.Activate Profiles:
+  In application.properties or application.yml
+    spring.profiles.active=dev
+  Using command-line arguments:
+    java -jar myapp.jar --spring.profiles.active=dev
+
+3.Conditional Beans:
+  Use @Profile directly on beans to load them conditionally.
+
+@Bean
+@Profile("dev")
+public DataSource devDataSource() {
+    // DataSource configuration for development
+}
+
+@Bean
+@Profile("prod")
+public DataSource prodDataSource() {
+    // DataSource configuration for production
+}
+
+
+Summary
+Profiles in Spring allow you to manage different configurations and beans for different environments, enhancing flexibility and simplifying environment-specific settings.
+They can be activated through properties files, environment variables, or command-line arguments.
+
+SPRING MVC DESIGN PATTERN:
+Spring MVC (Model-View-Controller) is a framework within the Spring ecosystem that follows the MVC design pattern to separate concerns in web applications. It helps organize the code by dividing 
+it into three main components: Model, View, and Controller.
+
+Components of Spring MVC:
+1.Model:
+
+  Definition: Represents the application's data and business logic.
+  Purpose: Encapsulates the data to be displayed and the state of the application.
+  Example: POJOs (Plain Old Java Objects) that are used to hold data
+
+public class User {
+    private String name;
+    private String email;
+    // Getters and Setters
+}
+
+
+2.View:
+
+  Definition: Represents the presentation layer, usually HTML or JSP pages.
+  Purpose: Displays the data provided by the Model.
+  Example: JSP, Thymeleaf, FreeMarker templates.
+<!-- Example Thymeleaf Template -->
+<html>
+<body>
+    <h1>Hello, <span th:text="${user.name}">User</span>!</h1>
+</body>
+</html>
+
+3.Controller:
+
+  Definition: Manages the flow of the application, handling user input and interactions.
+  Purpose: Processes incoming requests, interacts with the Model, and returns the appropriate View.
+  Example: Spring controllers annotated with @Controller or @RestController.
+
+@Controller
+public class UserController {
+    @GetMapping("/user")
+    public String getUser(Model model) {
+        User user = new User();
+        user.setName("John");
+        user.setEmail("john@example.com");
+        model.addAttribute("user", user);
+        return "userView";
+    }
+}
+
+Request Handling Flow:
+  Client Request: A client sends a request to the server.
+  DispatcherServlet: The central servlet (configured in web.xml or automatically in Spring Boot) that dispatches requests to appropriate controllers.
+  Controller: The controller processes the request, interacts with the model, and determines the view to render.
+  Model: Data is prepared and added to the model.
+  View: The view renders the response using the data from the model.
+  Response: The view is sent back to the client as an HTTP response.
+
+summary:
+Spring MVC implements the Model-View-Controller pattern to separate concerns in web applications, enhancing modularity and maintainability. The Model represents the data, 
+the View displays the data, and the Controller handles user requests and interactions, coordinating between the Model and the View
+
+SPRING VS SPRING BOOT:
+Spring Framework:
+ Overview: A comprehensive and flexible framework for building enterprise Java applications.
+ Configuration: Requires extensive XML configuration or Java-based configuration (using annotations).
+ Components: Provides a wide range of modules (e.g., Spring Core, Spring AOP, Spring MVC, Spring Security) for different functionalities.
+ Complexity: Setup and configuration can be complex and time-consuming.
+Spring Boot:
+ Overview: An extension of the Spring Framework designed to simplify the development of stand-alone, production-ready Spring applications.
+ Configuration: Uses convention over configuration, providing default settings and reducing boilerplate code. Configuration is typically done via properties files and annotations.
+ Components: Bundles dependencies and configurations for various modules, including embedded servers (e.g., Tomcat, Jetty).
+ Simplicity: Streamlines the setup process with auto-configuration, starter dependencies, and embedded servers.
+
+Key Differences
+Setup and Configuration:
+ Spring: Requires manual setup and configuration.
+ Spring Boot: Provides auto-configuration and starter dependencies to simplify setup.
+
+Dependency Management:
+ Spring: Requires manual management of dependencies.
+ Spring Boot: Uses starter dependencies to automatically include relevant libraries.
+
+Embedded Server:
+ Spring: Requires external server configuration.
+ Spring Boot: Includes embedded servers for easy deployment.
+
+Project Initialization:
+ Spring: Requires detailed configuration.
+ Spring Boot: Provides the Spring Initializr (a web-based tool) for generating project templates.
+
+Microservices:
+ Spring: Can be used for building microservices but needs additional setup.
+ Spring Boot: Optimized for building microservices with minimal setup.
+
+Spring:
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyService myService() {
+        return new MyServiceImpl();
+    }
+}
+
+@Component
+public class MyComponent {
+    @Autowired
+    private MyService myService;
+    // Use myService
+}
+
+Spring Boot:
+@SpringBootApplication
+public class MyApp {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApp.class, args);
+    }
+}
+
+@Service
+public class MyService {
+    // Business logic
+}
+
+@RestController
+public class MyController {
+    @Autowired
+    private MyService myService;
+    
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, World!";
+    }
+}
+
+Summary
+Spring Framework: A robust, flexible framework that requires manual configuration, suitable for complex applications.
+Spring Boot: A streamlined extension of Spring that simplifies development with auto-configuration, starter dependencies, and embedded servers, ideal for quick development and microservices.
+
+
+HIBERNATE QUERY LANGUAGE:
+
+HQL (Hibernate Query Language) is an object-oriented query language similar to SQL, but it operates on the persistent objects (entities) rather than directly on database tables.
+
+Key Features
+ Object-Oriented: HQL queries are based on the entity objects and their properties rather than the database tables and columns.
+ Database-Independent: HQL abstracts the SQL specifics of the underlying database, making the application more portable.
+ Powerful: Supports operations like joins, group by, and aggregate functions, similar to SQL.
+
+Basic Syntax:
+ Select Queries:
+   String hql = "FROM User";
+   Query query = session.createQuery(hql);
+   List results = query.list();
+ Where Clause:
+    String hql = "FROM User U WHERE U.id = :userId";
+    Query query = session.createQuery(hql);
+    query.setParameter("userId", 1);
+    List results = query.list();
+ Joins:
+    String hql = "SELECT U FROM User U JOIN U.orders O WHERE O.amount > :amount";
+    Query query = session.createQuery(hql);
+    query.setParameter("amount", 1000);
+    List results = query.list();
+Aggregations:
+    String hql = "SELECT COUNT(U) FROM User U";
+    Query query = session.createQuery(hql);
+    Long count = (Long) query.uniqueResult();
+
+Usage example:
+  Session session = sessionFactory.openSession();
+  Transaction tx = session.beginTransaction();
+  String hql = "FROM User U WHERE U.name = :userName";
+  Query query = session.createQuery(hql);
+  query.setParameter("userName", "John");
+  List<User> users = query.list();
+  tx.commit();
+  session.close();
+
+Summary:
+  HQL is a powerful, database-independent query language used in Hibernate to perform CRUD operations on persistent objects. It provides an object-oriented approach to query databases, 
+  making it easier to work with Java entities and ensuring portability across different database systems.
+
+
+OAuth: 
+   OAuth (Open Authorization) is an open standard protocol that allows secure authorization and resource access between applications without exposing user credentials.
+
+Key Concepts
+  Resource Owner: The user who owns the data.
+  Client: The application requesting access to the user's data.
+  Authorization Server: The server that authenticates the resource owner and issues access tokens.
+  Resource Server: The server hosting the user's protected resources, accepts and validates access tokens.
+Flow Overview:
+ 1.Authorization Request: The client requests authorization from the resource owner (user).
+ 2.Authorization Grant: The resource owner grants authorization (e.g., via a consent screen).
+ 3.Access Token Request: The client requests an access token from the authorization server, providing the authorization grant.
+ 4.Access Token: The authorization server issues an access token to the client.
+ 5.Resource Request: The client uses the access token to request resources from the resource server.
+ 6.Protected Resource: The resource server validates the access token and serves the requested resource.
+Example:
+ 1.User Login: User logs in to a third-party app using their Google account.
+ 2.Consent: User consents to allow the app to access their Google profile.
+ 3.Token Exchange: The app receives an access token from Google's authorization server.
+ 4.Resource Access: The app uses the access token to fetch the user's Google profile data.
+
+Summary
+OAuth enables third-party applications to access user resources without sharing passwords, using a secure, token-based authorization process.
+
+
+Storing Passwords in Spring Boot:
+  In Spring Boot, passwords are securely stored by hashing them using a password encoder. The most commonly used approach involves BCrypt, a hashing algorithm designed for storing passwords.
+Key Steps
+ 1.Include Dependency: Ensure the spring-boot-starter-security dependency is included in your pom.xml or build.gradle.
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+2.Password Encoder Configuration: Define a BCryptPasswordEncoder bean in your configuration class
+  @Configuration
+public class SecurityConfig {
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+3.Hashing Passwords: Use the password encoder to hash passwords before storing them in the database.
+  @Autowired
+private BCryptPasswordEncoder passwordEncoder;
+
+public void registerUser(User user) {
+    String encodedPassword = passwordEncoder.encode(user.getPassword());
+    user.setPassword(encodedPassword);
+    userRepository.save(user);
+}
+4.Verifying Passwords: Use the password encoder to verify passwords during authentication.
+
+public boolean authenticate(String rawPassword, String encodedPassword) {
+    return passwordEncoder.matches(rawPassword, encodedPassword);
+}
+
+Summary
+In Spring Boot, passwords are securely stored by hashing them with a password encoder such as BCryptPasswordEncoder. This involves hashing the password before saving it to the database and
+verifying the hashed password during authentication.
+
+Connecting MySQL Database with a Spring Boot Application:
+
+Add dependencies: Include Spring Data JPA and MySQL connector.
+Configure datasource: Set database properties in application.properties or application.yml.
+Define entity: Create an entity class for your database table.
+Create repository: Create a JPA repository interface for CRUD operations.
+Use repository: Inject and use the repository in your service or controller.
+
+
+HOW TO SECURE SB APPLICATION:
+ Add Dependencies: Include spring-boot-starter-security in pom.xml.
+ Configure Security: Create a SecurityConfig class  a configuration class to customize security settings.(SecurityConfig extends WebSecurityConfigurerAdapter)(configure and passwordEncoder method)
+ UserDetailsService: Implement custom UserDetailsService to load user-specific data.(CustomUserDetailsService implements UserDetailsService)
+ User Entity: Define a user entity and repository to store user details.
+ Login/Register Pages: Create HTML forms for login and registration pages to handle user authentication.
+ Controller: Handle user registration in a controller.
+
+
+SPRING BOOT ACTUATORS: Spring Boot Actuator provides production-ready features to help you monitor and manage your application.
+
+Key Features
+1.Endpoints:
+ Health: /actuator/health - Shows application health information.
+ Info: /actuator/info - Displays arbitrary application info.
+ Metrics: /actuator/metrics - Exposes various application metrics.
+ Env: /actuator/env - Exposes environment properties.
+ HTTP Trace: /actuator/httptrace - Displays HTTP request-response trace.
+
+ 2.Auto-Configuration:
+ Actuator endpoints are auto-configured and can be easily customized.
+
+ 3.Security:
+ Endpoints can be secured using Spring Security.
+
+Quick Setup:
+
+1.Add Dependency:Add the Actuator dependency in your pom.xml
+2.Enable Endpoints: Configure the application to expose Actuator endpoints in application.properties (management.endpoints.web.exposure.include=*)
+3.Access Endpoints: Start your application and access the Actuator endpoints via http://localhost:8080/actuator
+ 
+Security: Secure endpoints using Spring Security (Actuator Endpoints) 
+Customization: Customize endpoints via properties.management.(endpoint.health.show-details=always , management.endpoint.metrics.enabled=true).
+
+HOW TO DEPLOY SB APPLICATION JAR FILE IN PIVOTAL CLOUD FOUNDARY
+
+1.Prerequisites:
+ Ensure you have a Pivotal Cloud Foundry (PCF) account.
+ Install the Cloud Foundry CLI from here.
+2'Build Your Spring Boot Application:
+  package your Spring Boot application into a JAR file using Maven or Gradle.(mvn clean package)
+3.Create a manifest.yml File:
+   Create a manifest.yml file in the root directory of your project to define the deployment parameters.
+    applications:
+  - name: your-app-name
+   memory: 512M
+   instances: 1
+   path: target/your-app-name.jar
+   buildpacks:
+    - java_buildpack
+
+4.Login to Cloud Foundry:
+   Open your terminal and log in to your PCF account(cf login -a https://api.run.pivotal.io)
+   Follow the prompts to enter your email, password, and select the organization and space.
+5.Deploy the Application:
+
+  Use the cf push command to deploy your application to PCF(cf push)
+6.Verify Deployment:
+  After deployment, verify that your application is running by accessing the URL provided by Cloud Foundry.
+
+HOW TO DEPLOY SB APPLICATION JAR FILE IN VIRTUAL MACHINE:
+
+Summary
+Build the JAR: mvn clean package or ./gradlew clean build.
+Setup VM: Install Java if needed.
+Transfer JAR: Use scp to move the JAR to the VM.(Use scp (secure copy) to transfer the JAR file from your local machine to the VM)(scp /path/to/your-app.jar user@vm-ip-address:/path/on/vm)
+Run Application: java -jar your-app.jar.  1.SSH into your VM 2.Navigate to the directory where you transferred the JAR file 3.Run the JAR file using the java -jar command.
+(Optional) Background Service: Use nohup or systemd.
+Reload systemd and start the service:
+  sudo systemctl daemon-reload
+  sudo systemctl start your-app
+  sudo systemctl enable your-app
+
+HOW TO DEPLOY SB APPLICATION JAR FILE IN local MACHINE:
+Summary
+ Build the JAR: mvn clean package or ./gradlew clean build.
+ Ensure Java is Installed: Verify Java with java -version.
+ Run Application: Navigate to the JAR location and run java -jar your-app.jar.
+ Access the Application: Open a web browser and go to http://localhost:8080.
+
+
+HANDLING EXCEPTIONS IN SPRING BOOT APPLICATION:
+1.Global Exception Handling: Use @ControllerAdvice and @ExceptionHandler to handle exceptions globally across all controllers.
+2. Custom Exceptions: Define custom exception classes for specific error scenarios.
+        public class ResourceNotFoundException extends RuntimeException {
+         public ResourceNotFoundException(String message) {
+           super(message);
+         }
+       }
+
+3.Controller-Level Exception Handling: Use @ExceptionHandler within controllers for controller-specific exception handling.
+4.Custom Error Responses: Create custom error response structures for consistent error responses.
+                          Use this custom error response in your global exception handle
+
+                 public class ErrorResponse {
+                  private String message;
+                 private Date timestamp;
+                 private String details;
+
+            // Constructors, getters and setters
+            }
+
+ENABLING LOGGING IN SPRING BOOT APPLICATIONS:
+Spring Boot uses Spring Boot Logging which defaults to Logback for logging. Here are the steps to enable and configure logging:
+
+1.Default Logging: Spring Boot logs to the console at INFO level by default.
+2.Customize Log Levels: Set log levels in application.properties or application.yml.
+        logging.level.root=INFO
+        logging.level.org.springframework.web=DEBUG
+        logging.level.com.yourpackage=TRACE
+3.Log to a File: Configure file logging in application.properties or application.yml.
+    logging.file.name=app.log
+    logging.file.path=/var/logs
+4.Advanced Configuration: Use logback-spring.xml for detailed log configurations.(Create a logback-spring.xml file in the src/main/resources directory for advanced logging configurations.)
+5.Programmatic Log Level Change: Use the LoggingSystem API to change log levels programmatically.
+
+CREATING SPRING BOOT PROJECT USING MAVEN:
+
+1.Install Prerequisites: Ensure Java and Maven are installed.
+2.Create Maven Project: Use mvn archetype:generate command following by details in cmd terminal and run and then navigate to directory.
+3.Add Dependencies: Update pom.xml with Spring Boot dependencies.
+4.Create Main Class: Define the main application class with @SpringBootApplication.
+5.Run Application: Use mvn spring-boot:run or build and run the JAR
+                mvn clean package
+                java -jar target/my-spring-boot-app-1.0-SNAPSHOT.jar
+
+ADDING A FILTER TO SPRING BOOT APPLICATION: Filters are used in web applications to perform various tasks such as logging, authentication, and modifying requests and responses.
+
+1.Create a Filter Class: Implement javax.servlet.Filter interface and override the doFilter method.(CustomFilter implements Filter )(init ,doFilter and destroy methods)
+2.Register the Filter:
+       As a @Bean in a configuration class using FilterRegistrationBean.
+       Or, using @WebFilter annotation for declarative configuration.
+3.Run the Application: Start the Spring Boot application to see the filter in action.
+
+CONNECTING SPRING BOOT TO A MYSQL DATABASE USING JPA:
+Summary
+1.Add Dependencies: Include Spring Boot JPA and database driver dependencies.(data-jpa,web,mysql)
+2.Configure Database: Add database settings in application.properties or application.yml.(url,username,password)
+3.Define Entity: Create a JPA entity class.(Define an entity class that maps to a database table)
+4.Create Repository: Extend JpaRepository in a repository interface.
+5.Service Layer: (Optional) Implement a service layer for business logic.
+6.Create Controller: Implement a REST controller to handle HTTP requests
+
+HOW TO CHANGE JDK VERSION USED IN A SPRING BOOT APPLICATION
+1.specify the Java version in the <properties> section of your pom.xml file
+  Additionally, if you're using the Maven compiler plugin, you can configure the Java version in its configuration:
+2.refresh project dependencies to ensure that your IDE and build tools recognize the new Java version.
+
+
+USING JDBC FOR SPRING BOOT DATA BASE CONNECTION 
+Add Dependencies: Include spring-boot-starter-jdbc and the appropriate database driver dependency(MYSQL).
+Configure Database: Add database connection settings in application.properties or application.yml.(url,username,password)
+Use JdbcTemplate: Inject JdbcTemplate into your Spring components to interact with the database for database operations.(In repository class)
+Run the Application: Start the Spring Boot application, and JDBC will automatically configure and manage the  database connection based on the configuration.
+
+
+CREATING JAR FILE FOR A SPRING BOOT APPLICATIONS:
+1.Ensure Main Class: Verify that you have a main application class annotated with @SpringBootApplication.
+2.Add Maven Plugin: Include the Spring Boot Maven plugin in your pom.xml.
+3Build the Project: Run mvn clean package to build the project and create the JAR file.
+Locate JAR File: Find the JAR file in the target directory.
+
+CONFIGURING HIBERNATE IN SPRING BOOT:
+1.Add Dependencies: Include spring-boot-starter-data-jpa and the appropriate database driver.
+2.Configure Database: Add database connection settings in application.properties or application.yml.(url,username,password)
+3.Define Entity: Create a JPA entity class that maps to a database table.
+4.Create Repository: Extend JpaRepository in a repository interface.
+5.Run Application: Start the application Hibernate will automatically configure based on your settings..
+
+SPRING DATA REST:
+Spring Data REST is a project within the Spring ecosystem that automatically creates RESTful APIs based on your Spring Data repositories. It simplifies the creation of RESTful services by eliminating 
+the need to write controller code manually for CRUD operations. Here are the key points:
+
+1.Automatic REST Endpoints:
+    It automatically generates RESTful endpoints for your repository interfaces.
+    No need to write boilerplate code for basic CRUD operations.
+2.HAL (Hypertext Application Language):
+    Responses are formatted using HAL, which provides a standardized way to represent resources and their links, making the API self-descriptive.
+3.Customization:
+    Endpoints can be customized through annotations and configuration.
+    Allows fine-grained control over the exposed endpoints and their behavior.
+4.Event Hooks:
+    Provides hooks for custom logic before and after repository methods are called, such as @HandleBeforeCreate, @HandleAfterCreate, etc.
+5.Paging and Sorting:
+    Supports pagination and sorting out-of-the-box for large data sets.
+    Easily configurable via query parameters.
+
+1.Add Dependency:
+   Add spring-boot-starter-data-rest to your pom.xml
+2.Define Entity and Repository:
+   Create a JPA entity and a corresponding repository (@RepositoryRestResource)
+3.Run the Application:
+   Start your Spring Boot application, and Spring Data REST will automatically expose CRUD endpoints for the Person entity at /people.
+
+GETTING THE LIST OF BEANS IN A SPRING BOOT APPLICATION:
+To get the list of all beans in your Spring Boot application, you can use the ApplicationContext and its method getBeanDefinitionNames()
+
+1.Create CommandLineRunner:
+  Implement a CommandLineRunner bean to fetch and print bean names when the application starts..
+
+2.Use ApplicationContext:
+  Inject ApplicationContext and call getBeanDefinitionNames() in CommandLineRunner bean.
+
+3.Run the Application:
+  Start the spring boot  application the CommandLineRunner will execute and print the list of all beans..
+
+BUILDING A REST API WITH SPRING BOOT:
+1.Set Up Project: Use Spring Initializr to create a Spring Boot project with necessary dependencies(web,data JPA,mysql)
+2.Main Application: Create the main class with @SpringBootApplication.
+3.Define Entity: Create a JPA entity class that maps to a database table.
+4.Repository Interface: Create an interface extending JpaRepository.
+5.Service Layer: (Optional) Implement a service layer to handle business logic.
+6.REST Controller: Create a REST controller with CRUD or HTTP endpoints.
+7.Database Configuration: Add database settings in application.properties or application.yml.(url,username,password)
+8.Run Application: Start the application and test the API endpoints using a tool like Postman or curl.
+
+HIBERNATE AS DEFALUT JPA IMPLEMENTATION IN SPRING BOOT:
+reasons:
+1.spring Boot Starters: spring-boot-starter-data-jpa includes Hibernate as the default JPA provider. This starter packs everything needed to set up a JPA implementation using Hibernate.
+2.Auto-Configuration: Automatically configures Hibernate as the JPA provider if Hibernate is  on the classpath.
+                      The auto-configuration class (HibernateJpaAutoConfiguration) gets activated and sets up Hibernate as the JPA provider by default.
+3.Dependency Management: Ensures Hibernate is included and properly configured.ensuring that a compatible version of Hibernate is included when you use spring-boot-starter-data-jpa.
+4.Zero Configuration: As long as Hibernate is included via the starter, you don’t need any extra configuration to make it work. Spring Boot uses sensible defaults to configure Hibernate for you.
+
+By simply including the spring-boot-starter-data-jpa dependency, Hibernate is automatically chosen and configured as the default JPA provider in Spring Boot applications.
+
+INTEGRATING SPRING BOOT WITH ACTIVEMQ:
+1.Add Dependencies: Include spring-boot-starter-activemq and ActiveMQ broker dependencies and ensure it matches with the desired version.
+2.Configure ActiveMQ: Set up broker URL and credentials in application.properties or application.yml.
+3.Create JMS Listener: Define a JMS listener to consume messages  from an ActiveMQ queue.( @JmsListener(destination = "my-queue")
+4.Send Messages: Use JmsTemplate to send messages to a queue in controller.
+5.Run ActiveMQ Broker: Ensure the ActiveMQ broker is running locally or on a specified server.
+6.Run Application: Start your Spring Boot application to enable messaging.It should now be able to send and receive messages from ActiveMQ.
+
+
+INTEGRATING SPRING BOOT WITH APACHE KAFKA:
+
+1.Add Dependencies: Include spring-boot-starter and spring-kafka dependencies in pom.xml.
+2.Configure Kafka: Set up Kafka properties in application.properties or application.yml(url and credentials)
+3.Create Kafka Producer: Define a kafka producer to send messages to a Kafka topic.(kafka producer controller class with sendmessage method)
+4.Create Kafka Consumer: Define a consumer to listen to and process messages from a Kafka topic(kafka consumer service class with consume method)
+5.Run Kafka Broker: Ensure the Kafka broker is running  locally or on a specified server.
+6.Run Application: Start your Spring Boot application to enable Kafka messaging. It should now be able to produce and consume messages from Kafka.
+
+IMPLEMENTING SWAGGER IN SPRING BOOT:
+1.Add Dependencies: Include the springfox-boot-starter dependency in your pom.xml.
+2.Configure Swagger: Create a configuration class (SwaggerConfig) to set up Swagger.use annotation @EnableSwagger2.
+3.Enable Swagger UI: Springfox provides a built-in UIinterface out of box.ou just need to start your application and navigate to the URL to see the Swagger UI.
+4.Access Swagger UI: Start your application and visit http://localhost:8080/swagger-ui/ to view and interact with your API documentation.
+
+GENERATING WAR FILE WITH SPRING BOOT:
+1.Modify pom.xml: Set packaging to war and add necessary dependencies and plugins.(tomcat ,web , maven plug-in)
+2.Extend SpringBootServletInitializer: Create a class that extends SpringBootServletInitializer and override the configure method.
+3.Adjust Main Application Class: Ensure it is annotated with @SpringBootApplication.
+4.Build WAR File: Use Maven to build the project (mvn clean package).(This command will create a target directory containing the your-app-name.war file)
+
+TYPES OF PROJECTS YOU CAN CREATE USING SPRING BOOT:
+1.Web Applications:
+  RESTful APIs: Build RESTful web services using spring-boot-starter-web.
+  Thymeleaf/MVC Applications: Create web applications with server-side rendering using spring-boot-starter-thymeleaf or JSP.
+
+2.Microservices:
+  Standalone Microservices: Develop microservices that can run independently.
+  Cloud-Native Applications: Integrate with cloud platforms using spring-cloud-starter.
+
+3.Data-Driven Applications:
+  JPA Applications: Build applications with database interactions using spring-boot-starter-data-jpa.
+  MongoDB Applications: Work with NoSQL databases using spring-boot-starter-data-mongodb.
+
+4.Batch Processing Applications:
+  Use spring-boot-starter-batch to create batch processing jobs for ETL (Extract, Transform, Load) tasks.
+
+5.Messaging Applications:
+  Kafka: Integrate with Apache Kafka using spring-boot-starter-kafka.
+  ActiveMQ: Use spring-boot-starter-activemq for message queuing.
+
+6.Reactive Applications:
+  WebFlux: Build reactive web applications with spring-boot-starter-webflux.
+
+7.Security Applications:
+  Implement authentication and authorization using spring-boot-starter-security.
+
+8.GraphQL Applications:
+  Develop GraphQL APIs using spring-boot-starter-graphql.
+
+9.CLI Applications:
+  Create command-line applications with spring-boot-starter.
+
+SAVING A IMAGE IN DATABASE USING SPRING BOOT:
+1.Define Entity Class: Create an entity class with a byte array field to store image data.
+2.Controller for Image Upload: Implement a controller to handle image upload requests.
+3.Service to Save Image: Create a service to handle image saving logic, converting the uploaded file to bytes and saving it to the database.
+4.Configure Database: Set up database configuration to store the image data.
+5.HTML Form for Image Upload: (Optional) Create a frontend form to allow users to upload images.
+
+FETCHING DATA FROM THE DATABASE IN SPRING BOOT:
+
+1.Define Entity Class: Create a JPA entity class to represent your data model.
+2.Create Repository Interface: Define a repository interface extending JpaRepository to interact with the database.
+3.Create Service Class: Implement a service class to handle data fetching logic.
+4.Use Service in Controller: Inject the service into your controller and define endpoints to fetch data.
+5.Configure Database: Set up database connection properties in application.properties or application.yml..
+6.Run Application: Start your Spring Boot application to fetch data from the database using the defined endpoints.
+
+ENABLE DEBUGGING LOGS IN SPRING BOOT APPLICATION:
+you can configure it using application.properties or application.yml
+   -Using application.properties: Add logging.level.root=DEBUG to enable debug logging. 
+
+HOW DOES A SPRING APPLICATION GETS STARTED:
+1.Main Method:
+    The Spring Boot application starts by invoking the main method in a class annotated with @SpringBootApplication.
+
+2.Spring Boot Initialization:
+    When the main method is executed, Spring Boot initializes the application context, scans for components, and sets up various configurations.
+
+3.Auto-Configuration:
+    Spring Boot auto-configures components based on classpath dependencies and sensible defaults.
+
+4.Embedded Server Startup:
+    If the application includes a web component, Spring Boot starts an embedded server (like Tomcat or Jetty) to handle HTTP requests.
+
+5.Component Scanning:
+    Spring scans the application's packages for components, such as controllers, services, repositories, etc., and registers them in the application context.
+
+6.Application Startup:
+    Custom initialization logic specified in beans, such as @PostConstruct methods, is executed during application startup.
+
+7.Ready State:
+    Once the initialization is complete, the Spring application becomes ready to handle incoming requests or perform other tasks based on its configuration.
+
+1.Spring Boot applications start by executing the main method in a class annotated with @SpringBootApplication.
+2.Spring Boot initializes the application context, auto-configures components, and starts an embedded server if needed.
+3.Component scanning identifies and registers components in the application context.
+4.Custom initialization logic specified in beans is executed during application startup.
+5.After initialization, the Spring application is ready to handle requests or perform other tasks based on its configuration.
+
+INTERNAL WORKING OF SPRING  BOOT APPLICATION:
+
+1.Auto-Configuration:
+  Spring Boot auto-configures components based on classpath dependencies and sensible defaults.
+  It automatically configures infrastructure beans like DataSource, EntityManager, etc., based on the presence of certain libraries in the classpath.
+
+2.Embedded Server:
+  Spring Boot includes embedded servers like Tomcat, Jetty, or Undertow, allowing applications to run without deploying to a separate server.
+  It configures and starts the embedded server based on the application's needs.
+
+3.Starter Dependencies:
+  Spring Boot provides "starter" dependencies that bundle commonly used libraries and configurations for specific tasks, such as web development, data access, testing, etc.
+  Developers can include these starters in their projects to quickly set up dependencies without manually configuring each library.
+
+4.Spring Boot Actuator:
+  Actuator provides production-ready features like health checks, metrics, and monitoring out of the box.
+  Developers can use Actuator endpoints to monitor and manage their Spring Boot applications.
+
+5.External Configuration:
+  Spring Boot allows configuring applications using properties files, YAML files, environment variables, or command-line arguments.
+  It provides sensible defaults and allows overriding configurations as needed.
+
+6.Spring Boot CLI:
+    For rapid prototyping and scripting, Spring Boot offers a Command-Line Interface (CLI) that allows writing and running Spring applications using Groovy scripts.
+
+7.Spring Boot Starters:
+  Starters are a set of convenient dependency descriptors that you can include in your application.
+  They provide a quick and easy way to set up Spring applications with the required dependencies for specific features or functionalities.
+
+Spring Boot simplifies Spring application development by providing auto-configuration, embedded servers, and opinionated dependencies.
+It includes embedded servers, such as Tomcat or Jetty, to run applications without external deployment.
+Starter dependencies bundle commonly used libraries and configurations for specific tasks.
+Actuator provides production-ready features for monitoring and managing Spring Boot applications.
+Developers can configure applications using various sources, and Spring Boot offers sensible defaults for quick setup.
+
+HTTPS REQUEST FLOW THROUGH THE SPRING BOOT APPLICATIONS:
+Client Sends Request:
+The client sends an HTTPS request to the Spring Boot application.
+
+TLS Handshake:
+When the request reaches the server, a Transport Layer Security (TLS) handshake occurs to establish a secure connection.
+This involves negotiation of encryption algorithms, verification of server's certificate, and exchange of session keys.
+
+Security Filters:
+Spring Security filters intercept the incoming request to enforce security policies.
+These filters handle authentication, authorization, and other security-related tasks.
+
+Dispatcher Servlet:
+The request is then passed through the DispatcherServlet, which is the front controller of Spring MVC.
+It routes the request to the appropriate controller based on the request mapping.
+
+Controller Processing:
+The controller processes the request, executing business logic, and preparing a response.
+
+Response Preparation:
+After processing, the controller returns a response, typically in the form of a model or a view.
+
+View Rendering:
+If the response involves rendering a view, the appropriate view resolver resolves the view and renders it.
+
+TLS Encryption:
+Once the response is ready, it is encrypted using TLS before being sent back to the client.
+The response is securely transmitted over the network to the client.
+
+Client Receives Response:
+The client receives the encrypted response and performs the TLS handshake to decrypt it.
+
+Client-Side Processing:
+The client processes the response, rendering it in the browser or performing other actions as necessary.
+
+HTTPS REQUEST FLOW OF REST APIs THROUGH THE SPRING BOOT APPLICATIONS:
+Client Request:
+  The client sends an HTTPS request to the Spring Boot application.
+
+Server Reception:
+  The embedded server (e.g., Tomcat, Jetty) receives the HTTPS request.
+  The server decrypts the HTTPS request using the configured SSL/TLS certificates.
+
+DispatcherServlet:
+  The request is passed to Spring's DispatcherServlet, which is the front controller for Spring MVC.
+  DispatcherServlet delegates the request to the appropriate handler.
+
+Handler Mapping:
+  Spring uses handler mappings to determine which controller method should handle the incoming request.
+  It matches the request URL to the corresponding controller and method based on annotations like @RequestMapping.
+
+Controller:
+  The matched controller method is invoked.
+  The controller processes the request, often interacting with services and repositories to perform business logic and data access.
+
+Service Layer:
+  The service layer contains business logic and is usually annotated with @Service.
+  It may interact with the repository layer to fetch or persist data.
+
+Repository Layer:
+  The repository layer, often using Spring Data JPA, interacts with the database to perform CRUD operations.
+
+Response Generation:
+  The controller prepares the response, which is often a JSON or XML object.
+  The response object is sent back to the DispatcherServlet.
+
+View Resolution (if applicable):
+  If the response includes view rendering (for web applications), the ViewResolver is used to generate the HTML response.
+  For REST APIs, this step is usually skipped as the response is typically in JSON or XML format.
+
+Response Return:
+  The DispatcherServlet sends the response back to the client through the embedded server.
+  The server encrypts the response using SSL/TLS before sending it to the client.
+
+
+
+
+Summary:
+1.Client Request: HTTPS request sent to Spring Boot application.
+2.Server Reception: Embedded server receives and decrypts the request.
+3.DispatcherServlet: Front controller delegates the request.
+4.Handler Mapping: Determines which controller method handles the request.
+5.Controller: Processes the request, often involving service and repository layers.
+6.Service Layer: Contains business logic.
+7.Repository Layer: Interacts with the database.
+8.Response Generation: Prepares the response object.
+9.View Resolution (if applicable): Renders HTML if necessary.
+10.Response Return: Response is encrypted and sent back to the client.
+
+ Dependency Injection and how does Spring implement it:
+Dependency Injection (DI) is a design pattern where an object’s dependencies are injected rather than instantiated by the object itself. 
+Spring implements DI through constructor injection, setter injection, and field injection
+
+@Component, @Service, @Repository, and @Controller annotations:
+@Component: Generic stereotype for any Spring-managed component.
+@Service: Indicates a service layer component.
+@Repository: Indicates a data access object (DAO) and enables exception translation.
+@Controller: Indicates a web controller for handling HTTP requests.
+
+
+Spring Boot and its benefits:
+Spring Boot simplifies Spring application development by providing pre-configured templates, 
+reducing boilerplate code, and facilitating embedded servers for standalone applications.
+
+ the concept of aspect-oriented programming (AOP) and how Spring supports it:
+AOP allows separation of cross-cutting concerns (e.g., logging, security) from business logic. Spring supports AOP through @Aspect, @Around, @Before, @After annotations, 
+and AspectJ integration
+
+How does Spring handle transactions:
+Spring manages transactions using @Transactional annotation and programmatic transaction management with PlatformTransactionManager. 
+It supports declarative transactions, controlling the propagation and isolation levels.
+
+What is Spring Boot?
+Spring Boot is a framework built on top of the Spring framework that simplifies the process of building production-ready applications with minimal configuration.
+
+What are the key features of Spring Boot?
+Auto-configuration, standalone application development, embedded server support (Tomcat, Jetty, Undertow), production-ready metrics, and monitoring.
+
+Explain the advantages of using Spring Boot for application development.
+Simplified dependency management with starter dependencies, automatic configuration, embedded server support, and production-ready features out of the box.
+
+How does Spring Boot achieve auto-configuration?
+Spring Boot uses classpath scanning and conditionals to automatically configure the application based on the dependencies present in the project.
+
+What is Spring Boot Starter?
+Spring Boot Starters are a set of convenient dependency descriptors that you can include in your application to get a set of dependencies and auto-configuration
+for a specific use case (e.g., spring-boot-starter-web for web applications).
+
+How does Spring Boot support externalized configuration?
+Spring Boot allows configuration properties to be externalized from the application code using properties files (application.properties or application.yml), 
+environment variables, command-line arguments, or external configuration servers (Spring Cloud Config).
+
+Explain the difference between @Component, @Repository, @Service, and @Controller annotations in Spring.
+@Component: General stereotype annotation indicating a Spring-managed component.
+@Repository: Specialization of @Component used for persistence layer components (DAOs).
+@Service: Specialization of @Component used for service layer components.
+@Controller: Specialization of @Component used for MVC controller components (handles web requests).
+
+How do you create a RESTful API using Spring Boot?
+Define a controller class annotated with @RestController or @Controller, define handler methods annotated with @RequestMapping or related annotations, 
+and handle HTTP requests and responses using ResponseEntity or other Spring MVC annotations.
+
+What is Spring Boot Actuator?
+Spring Boot Actuator is a set of production-ready features provided by Spring Boot to help monitor and manage your application.
+It includes endpoints for health checks, metrics, environment details, etc.
+
+How do you deploy a Spring Boot application?
+Spring Boot applications can be deployed as executable JAR files using embedded servers (e.g., Tomcat, Jetty) or as WAR files deployed to external application 
+servers.
+
+What is Spring Boot DevTools?
+Spring Boot DevTools is a set of tools that improve the development experience by providing features like automatic restarts, live reload,
+and configuration properties reloading without needing a full application restart.
+
+Explain Spring Boot starters and give examples.
+Spring Boot starters are a set of convenient dependency descriptors that you can include in your application to quickly get started with certain dependencies
+and auto-configuration. Examples include spring-boot-starter-web, spring-boot-starter-data-jpa, spring-boot-starter-security, etc.
+
+How does Spring Boot support testing?
+Spring Boot provides support for unit testing and integration testing using JUnit, Mockito, and Spring’s testing annotations (@RunWith(SpringRunner.class),
+@SpringBootTest, @WebMvcTest, etc.) for testing different layers of the application.
+
+How to Use Spring Boot’s DevTools:
+Spring Boot DevTools provides features for developer productivity, such as automatic restarts and live reload.
+Add DevTools dependency in pom.xml
+Automatic Restart: Automatically restarts the application whenever files on the classpath change.
+LiveReload: Automatically refreshes the browser when resources change.
+DevTools is typically used during development and not in production.
+
+Explain How to Use Spring Boot with a Database (JPA/Hibernate)
+Add JPA dependency(data jpa)in pom.xml
+Configure database connection in application.properties(url,user,password)
+Define an entity
+Create a repository
+Use the repository in a service:
+
+Implement Spring Boot Security for a REST API:
+Add the security dependency in pom.xml
+Configure security(SecurityConfig extends WebSecurityConfigurerAdapter) (configure -method)
+
+ Explain and Implement Caching with Spring Boot:
+Add the caching dependency(cache) in pom.xml
+Enable caching and configure cache manager(method) in configuration class
+Use caching in a service 
+
+ Create a Custom Starter for Spring Boot:
+Create a Maven Project
+Create the Auto-Configuration Class
+Create the Service Class
+Create src/main/resources/META-INF/spring.factories
+Use the Starter in Another Project
+
+Demonstrate How to Use Spring Boot’s CommandLineRunner
+CommandLineRunner is used to execute code after the Spring application starts.lass MyCommandLineRunner implements CommandLineRunner (run method)
+
+Explain Spring Boot Actuator and Demonstrate its Use:
+Add the Actuator dependency in pom.xml
+Configure Actuator endpoints in application.properties
+Access endpoints
+Example of customizing the info endpoint
+
+ Implement Exception Handling in Spring Boot:
+GlobalExceptionHandler 
+ @ExceptionHandler(ResourceNotFoundException.class)
+ResourceNotFoundException extends RuntimeException(custom exception)
+
+
+Explain How to Use Profiles in Spring Boot:
+Profiles can be used to load environment-specific configurations
+application.properties:spring.profiles.active=dev
+application-dev.properties:server.port=8081
+application-prod.properties:server.port=8082
+Java Code to Load Profile-specific Beans: in configuration class : @Profile("dev"),@Profile("prod")

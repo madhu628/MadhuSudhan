@@ -7,12 +7,6 @@ public class ReplaceSpaces {
 		String res = replaceSpaces(s);
 		System.out.println(res);
 
-		// Additional test cases
-		System.out.println(replaceSpaces("")); // Empty string
-		System.out.println(replaceSpaces("noSpacesHere")); // No spaces
-		System.out.println(replaceSpaces(" leading and trailing ")); // Leading and trailing spaces
-		System.out.println(replaceSpaces("multiple   spaces")); // Multiple consecutive spaces
-
 	}
 
 	private static String replaceSpaces(String s) {

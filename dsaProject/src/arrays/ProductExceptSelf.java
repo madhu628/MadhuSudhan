@@ -36,11 +36,16 @@ public class ProductExceptSelf {
 			result[i] = tmp;
 			tmp *= nums[i];
 		}
+		
+		System.out.println(Arrays.toString(result));
 
 		// Multiply with the right products.
 		for (int i = nums.length - 1, tmp = 1; i >= 0; i--) {
 			result[i] *= tmp;
+			System.out.print(Arrays.toString(result));
 			tmp *= nums[i];
+			
+			System.out.print(tmp+" ");
 		}
 		return result; 
 	}

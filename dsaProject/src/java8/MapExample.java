@@ -3,6 +3,7 @@ package java8;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class MapExample {
@@ -14,9 +15,11 @@ public class MapExample {
 		map.put("smith", 6);
 		map.put("adam", 4);
 
-		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+		Set<Entry<String, Integer>> entrySet = map.entrySet();
+		
+		System.out.println(entrySet);
 
-		Iterator<Map.Entry<String, Integer>> itr = entrySet.iterator();
+		Iterator<Entry<String, Integer>> itr = entrySet.iterator();
 
 		while (itr.hasNext()) {
 			System.out.println(itr.next());

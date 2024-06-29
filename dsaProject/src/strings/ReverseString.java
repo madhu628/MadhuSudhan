@@ -42,14 +42,27 @@ public class ReverseString {
 		}
 
 		StringBuilder reverseStr = new StringBuilder(str);
-		
-		reverseStr.reverse();  // Using built-in reverse method
+		reverseStr.reverse(); // Using built-in reverse method
 
+//		String reversed = new StringBuilder(str).reverse().toString();
+//		System.out.println(reversed);
 
 //		for (int i = str.length() - 1; i >= 0; i--) {
 //			reverseStr.append(str.charAt(i));
 //		}
 		System.out.println(reverseStr);
+		
+		System.out.println("***************************");
+
+		char[] chars = str.toCharArray();
+		for (int i = 0, j = chars.length - 1; i < j; i++, j--) {
+			char temp = chars[i];
+			chars[i] = chars[j];
+			chars[j] = temp;
+		}
+		String reversed = new String(chars);
+		System.out.println(reversed);
+
 	}
 
 }

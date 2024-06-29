@@ -47,7 +47,7 @@ public class Nonduplicates {
 
 		// Print unique sorted elements
 		for (int num : uniqueElements) {
-			System.out.println(num);
+			System.out.print(num + "  ");
 		}
 	}
 

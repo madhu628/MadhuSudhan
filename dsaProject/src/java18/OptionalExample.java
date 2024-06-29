@@ -58,5 +58,5 @@ public class OptionalExample {
 		} else {
 			return Optional.empty();
 		}
-	}
+	} 
 }

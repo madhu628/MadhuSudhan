@@ -23,6 +23,8 @@ public class SeparateEmployees {
 		List<Employee12> olderThan25 = partitionedByAge.get(false);
 
 		youngerOrEqualTo25.forEach(System.out::println);
+
+		System.out.println();
 		olderThan25.forEach(System.out::println);
 
 		Map<Boolean, List<Employee12>> partitionedByAge1 = employees.stream()
@@ -33,9 +35,9 @@ public class SeparateEmployees {
 		for (Entry<Boolean, List<Employee12>> entry : entrySet) {
 			System.out.println();
 			if (entry.getKey()) {
-				System.out.println("older than 25");
-			} else {
 				System.out.println("younger equal to 25");
+			} else {
+				System.out.println("older than 25");
 			}
 			List<Employee12> list = entry.getValue();
 			for (Employee12 e : list) {
