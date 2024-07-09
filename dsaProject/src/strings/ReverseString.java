@@ -44,12 +44,14 @@ public class ReverseString {
 		StringBuilder reverseStr = new StringBuilder(str);
 		reverseStr.reverse(); // Using built-in reverse method
 
-//		String reversed = new StringBuilder(str).reverse().toString();
-//		System.out.println(reversed);
+		String reversed = new StringBuilder(str).reverse().toString();
+		System.out.println(reversed);
+		
+		System.out.println("**************************");
 
-//		for (int i = str.length() - 1; i >= 0; i--) {
-//			reverseStr.append(str.charAt(i));
-//		}
+		for (int i = str.length() - 1; i >= 0; i--) {
+			reverseStr.append(str.charAt(i));
+		}
 		System.out.println(reverseStr);
 		
 		System.out.println("***************************");
@@ -60,8 +62,8 @@ public class ReverseString {
 			chars[i] = chars[j];
 			chars[j] = temp;
 		}
-		String reversed = new String(chars);
-		System.out.println(reversed);
+		String reversed1 = new String(chars);
+		System.out.println(reversed1);
 
 	}
 

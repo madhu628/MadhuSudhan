@@ -1,5 +1,11 @@
 package sortings;
 
+//
+//Repeatedly steps through the list.
+//Compares adjacent elements and swaps them if they are in the wrong order.
+//Each pass places the next largest element in its correct position.
+
+
 public class BubbleSort {
 	public static void main(String[] args) {
 		int[] a = { 9, 14, 3, 2, 43 };

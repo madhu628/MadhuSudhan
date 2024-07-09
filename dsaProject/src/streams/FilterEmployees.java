@@ -13,7 +13,7 @@ public class FilterEmployees {
 				new Employee4("Dave", "IT", 105000, LocalDate.of(2013, 12, 5)),
 				new Employee4("Eve", "HR", 65000, LocalDate.of(2019, 1, 20)));
 
-		//employees.stream().filter(e -> e.getJoinDate() > 2015).map(Employee4::getName).forEach(System.out::println);
+		 //employees.stream().filter(e -> e.getJoinDate() > isAfter(LocalDate.of(2015, 12, 31)).forEach(System.out::println));
 
 		List<String> employeeNames = employees.stream().filter(e -> e.getJoinDate().isAfter(LocalDate.of(2015, 12, 31)))
 				.map(Employee4::getName).collect(Collectors.toList());

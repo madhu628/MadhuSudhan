@@ -1,0 +1,142 @@
+ retreive data using userid in an API in springboot code:
+ steps: creating a REST controller to handle incoming HTTP requests, a service to handle business logic, and a repository to interact with the database.
+ Create a Spring Boot Project
+ Add Dependencies-web ,data Jpa
+ Create a User Entity -simple JPA entity representing a user
+ Create a User Repository -The repository interface extends JpaRepository, which provides basic CRUD operations.
+ Create a User Service-The service layer contains business logic.
+ Create a User Controller-The controller handles HTTP requests and uses the service to get data
+ Configure Database (application.properties)-
+ Run the Application -http://localhost:8080/api/users/{id}
+ http://localhost:8080/api/users/{id}
+ 
+ 
+ autowire username and user password:
+ 1.Configuration Properties: Bind configuration properties (like username and password) directly from your application.properties or application.yml file.
+ Add your username and password to application.properties
+ Create a Configuration Class-to bind these properties.
+ Autowire the Properties-Use the UserProperties in your service or component
+
+2.Environment Properties: Inject environment properties directly.
+Define Properties in application.properties
+Autowire Environment-Directly inject the Environment to access these properties
+
+3.Custom Bean Configuration: Define custom beans to handle these properties.
+  Create a Configuration Class-Define a custom bean to hold the properties
+  Create a Simple POJO
+  Autowire the Bean-Use the custom bean in your service:
+  
+  
+  impletent two rest templates timeout with 30 s and 20s
+  1. Using Apache HttpClient
+   Add Dependencies -Add the Apache HttpClient dependency to your pom.xml
+   Configure RestTemplate Beans -Define two RestTemplate beans with different timeouts in configuration class
+   Use the RestTemplate Instances-You can now autowire and use these RestTemplate instances in your services
+   
+  2. Using SimpleClientHttpRequestFactory
+  If you don’t want to use Apache HttpClient, you can use SimpleClientHttpRequestFactory for a basic configuration:
+  
+  3.Using OkHttp
+  Add Dependencies -Add the OkHttp dependency to your pom.xml
+  Configure RestTemplate Beans
+  After configuring the RestTemplate beans, you can autowire and use them in your services as shown in the previous examples
+  
+  Testing the Configuration
+  You can test the configuration by calling the methods in the ApiService from a controller or directly from the main application.
+  
+ 
+  cyclic dependency and implementation:
+  Cyclic dependencies occur when two or more beans or components depend on each other directly or indirectly, creating a loop that Spring cannot resolve automatically. 
+  This situation can cause BeanCurrentlyInCreationException errors during application context initialization
+  
+  Consider two classes, ClassA and ClassB, where ClassA depends on ClassB, and ClassB depends on ClassA:
+  
+Resolving Cyclic Dependencies
+Here are several strategies to resolve cyclic dependencies in Spring:
+Field Injection-Spring can handle field injection without cyclic dependencies because it sets the fields after creating the bean instances
+Setter Injection-Using setter methods to inject dependencies allows Spring to create instances first and then inject the dependencies.
+@Lazy Annotation-@Lazy defers the initialization of a bean until it is needed, helping to break the cycle.
+@PostConstruct Initialization - Initialize the dependencies after the bean is fully created using the @PostConstruct annotation.
+Refactoring Dependencies - The best approach to solving cyclic dependencies is often refactoring your design to remove the cycle, typically by using an 
+                           intermediary or redesigning your components.
+                           
+how to extract unique key from JSON object?
+Parse the JSON object to retrieve its keys.
+Collect keys from nested objects if necessary.
+Use a set to keep track of unique keys.
+
+Using org.json Library:The org.json library provides straightforward methods to handle JSON objects. Here’s how to extract unique keys:
+Add Dependency-Add the org.json library dependency to your pom.xml
+Extract Unique Keys-Here's a method to recursively collect keys
+   Explanation:
+
+    The getUniqueKeys method initiates the process by calling extractKeys.
+    extractKeys method recursively explores each key in the JSON object and adds it to the set.
+    It handles nested JSON objects and arrays.
+    
+Using Jackson Library:Jackson's JsonNode provides a more feature-rich way to traverse JSON structures.
+Add Dependency:Add the Jackson library dependency to your pom.xml
+Extract Unique Keys:
+   Explanation:
+  The getUniqueKeys method starts the extraction.
+  extractKeys recursively traverses the JsonNode structure, adding keys to the set.
+  Handles both JSON objects and arrays.
+  
+  Handling Complex JSON Structures:
+  Both approaches can be extended to handle more complex JSON structures or specific use cases. Ensure to test with varied JSON samples to verify robustness.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

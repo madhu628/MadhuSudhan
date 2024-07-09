@@ -202,14 +202,26 @@ class LRUCache<K, V> extends LinkedHashMap<K, V> {
         super(capacity, 0.75f, true);
         this.capacity = capacity;
     }
-
     @Override
     protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
         return size() > capacity;
     }
 }
 
-
 Explain the use of BlockingQueue and its implementations.
 BlockingQueue is used in producer-consumer scenarios. It blocks the producer if the queue is full and blocks the consumer if the queue is empty.
 Implementations include ArrayBlockingQueue, LinkedBlockingQueue, and PriorityBlockingQueue.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

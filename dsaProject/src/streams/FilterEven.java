@@ -26,7 +26,7 @@ public class FilterEven {
 		// findDuplicates
 		Set<Integer> hs = new HashSet<Integer>();
 		Set<Integer> hs1 = new HashSet<Integer>();
-		numbers.stream().filter(n -> !hs.add(n)).forEach(System.out::println);
+		numbers.stream().filter(n -> !hs.add(n)).forEach(System.out::print);
 		
 		System.out.println("****************");
 
@@ -35,12 +35,12 @@ public class FilterEven {
 
 		System.out.println("****************");
 		//remove duplicates
-		numbers.stream().filter(n -> hs1.add(n)).forEach(System.out::println);
+		numbers.stream().filter(n -> hs1.add(n)).forEach(System.out::print);
 
 		System.out.println("****************");
 
 		// reverseOreder
-		numbers.stream().sorted(Collections.reverseOrder()).forEach(System.out::println);
+		numbers.stream().sorted(Collections.reverseOrder()).forEach(System.out::print);
 
 	}
 

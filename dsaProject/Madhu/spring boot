@@ -1,6 +1,8 @@
 I have x years of experience in Java and y years of experience in Spring Boot. I have worked on projects that involve building and deploying microservices, 
 creating REST APIs, and integrating with databases. I am also familiar with various Spring Boot modules such as Spring Data, Spring Security, and Spring MVC.
 
+annotations are alternative for XML configuration,upgrade of spring framework is spring boot.
+
 ANNOTATIONS:
 @SpringBootApplication: A convenience annotation that combines @Configuration, @EnableAutoConfiguration, and @ComponentScan to enable auto-configuration, component scanning, and configuration for a SB application.
 @RestController: Combines @Controller and @ResponseBody to simplify the creation of RESTful web services.making the class a controller where every method returns a domain object instead of a view.
@@ -12,11 +14,16 @@ ANNOTATIONS:
 @PatchMapping: A shortcut for @RequestMapping(method = RequestMethod.PATCH), specifically mapping HTTP PATCH requests to handler methods.
 @Component: Marks a Java class as a Spring component. Indicates that a class is a Spring component. It is a generic stereotype annotation for any Spring-managed component
 @Service: A specialization of @Component, indicating that a class belongs to the service layer. It is used to annotate service classes
+          class is responsible to execute business logic in application.
 @Repository: A specialization of @Component, indicating that a class belongs to the data access layer. It also enables exception translation for database operations.
+             class contains logic to interact with DB
 @Autowired: Automatically injects dependencies by type. It can be used on constructors, methods, and fields.
+            if you want inject one class object to other object.
 @Value: Injects property values from external sources (like properties files) into fields, method parameters, and constructor arguments.
 @Configuration: Indicates that a class declares one or more @Bean methods and can be processed by the Spring container to generate bean definitions.
+                used to represent java class as configuration class,earlier we used config in xml file ,to avoid xml completely in project use @configuration
 @Bean: Indicates that a method produces a bean to be managed by the Spring container. It is used within @Configuration classes
+       (method level) create object for a class on our own ,don't want IOC to create object for my class
 @EnableAutoConfiguration: Enables Spring Boot’s auto-configuration mechanism, attempting to configure your application automatically based on the dependencies you have added.
 @Entity: Specifies that the class is an entity and is mapped to a database table. It is a JPA annotation
 @Table: Specifies the table in the database that the entity is mapped to. It is used in conjunction with @Entity
@@ -33,6 +40,9 @@ ANNOTATIONS:
 @ExceptionHandler: Defines a method to handle specific exceptions thrown by request handling methods in controllers or globally in @ControllerAdvice classes
 @SpringBootTest: Indicates that the class is a Spring Boot test, loading the complete application context for integration tests. It can be configured to run with different properties and profiles
 
+@RequestBody:used to bind HTTP request body to parameter.
+@ResponseBody: bind the method return value to the response body8i
+@PathVariable:used to extract values from URI,most suitable for the RESTful web-services ,where URL contains path variables 
 
 JPA Annotations: @OneToOne, @OneToMany, @ManyToOne, @ManyToMany
 @OneToOne:
@@ -281,9 +291,11 @@ HOW TO CONFIGURE SPRING BOOT EXTERNALLY:
 External configuration in Spring Boot is achieved through properties or YAML files, environment variables, command-line arguments, application profiles, and Spring Cloud Config, providing flexibility
 and separation of concerns for different deployment environments.
 
-INVERSION OF CONTROL:
+INVERSION OF CONTROL+
 Inversion of Control (IoC) is a design principle in which the control of object creation and dependency management is transferred from the application code to a container or framework. In Spring, 
 the IoC container is responsible for instantiating, configuring, and managing the lifecycle of beans (objects).
+
+IOC : actually we create object by using new keyword bys self ,IOC means container taking control of creating object from you and create object and provide for you.
 
 Types of IoC Containers in Spring:
 1.BeanFactory:
@@ -329,6 +341,8 @@ public class Main {
 DEPENDENCY INJECTION:
 Dependency Injection (DI) is a design pattern used in software development to achieve Inversion of Control (IoC) between classes and their dependencies. It allows objects to receive their dependencies 
 from an external source rather than creating them internally, promoting loose coupling and easier testing.
+
+when the object  is created by container and when we ask for that object container provides.
 
 1.Constructor Injection: Dependencies are provided through a class constructor.
 
@@ -1386,7 +1400,7 @@ Create src/main/resources/META-INF/spring.factories
 Use the Starter in Another Project
 
 Demonstrate How to Use Spring Boot’s CommandLineRunner
-CommandLineRunner is used to execute code after the Spring application starts.lass MyCommandLineRunner implements CommandLineRunner (run method)
+CommandLineRunner is used to execute code after the Spring application starts.class MyCommandLineRunner implements CommandLineRunner (run method)
 
 Explain Spring Boot Actuator and Demonstrate its Use:
 Add the Actuator dependency in pom.xml

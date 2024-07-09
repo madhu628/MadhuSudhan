@@ -41,6 +41,12 @@ printDuplicates:
 5.Use nested loops to count and print characters that appear more than once
   take first character as current and check if equals increase count.
   and then check count > 1 && str.indexOf(current) == i print count;
+  
+ printDuplicates: hashmap c>1 , hashset contains print. a[i]==a[j] ---print,two hashsets,
+ print unique
+removeDuplictates: hashmap not contains,true,append,hashset not conatins print. a[i]==a[j]) r = true,break - print !r streams-distinct
+remove unique:
+
 
 InttoRoman:
 use string arrays for 1000,100,10,1 's and use remiander and divider

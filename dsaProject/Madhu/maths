@@ -1,0 +1,105 @@
+Armstrong:
+r = n % 10;
+s = s + (r * r * r);
+n = n / 10;
+
+BinaryToDecimal:
+while (binary > 0) {
+rem = binary % 10;
+decimal = decimal + (rem * power(2, i));
+i = i + 1;
+binary = binary / 10;
+
+DecimalToBinary:
+while (decimal > 0) {
+			rem = decimal % 2;
+			binary = binary + (rem * power(10, i));
+			decimal = decimal / 2;
+			i++;
+		}
+		
+
+DecimalToHexaDecimal:
+while (decimal > 0) {
+			rem = decimal % 16;
+			hexaDecimal = hex[rem] + hexaDecimal;
+			decimal = decimal / 16;
+			
+DecimalToOctal:
+while (decimal > 0) {
+			rem = decimal % 8;
+			octal = octal + (rem * power(10, i));
+			i++;
+			decimal = decimal / 8;
+			
+HexadecimalToDecimal:
+for (int i = 0; i < hexaInput.length(); i++) {
+			char ch = hexaInput.charAt(i);
+			int value = digits.indexOf(ch);
+			decimal = 16 * decimal + value;
+		}
+
+OctalToDecimal;
+while (octal > 0) {
+			rem = octal % 10;
+			decimal = decimal + (rem * power(8, i));
+			i++;
+			octal = octal / 10;
+		}
+			
+Factorial:
+for (int i = 1; i <= n; i++) {
+			fact = fact * i;
+		}
+
+GCD:
+if a=0 return b and b=0 return a;
+while(a!=b) if (a > b)  a = a - b;
+			else        b = b - a;
+			
+
+palindrome:
+while (n > 0) {
+			r = n % 10;
+			rev = (rev * 10) + r;
+			n = n / 10;
+		}
+
+
+
+prime:
+for (int i = 2; i <= m; i++) {
+			if (n % i == 0) {
+			System.out.println("not prime");
+				flag = 1;
+				break;
+			}
+	}
+		
+		
+sumof digits:
+while (n > 0) {
+			r = n % 10;
+			s = s + r;
+			n = n / 10;
+		}	
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			

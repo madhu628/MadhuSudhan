@@ -38,3 +38,222 @@ allowing better control and management of threads.
 How does Java handle thread priorities?
 Java provides thread priorities to influence scheduling decisions made by the JVM. Higher priority threads are scheduled more frequently than lower priority threads,
 though this behavior is platform-dependent and not guaranteed.
+
+
+
+
+Process
+any program in execution
+consists of many threads
+has its own address space
+less efficient in term of inter- process communication
+Heavy weight process
+Consumes more resources.
+
+thread
+is a part of process.
+Thread is smallest part of process.
+Uses processes address space and Share it with othes threads of that process
+more efficient in terms of inter thread communication.
+light weight process
+Consumes less resources
+
+multi-threading-
+is a process of executing multiple threads Simultaneously.
+→it is used to achieve the multitasking
+Advantages:-
+consumes less memory
+Fast& efficient performance
+
+
+thread scheduler:-
+Thread Scheduler in java is the part of the Jvm that decides which should run
+→ exact algorithm followed by thread scheduler cannot be predicted
+it varies from Jum to Jum
+→ so there is no guarentee that which runnable thread will be Chosen to run by the thread Scheduler and order of thread execution.
+
+types of thread-
+User thread-
+→ thread created by the application (6) User
+→high priority threads
+→Jvm wait for these threads to finish their task.
+
+Daemon thread
+thread created by Jvm
+these threads are used to perform some background tasks like garbage Collection and housekeeping tasks
+less priority threads
+Jvm doesn't wait for daemon threads to finish their task
+
+
+when to Use Runnable interface/ thread class to create thread
+→ Runnable interface preferred
+When there is a need to extend another class other than thread class since multiple inheritance is not supported in java.
+→Also only when run() method of thread class is needed
+→
+thread class is preferred
+→ when there is no need to extend any other class other than threads class
+→ also when other methods of thread class such as sleep(), wait() also needed (other than run method)
+
+How can we create Daemon threads
+we can create daemon threads in java using thread class Set Daemon
+→it is used to mark the current thread as daemon thread (or) uses thread 
+isDaemon method is used to check whether the current thread is daemon (or) not.
+
+Start()
+To begin execution of the thread (starts a new thread)
+ this method internally calls run() method 
+ cannot be called twice as it will throw "Illegal Thread safe EXception"
+ 
+ run()
+- This method is called using start() method while creating thread
+ when  run()  method is called directly, it acts as normal method and executes whatever inside the block
+can be called twice as it is normal method.
+
+can we call run method of thread-class directly
+yes, we can call run() method of a thread class but it will behave like a normal method only.
+→ actually execute it in a thread, we need to start it using thread.start() method.
+
+Context Switching in multi threading.
+→ context switching is referred to as Switching of cpu 'from one thread (or) process to another one.
+→ it allows multiple processes to share the same cpu.
+→in context switching, the State of thread (or) process is stored So that the execution of the thread can be resumed later if required.
+
+Sleep, yield, join methods
+sleep(): pauses execution of current thread for specific time thread.sleep(1000)
+ yield();-
+Used to pause execution of current thread and give chance to another waiting thread
+It is required for long processing threads-   thread.yield()
+
+join():
+→ If pauses execution of current thread until the thread it joins with completes its task.
+→ if thread t1 wants to wait for thread t2, then it should call t2. join().
+
+thread priority
+every thread has a priority, usually higher priority thread gets precedence in execution but It depends on "Thread Scheduler Implementation. 
+
+thread priority Value varies from 1 to 10:-
+1-lowest priority thread
+10 highest 
+5 normal priority thread (default)
+
+→ if not 1 to 10 IllegalArgumentException will be thrown
+ methods getpriority()- set priority (1)
+ 
+How does thread Communicate with each other 
+wait().. it causes current thread to release to lock immediately and gusts waiting state.
+notify(): It is used to notify only one thread out of multiple waiting Threads (which thread will get notified cannot be predicted)
+notifyall() it is used to notify all the waiting threads, but execution of threads will be performed one by one only.
+Note: To call wait(), notify() and notifyAllC), thread should have lock that object
+
+
+wait(), notify(), notifyAll() is used for communication mechanism between two threads in Java, In order to make them available for every Object,
+ it is there in Object class.
+
+wait():
+belongs to Object class
+Releases lock when it receives notify(), notifyAll() from object.
+it recommended for Updating/adding operation
+wait() has three overloaded methods
+•wait()
+•walt(long timeout)
+• wait (long timeout, int nanos)
+
+sleep():
+belongs to thread class
+Does not release the lock on Object unit time expires.
+Recommanded when thread has to wait for particular time period.
+
+sleepc() Has Two overloaded method
+-Sleep(long millis)
+•Sleep(long millis, int nanos)
+
+deadlock and how to detect and avoid it
+→deadlock is a situation in which every thread is waiting for another thread forever (Infinite waiting)
+in this situation neither of the thread executes nor its gets the chance to be executed.
+- we can detect deadlock condition by running the code on cmd and collecting the thread dump.
+
+ways to avoid the deadlock condition in Java-
+avoid Nested lock
+-avoid unnecessary locks
+→ Using thread join.
+
+Synchronization:-
+if a method (or) block is made synchronized, then at a time only one thread is allowed to execute that method/block on that object.
+Internally synchronization concept it implemented by being lock
+every Object has Unique lock and it is activated by synchronization 
+Example: Online Bus Ticket Booking.
+•View Seats (Read operation) non-synchronized
+• Book/cancel tickets (create/delete/update) - synchronized
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

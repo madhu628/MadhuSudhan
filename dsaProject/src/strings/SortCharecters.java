@@ -32,9 +32,9 @@ public class SortCharecters {
 		char[] charArray = s.toCharArray();
 		Arrays.sort(charArray); // Using built-in sorting
 
-		System.out.println("Original: \"" + s + "\"");
-		System.out.println("Sorted: \"" + new String(charArray) + "\"");
-		System.out.println();
+		
+		System.out.println( new String(charArray));
+		
 	}
 
 }

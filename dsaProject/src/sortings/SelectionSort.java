@@ -1,5 +1,8 @@
 package sortings;
 
+//Divides the list into a sorted and an unsorted part.
+//Repeatedly selects the smallest (or largest) element from the unsorted part and moves it to the end of the sorted part
+
 public class SelectionSort {
 	public static void main(String[] args) {
 		int[] a = { 9, 14, 3, 2, 43 };

@@ -44,7 +44,7 @@ public class NonRepeatCharacters {
 //	}
 
 	public static void main(String[] args) {
-		String s = "AABCDBE";
+		String s = "AACDCEB";
 		Character result = findFirstNonRepeatingCharacter(s);
 		if (result != null) {
 			System.out.println("First non-repeating character: " + result);

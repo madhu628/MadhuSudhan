@@ -1,5 +1,10 @@
 package sortings;
 
+
+//Builds the sorted array one element at a time.
+//Takes each element from the unsorted part and inserts it into the correct position in the sorted part.
+
+
 public class InsertionSort {
 
 	public static void main(String[] args) {

@@ -1,0 +1,101 @@
+Design patterns:
+are solutions to solve common problems faced by software developers during software development
+Advantage
+Reusable and can be used in Multiple projects.
+provides solution that helps to define the system architecture
+provides transparency to the design of an application
+→well tested and proven since they are built by expert Software developers
+
+
+Gang of four (GOF):-
+→
+four authors published a book "Design patterns Elements of Reusable Object oriented software"
+→four authors is known as Gang of four (GOF)
+
+How are design patterns differs from algorithm:-
+→Both design patterns and algorithms describe typical Solutions to any given problem.
+algorithm defines a clear Set of actions for achieving a goal.
+Design pattern - provides a high-level description of any Solution
+→Design Patterns applied to two problems might be the same but the logic of implementation would be different and based on the required
+
+Types:-
+Creational pattern - related to Objects Creation.
+Structural pattern- related to larger structure of classes.
+Behavioural pattern- related to Communication of classes
+
+Creational pattern:
+Used to define and describe how objects are created in a best way.
+T
+types
+factory pattern
+abstract factory pattern
+Singleton pattern
+prototype pattern
+Builder pattern
+
+
+Factory pattern:
+AFP says define an interface or abstract class for creating an object but the let the Subclasses decide which class to instantiate. 
+Here Object is created without exposing the creation logic to the client and refer to newly created object Using a common interface.
+
+Advantages:
+Allows the sub-classes to choose the type of objects to create (loose coupling)
+
+Use- when based on Input need to create the object of classes
+
+
+Abstract factory pattern
+→ Afp says that just define an interface (or) abstract class for creating families of related (or dependent) Objects but without specifying their Concrete sub-classes
+→ also known as factory of factories
+
+Advantage:
+→it isolates the client code from concrete (implementation) classes
+→ it eases the exchanging of object families.
+
+What is Singleton pattern when to use:
+A pattern is responsible to ensure that there is only one object for the class is created java-lang-Runtime
+
+for creating single class, create
+→a private constructor
+→a static field containing its only instance
+→ a static factory method for obtaining the instance
+
+Use in DB connection, logging, caching, configuration settings.
+
+different ways to create singleton pattern in java.
+early loading  memory leakage
+Lazy loading  not thread safe
+
+
+Builder design pattern:-
+→ this patterns builds a complex Object Using Simple independent Objects and using a step by step approach.
+ex : coffee propagation
+
+Advantage: provides more control over the object creation.
+Real-time Example: User Registration forms.
+First name, LastName, date of Birth, Address (optional), mobile
+Email (Optional).
+
+Structural pattern:
+these are concerned with class and Object composition o
+Order to create larger structures.
+
+Types
+Adapter pattern
+Facade pattern
+Bridge pattern
+flyweight pattern.
+Composite pattern
+Decorator pattern
+
+Adapter pattern-
+→an adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly
+
+
+
+
+
+
+
+
+

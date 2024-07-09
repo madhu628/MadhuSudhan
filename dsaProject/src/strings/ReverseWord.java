@@ -52,9 +52,9 @@ public class ReverseWord {
 			}
 		}
 
-		System.out.println("Original: \"" + str + "\"");
-		System.out.println("Reversed: \"" + result.toString() + "\"");
-		System.out.println();
+		
+		System.out.println( result.toString());
+		
 	}
 
 }
