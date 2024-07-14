@@ -41,8 +41,42 @@ ANNOTATIONS:
 @SpringBootTest: Indicates that the class is a Spring Boot test, loading the complete application context for integration tests. It can be configured to run with different properties and profiles
 
 @RequestBody:used to bind HTTP request body to parameter.
-@ResponseBody: bind the method return value to the response body8i
+@ResponseBody: bind the method return value to the response body
 @PathVariable:used to extract values from URI,most suitable for the RESTful web-services ,where URL contains path variables 
+@SpringBootApplication-@Configuration, @EnableAutoConfiguration, and @ComponentScan
+@RestController- @Controller and @ResponseBody return format response body
+@RequestMapping:map web requests
+@GetMapping:  mapping HTTP GET requests 
+@PostMapping: mapping HTTP POST requests 
+@PutMapping:  mapping HTTP PUT requests 
+@DeleteMapping:  mapping HTTP DELETE requests to handler methods.
+@PatchMapping-mapping HTTP PATCH requests
+@Service-responsible to execute business logic
+@Repository-logic to interact with DB
+@Autowired-inject one class object to other object
+@Value-Injects property values from external sources
+@Configuration-java class as configuration class
+@Bean-don't want IOC to create object for my class
+@Entity-class is an entity and is mapped to a database
+@Table-table in the database that the entity is mapped to
+@Id-primary key of an entity
+@GeneratedValue-how the primary key should be generated
+@Column-the column to which a field or property will be mapped
+@EnableScheduling-Enables Spring’s annotation-driven cache management
+@Cacheable-result of a method call should be cached
+@CacheEvict-one or more caches should be cleared
+@Transactional-method or class should be executed within a transaction
+@RestControllerAdvice- @ControllerAdvice and @ResponseBody.
+@ExceptionHandler- to handle specific exceptions thrown by request handling methods
+@SpringBootTest-class is a Spring Boot test
+@controller-make class as spring mvc
+@responseEntity-domain object to response format
+@primary - higher preference to abean
+@scope - define scope either singleton,prototype,request,session,global session etc
+
+API gateway - entry point of microservices
+
+
 
 JPA Annotations: @OneToOne, @OneToMany, @ManyToOne, @ManyToMany
 @OneToOne:
@@ -315,6 +349,11 @@ AnnotationConfigApplicationContext: Loads context from Java-based configuration 
 Summary:
 The IoC container in Spring manages the creation, configuration, and lifecycle of beans. The main types are BeanFactory for basic needs and ApplicationContext for advanced features,
 facilitating flexible and decoupled application development.
+
+
+BeanFactory for basic needs
+ApplicationContext for advanced features
+
 
 @Configuration
 public class AppConfig {

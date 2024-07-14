@@ -92,7 +92,6 @@ Finally Block: This block is executed after the try and catch blocks, regardless
 Throw: Used to explicitly throw an exception.
 Throws: Used in method signatures to declare the exceptions that a method can throw.
 
-
 STRING BUFFER AND BUILDER:
 In Java, StringBuffer and StringBuilder are classes used to create mutable (modifiable) sequences of characters. Both are alternatives to the String class 
 when frequent modifications to strings are needed, as String objects are immutable.
@@ -261,7 +260,7 @@ Strategy: Defines a family of algorithms, encapsulates each one, and makes them 
 Template Method: Defines the skeleton of an algorithm in the superclass but lets subclasses override specific steps of the algorithm without changing its structure.
 
 WHAT ARE GENERICS IN JAVA AND WHY WE ARE USING THAT.
- Generics in Java allow you to create classes, interfaces, and methods that operate on types specified at compile time. They provide type safety and enable code reusability by allowing 
+ Generics in Java allow you to create classes, interfaces, and methods that operate on types specified at compile time. They cc and enable code reusability by allowing 
  classes and methods to work with any data type.
 
 Key Points:
@@ -378,7 +377,6 @@ Each thread has its own PC register.
  differences between ArrayList and LinkedList:
 ArrayList provides constant-time positional access, but inserting or removing elements from the middle involves O(n) time. 
 LinkedList provides O(1) time insertions and deletions, but positional access requires O(n) time
-
 
 transient keyword in Java:it is  used to indicate that a field should not be serialized during the serialization process.
 difference between == and equals() in Java:
@@ -506,3 +504,237 @@ Default methods are methods in interfaces with an implementation. They provide a
 What are the differences between Comparator and Comparable?
 Comparable: Defines the natural order of objects via compareTo method.
 Comparator: Defines a custom order via compare method.
+
+Comparable - compareTo -  natural order
+Comparator -compare -custom order
+default methods -add new methods to interfaces
+Functional Interface -one abstract method
+Optional class -avoid NullPointerException
+Singleton pattern -only one instance of a class
+Stream API -processing collections of objects
+volatile keyword -always read from main memory
+synchronized keyword-only one thread can access a block of code
+deadlock -infinite waiting
+multithreading -executing multiple threads
+HashMap is unsynchronized and allows null keys and values.
+Hashtable is synchronized and doesn’t allow null keys or values.
+HashMap work -array of buckets,hash code to determine bucket
+ArrayList: Better for random access due to its backing array.
+LinkedList: Better for insertions and deletions as it uses a doubly-linked list
+finalize() -Garbage Collector to clean up
+encapsulation - bind method and data
+inhertance - acquire parent properties
+method overloading - same name - diff params 
+mthod overriding - same name -same params -super and sub class
+abstract class - both absract and non abstract methods
+interface - non abstract methods
+multiple inheritence-inherit from more than one class
+Exception handling-to handle runtime errors
+try - might throw an exception
+catch-handles the exception
+finally -clean and close
+throw -explicitly throw an exception
+throws-declare the exceptions
+SERIALIZATION - object's  into a byte stream
+CASTING -one data type to another
+Widening -smaller data type to a larger data type
+Narrowing - larger data type to a smaller data type
+Upcasting-subclass type to a superclass type
+Downcasting-superclass type to a subclass
+Wrapper classes - primitive data types into objects
+enum -group of constants
+Singleton class -that only one instance of the class
+Singleton -only one instance
+Factory-Defines an interface for creating objects
+Builder-Separates the construction of a complex object
+Adapter-interface of a class into another interface
+Decorator-Adds new functionality
+facade - Provides a simplified interface
+obsrever-Defines a one-to-many dependency between objects
+Strategy-Defines a family of algorithms
+Template Method: Defines the skeleton of an algorithm
+generics-Template Method: Defines the skeleton of an algorithm
+new - created
+runnable - ready
+running -executing
+Blocked/Waiting - inactive
+terminated-stopped
+create thread:
+extending thread class
+implementing runnable
+method area - static varibles
+heap - instance variables
+stack - local variables
+pc - instructions
+Static Method - belongs to class
+instance method - belongs to object
+Java annotations -metadata for Java code
+Java Reflection API -inspection and manipulation
+static keyword-belongs to the class
+== checks for reference equality, whereas equals() checks for value equality
+thread safety - accessed and modified by multiple threads
+synchronized - locks the method or block
+Lock -explicit lock control with methods
+super- refer parent class variables
+this - refer current class variables
+string-immutable -threadsafe
+stringbuilder - mutable - not thread safe
+stringbuffer - mutable - threadsafe
+checked - compile - io
+unchecked -runtime -arthematic
+static -belong to the class
+wait-wait until another thread calls notify or notifyAll.
+notify-single waiting thread
+notifyAll- all waiting threads
+Callable - returning a result and throwing checked exceptions
+Future -asynchronous computation
+ExecutorService - provides methods to manage a pool of threads etc
+classLoader-loading class files -(bootstrap,extension,system/application)
+packages-grouping related types
+local variables-scope of varibles
+instance variables -inside class and outside method
+JIT - bytecode into instructions
+pointers - unsafe and complexity
+default constructor - no arguments
+parameterized-initilize objects with values
+garbage collection -deleting unused objects
+marker Interface - without any method 
+static block - executed when the class is loaded into the memory
+static keyword - class level and share same variable
+volatile -will be read from main memory rather than cpu
+transient - don't want to make serializable ,you can make it transient
+bean life  cycle - started,creates instance,bena destroyed and closed
+aggregation- container and contained objects are weakly associated
+composition-strongly associated
+java APi -collection of pre-built classes and packages
+throws clause- method declarations , may throw one or more exceptions
+try-with-resources statement-automatically close resources (like files, sockets) 
+assert statement work-debugging purposes and checks a boolean expression
+ synchronized keyword-control access to shared resources by multiple threads
+thread safety.-s without causing data corruption or unexpected behavior.
+ObjectInputStream-to deserialize objects
+ObjectOutputStream-to serialize objects.
+How do you read and write to a file-g FileReader, FileWriter, BufferedReader, and BufferedWriter classes
+File class in Java-represent the files and directories of the local file system
+purpose of the RandomAccessFile class-reading and writing of files in a random-access manner
+How do you check if a file or directory exists in Java-exists() method
+FileReader-as a stream of characters
+BufferedReader-character-based input stream, buffering characters
+FileInputStream- read as a stream of bytes
+FileOutputStream-write as a stream of bytes.
+JDBC-to interact with relational databases
+Connection interface-connection to a relational database
+ JDBC driver-to interact with a database
+ Statement interface-to execute SQL queries.
+ statement - general-purpose access to a database
+ PreparedStatement-precompiled SQL statements
+ ResultSet-result of a database query
+ transaction management-to group one or more SQL statements
+ connection pooling-used to manage and reuse database connections
+ Batch Processing -s executing multiple SQL statements in a single batch
+ reflection-examining or modifying the runtime behavior of applications
+ ClassLoader-dynamically loading Java classes at runtime
+ concept of annotations-provide metadata about the code
+ purpose of the Enum -fixed set of constants
+ JavaBeans-reusable software components
+  Observer design pattern- maintains a list of its dependents
+  Proxy-object controls access to another object
+  Spring Framework-open-source framework for building enterprise Java applications
+  AOP-Separates cross-cutting concerns like logging and transaction management
+  Spring Bean lifecycle-instantiation, population of properties, and initialization
+ Spring MVC-k for building web applications
+ Spring Boot-configuration and deployment of Spring applications
+ Spring AOP- cross-cutting concerns like logging and transaction management
+ Auto-configuration-y configures the application based on the JAR dependencies
+ Spring Data JPA-data access using the Java Persistence API
+ Spring Security-authentication and access control framework for Java applications
+ 
+
+
+
+
+
+cross join - cartesian product
+self join-joined itself on some relation.
+join-combine records
+inner join-matches in both tables
+left join - left and matches from right
+right join - right and matches from left
+full - matches either left or right
+
+
+RDBMS-collection of tables
+SQl - communicate with db
+DB-organized data
+DDL -structure change
+DML -modify db
+DCL-grant and revoke
+TCL-commit and rollback
+
+synchronus communication -waits for response from other service(rest template,feign client)
+asynchrouns communication - does not wait for response(activemq,rabbitmq,kafka)
+synchronization - only one thread is allowed to execute
+deadlock -infinite waiting
+wait()-relases lock when recives notify and notify all
+sleep()- do not release lock until time expires
+notify - notify one thread
+notifyall - notify all threads
+thread priority - precedence execution 
+sleep-pauses for specific time
+yield-pause and chance to another thread
+join-pauses and joins with completes task
+content switching -cpu from one thread
+start-begin execution
+run - called using run method
+isdaemon - check thread is daemon or not
+createdaemon - using setdaemon
+daemon thread - jvm ,background tasks like garbage collection,jvm doesnot wait 
+user thread-user,jvm wait
+thread scheduler - decides which should run
+process -instance of a program 
+thread-part of process
+design patterns - solve common problems
+creational - object creation
+structural-larger strucure of classes
+behavoiral-communication of classes
+
+factory-define a abstract class or interface for object creation
+abstarctfactory-same but without concrete subclasses
+singleton -only one object for class created
+builder-builds complex object
+
+structural -class and object composition
+adaptor -existing class with new interface
+proxy - object representing another object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

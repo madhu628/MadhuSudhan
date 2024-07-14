@@ -213,6 +213,66 @@ BlockingQueue is used in producer-consumer scenarios. It blocks the producer if 
 Implementations include ArrayBlockingQueue, LinkedBlockingQueue, and PriorityBlockingQueue.
 
 
+BlockingQueue-producer-consumer scenarios
+LRUCache-LinkedHashMap
+peek()-Retrieves
+poll()-Retrieves and removes
+remove()-Retrieves and removes,throws NoSuchElementException
+WeakHashMap-uses weak references for its keys,may be garbage collected
+identityHashMap - == to compare address of  keys to find duplicates
+reduce-combines all elements of a stream into a single result
+map-transforms each element individually, and the result is a one-to-one mapping 
+flatmap-elements of nested streams or collections into a single stream
+IdentityHashMap- compares keys using the == operator
+map- compares keys using the .equals operator
+Iterator-forward
+ListIterator-both direction
+fail fast -immediately throw exception if the collection is modified (e.g., ArrayList, HashMap)
+fail safe-allowing modifications without throwing exceptions (e.g., CopyOnWriteArrayList, ConcurrentHashMap).
+EnumMap-use with enum keys
+PriorityQueue-natural ordering or
+ConcurrentHashMap-allows concurrent read and write operations
+TreeMap- using a Red-Black tree structure
+ConcurrentHashMap- allows concurrent access to different segments of the map
+Java Collection Framework provides a unified architecture 
+hash collison -two hashcodes same 
+hash code() - uses hashing technique ,return unique number
+equals() - compare if two objects are equal 
+fail safe - use copy of elements 
+deque - fifo and lifo ,both sides addition and removal 
+arraydeque - dynamic array ,supports fifo and lifo
+method referenace - refer method of functional interface
+default methods - add new methods to interfaces
+static -same dafault but cannot ovveride
+main() - entry point
+method -block of code
+args - stores command line arguments 
+static method - called directly by specifying its name 
+map - transforming data(from stream to stream)
+reduce - aggregating data
+flatmap - transformation + flattering (from Stream of stream to stream)
+cursers - iterate collections
+properties class - avoid hardcoding ,need to recompile and reexecute our program
+
+predicate-accepts 1 arg and returns either true/false
+function - accepts 1 arg and returns some value
+consumer -accepts 1 arg and returns no result
+supplier - no arg and returns some value
+lambda - to provide functional programming
+functional interface - invoke lambda expressions ,to call lambda functional interface concept is used.
+static methods - using interface name ,we can call the method
+default methods - using object we can call that method
+ 
+
+
+
+
+
+
+
+
+
+
 
 
 

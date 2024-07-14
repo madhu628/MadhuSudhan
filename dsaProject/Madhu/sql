@@ -299,3 +299,19 @@ This can significantly speed up query performance.
 How would you handle large datasets in SQL:
 Handle large datasets by using pagination (LIMIT and OFFSET), indexing, partitioning tables, using appropriate data types, and optimizing queries 
 to retrieve only the necessary data.
+
+ACID properties:
+atomicity- transaction should either completely fully or rollback
+consistency - before and after transaction result should be consistent 
+isolation - if multiple transactions running in parallel then all those transaction should not see the effect of ecah other
+durability - if you commit the transaction that should be permannatly stored in DB.
+
+
+
+
+
+
+
+
+
+
