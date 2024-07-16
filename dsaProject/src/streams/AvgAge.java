@@ -21,6 +21,12 @@ public class AvgAge {
 				new Employee2("Bob", 24, "Male"), new Employee2("Carol", 26, "Female"),
 				new Employee2("Dave", 32, "Male"), new Employee2("Eve", 29, "Female"));
 
+		employees.stream().forEach(System.out::println);
+
+		System.out.println();
+
+		employees.stream().filter(e -> e.getAge() > 29).forEach(System.out::println);
+
 		Map<String, Double> averageAges = employees.stream()
 				.collect(Collectors.groupingBy(Employee2::getGender, Collectors.averagingDouble(Employee2::getAge)));
 

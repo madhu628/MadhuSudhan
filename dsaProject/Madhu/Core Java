@@ -505,6 +505,22 @@ What are the differences between Comparator and Comparable?
 Comparable: Defines the natural order of objects via compareTo method.
 Comparator: Defines a custom order via compare method.
 
+
+
+Java memory management involves two key concepts:
+
+Heap Memory: Where objects are stored. Divided into:
+Young Generation: For new objects. Further divided into Eden space and two survivor spaces. Minor Garbage Collection (GC) occurs here frequently.
+Old Generation: For long-lived objects. Major GC occurs less frequently.
+Metaspace: For class metadata (replaced PermGen in Java 8).
+
+Garbage Collection (GC): Automatic process of reclaiming memory by deleting unreachable objects. Main algorithms include:
+Serial GC: Single-threaded, suitable for small applications.
+Parallel GC: Multi-threaded for young generation, single-threaded for old generation.
+Concurrent Mark-Sweep (CMS): Minimizes pauses by working concurrently with application threads.
+G1 (Garbage-First) GC: For large heaps, aims to meet pause time goals and handles memory in regions.
+
+
 Comparable - compareTo -  natural order
 Comparator -compare -custom order
 default methods -add new methods to interfaces
@@ -650,9 +666,13 @@ Connection interface-connection to a relational database
  Spring Security-authentication and access control framework for Java applications
  
 
-
-
-
+path -location of .exe files
+Classpath - location of bytecode (.class)
+Binding-linking of method call to its body
+static binding - happens at compile time 
+dynamic binding - happens at runtime
+Local class-new class inside a particular block
+How can you generate random numbers-Using Math.random()
 
 cross join - cartesian product
 self join-joined itself on some relation.
