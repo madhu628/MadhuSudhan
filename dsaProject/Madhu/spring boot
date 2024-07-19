@@ -13,6 +13,7 @@ ANNOTATIONS:
 @DeleteMapping: A shortcut for @RequestMapping(method = RequestMethod.DELETE), specifically mapping HTTP DELETE requests to handler methods.
 @PatchMapping: A shortcut for @RequestMapping(method = RequestMethod.PATCH), specifically mapping HTTP PATCH requests to handler methods.
 @Component: Marks a Java class as a Spring component. Indicates that a class is a Spring component. It is a generic stereotype annotation for any Spring-managed component
+             A generic stereotype for any Spring-managed componen
 @Service: A specialization of @Component, indicating that a class belongs to the service layer. It is used to annotate service classes
           class is responsible to execute business logic in application.
 @Repository: A specialization of @Component, indicating that a class belongs to the data access layer. It also enables exception translation for database operations.
@@ -40,24 +41,39 @@ ANNOTATIONS:
 @ExceptionHandler: Defines a method to handle specific exceptions thrown by request handling methods in controllers or globally in @ControllerAdvice classes
 @SpringBootTest: Indicates that the class is a Spring Boot test, loading the complete application context for integration tests. It can be configured to run with different properties and profiles
 
-@RequestBody:used to bind HTTP request body to parameter.
-@ResponseBody: bind the method return value to the response body
-@PathVariable:used to extract values from URI,most suitable for the RESTful web-services ,where URL contains path variables 
+@RequestBody:Binds the body of an HTTP request to a Java object,Typically used in RESTful APIs to accept JSON input from clients
+             Used in method parameters
+             Converts the JSON or XML request body into a Java object using HttpMessageConverters.
+             
+@ResponseBody:Binds a method's return value to the HTTP response body,Typically used in RESTful APIs to send JSON output to clients
+              Used on method return types
+              Converts the Java object returned by the method into JSON or XML and writes it to the HTTP response using HttpMessageConverters.
+@PathVariable:used to extract values from the URL path and bind them to method parameters in a controller.This is typically used to handle RESTful web services where the URL contains dynamic elements. 
 @SpringBootApplication-@Configuration, @EnableAutoConfiguration, and @ComponentScan
-@RestController- @Controller and @ResponseBody return format response body
+@RestController- @Controller and @ResponseBody return format response body ---Used to create RESTful web services
+                 in Spring Boot for building RESTful web services efficiently and concisely.
+                 simplifying the development of RESTful APIs by automatically converting return values to JSON or XML.
 @RequestMapping:map web requests
+                is used to map web requests to specific handler functions in a controller. It can be applied at both the class and method levels.
 @GetMapping:  mapping HTTP GET requests 
 @PostMapping: mapping HTTP POST requests 
 @PutMapping:  mapping HTTP PUT requests 
 @DeleteMapping:  mapping HTTP DELETE requests to handler methods.
 @PatchMapping-mapping HTTP PATCH requests
 @Service-responsible to execute business logic
-@Repository-logic to interact with DB
+         Indicates that the annotated class is a service, which typically contains business logic
+@Repository-logic to interact with DB --Indicates that the class is a Data Access Object (DAO)
+             Indicates that the annotated class is a repository, which typically interacts with the database.
 @Autowired-inject one class object to other object
-@Value-Injects property values from external sources
-@Configuration-java class as configuration class
+@Value-Injects property values from external sources ---Used to inject property values from application properties.
+@Configuration-java class as configuration class -Indicates that the class can be used by the Spring IoC container as a source of bean definitions
+               Used at the class level.
+               Indicates that the class contains one or more @Bean methods and may be processed by the Spring container to generate bean definitions and service requests for those beans at runtime.
 @Bean-don't want IOC to create object for my class
-@Entity-class is an entity and is mapped to a database
+      Used at the method level.
+      Indicates that a method produces a bean to be managed by the Spring container
+
+@Entity-class is an entity and is mapped to a database --Specifies that the class is an entity and is mapped to a database table.
 @Table-table in the database that the entity is mapped to
 @Id-primary key of an entity
 @GeneratedValue-how the primary key should be generated
@@ -66,15 +82,27 @@ ANNOTATIONS:
 @Cacheable-result of a method call should be cached
 @CacheEvict-one or more caches should be cleared
 @Transactional-method or class should be executed within a transaction
+
 @RestControllerAdvice- @ControllerAdvice and @ResponseBody.
+                       is used to handle exceptions, modify the model, and perform global configurations for multiple controllers. It acts as a centralized configuration for @Controller components.
 @ExceptionHandler- to handle specific exceptions thrown by request handling methods
+                    is used to define methods that handle exceptions thrown by controller methods. It allows for custom error handling and response creation
 @SpringBootTest-class is a Spring Boot test
-@controller-make class as spring mvc
-@responseEntity-domain object to response format
+                 is used to create an application context for integration testing. It sets up the entire Spring Boot application context for tests, allowing you to test your application
+                  with a fully initialized environment.
+@controller-make class as spring mvc--used to define a controller class that handles web requests.It is typically used in MVC (Model-View-Controller) web applications to handle HTTP requests and return a view (such as a JSP or Thymeleaf template)
+responseEntity-domain object to response format---but a class used to represent the entire HTTP response---It provides more control over the response compared to simply returning a value from a controller method
 @primary - higher preference to abean
 @scope - define scope either singleton,prototype,request,session,global session etc
 @Qualifier-When there are multiple beans of the same type and you want to specify which one to inject.
 @primary-When defining multiple beans of the same type, you can use @Primary to indicate which bean should be used by default.
+@Secured, @PreAuthorize, @PostAuthorize---Used to enforce security constraints.
+
+
+@Configuration: Indicates that the class can be used by the Spring IoC container as a source of bean definitions.
+@EnableAutoConfiguration: Enables Spring Boot’s auto-configuration mechanism, which attempts to automatically configure your Spring application based on the jar dependencies you have added.
+@ComponentScan: Enables component scanning so that Spring can automatically discover and register beans in the application context.
+
 
 
 

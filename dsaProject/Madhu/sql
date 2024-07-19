@@ -307,6 +307,36 @@ consistency - before and after transaction result should be consistent
 isolation - if multiple transactions running in parallel then all those transaction should not see the effect of ecah other
 durability - if you commit the transaction that should be permannatly stored in DB.
 
+Atomicity: Transactions are all-or-nothing; either all operations complete or none do.
+Consistency: Transactions ensure the database moves from one valid state to another, maintaining all rules and constraints.
+Isolation: Concurrent transactions do not interfere with each other, ensuring each transaction operates as if it were alone.
+Durability: Once a transaction is committed, its changes are permanent, even in the event of a system failure.
+
+
+INNER JOIN:
+Returns records with matching values in both tables.
+LEFT JOIN (or LEFT OUTER JOIN):
+Returns all records from the left table and matched records from the right table; returns NULL for unmatched records from the right table.
+RIGHT JOIN (or RIGHT OUTER JOIN):
+Returns all records from the right table and matched records from the left table; returns NULL for unmatched records from the left table.
+FULL JOIN (or FULL OUTER JOIN):
+Returns all records when there is a match in either left or right table; returns NULL for unmatched records from both tables.
+CROSS JOIN:
+Returns the Cartesian product of both tables; every row in the first table is paired with every row in the second table.
+SELF JOIN:
+Joins a table with itself, typically used to compare rows within the same table.
+
+
+
+
+
+
+
+
+
+
+
+
 denormalization-combining tables or introducing redundancy to optimize read performance
 self join-Triggers are automatic actions executed in response to certain events
 normalization- process of organizing data to reduce redundancy and improve data integrity
