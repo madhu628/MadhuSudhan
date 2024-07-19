@@ -26,6 +26,8 @@ FilterEmployees:filter - foreach
               (list)- filter - tolist -   list.foreach(so:p)
 FilterEven:num -> num % 2 == 0-tolist- list.foreach(so:p)
            num -> num % 2 == 0 -filter - foreach
+           
+           
 findDuplicates: hs1 ,hs2 - !hs1.add(n)- foreach
  remove duplicates:n -> !hs1.add(n) - toSet()-foreach;
                         n -> hs1.add(n)- foreach

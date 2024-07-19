@@ -128,6 +128,13 @@ How does HashSet ensure no duplicates?
 HashSet uses the hashCode() and equals() methods to determine if two objects are the same. When adding an element, 
 it checks these methods to ensure that no duplicate elements are inserted
 
+
+HashSet: When you add an element to a HashSet, it computes the hash code of the element and uses this hash code to determine the bucket 
+in which to place the element. If another element with the same hash code (and possibly the same value) is already present in that bucket, 
+the HashSet uses the equals method to check for equality. If the elements are considered equal (i.e., equals returns true), 
+the new element is not added, ensuring no duplicates.
+
+
 Explain the difference between HashMap and Hashtable.
 HashMap: Not synchronized, allows null keys and values, generally faster.
 Hashtable: Synchronized, does not allow null keys or values, legacy class.

@@ -79,6 +79,7 @@ public class AvgSalaryEachDept {
 
 		Map<String, Double> averageSalaryByDepartment = employees.stream().collect(
 				Collectors.groupingBy(Employee6::getDepartment, Collectors.averagingDouble(Employee6::getSalary)));
+		
 		Set<Entry<String, Double>> entrySet = averageSalaryByDepartment.entrySet();
 
 		System.out.println(averageSalaryByDepartment);

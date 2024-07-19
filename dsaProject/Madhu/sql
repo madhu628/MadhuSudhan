@@ -215,6 +215,7 @@ Describe a self join and its use case:
 Triggers are automatic actions executed in response to certain events on a table, such as INSERT, UPDATE, or DELETE. 
 They are used for tasks like auditing changes, enforcing business rules, and maintaining referential integrity.
 
+
 How can you optimize a slow SQL query?
 Optimizing a slow query can involve creating appropriate indexes, using EXPLAIN to analyze query performance, avoiding SELECT *, 
 breaking complex queries into simpler subqueries, and making sure the database schema is normalized.
@@ -306,8 +307,11 @@ consistency - before and after transaction result should be consistent
 isolation - if multiple transactions running in parallel then all those transaction should not see the effect of ecah other
 durability - if you commit the transaction that should be permannatly stored in DB.
 
-
-
+denormalization-combining tables or introducing redundancy to optimize read performance
+self join-Triggers are automatic actions executed in response to certain events
+normalization- process of organizing data to reduce redundancy and improve data integrity
+primary key is a unique identifier for a record in a table
+A foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table 
 
 
 

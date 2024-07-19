@@ -1,4 +1,4 @@
-ENCAPSULATION : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
+ ENCAPSULATION : Wrapping up of data and methods together is known as encapsulation. best example is class.Encapsulation is hiding the implementation of a class
 behind a well defined interface.Encapsulation helps us to change implementation of a class without breaking other code.
 (or)
 It refers to the bundling of data (variables) and methods (functions) that operate on that data into a single unit, or class Encapsulation also involves 
@@ -543,33 +543,33 @@ inhertance - acquire parent properties
 method overloading - same name - diff params 
 mthod overriding - same name -same params -super and sub class
 abstract class - both absract and non abstract methods
-interface - non abstract methods
+interface -  abstract methods
 multiple inheritence-inherit from more than one class
 Exception handling-to handle runtime errors
+error-nothing a programmer can do about an erro
 try - might throw an exception
 catch-handles the exception
 finally -clean and close
 throw -explicitly throw an exception
-throws-declare the exceptions
+throws-declare the exceptions-programmer don’t want to handle the exception
+coupilng- how much a class is dependent on other classes
+Cohesion-how related the responsibilities(methods) of a class are.
+ Assert statements- correctness of any assumptions
+ hashcode() - get the unique reference of an object
+ toString() - class name followed by @ symbol and then the hexadecimal representation
+ finalize method will be called before the object gets garbage collected
+ abstract class-Separate ideas with implementation
+ instanceof -check whether the given object belongs to the given class or not
+ 
+ 
 SERIALIZATION - object's  into a byte stream
 CASTING -one data type to another
 Widening -smaller data type to a larger data type
 Narrowing - larger data type to a smaller data type
-Upcasting-subclass type to a superclass type
+Upcasting-super class reference variable refers to subclass object.
 Downcasting-superclass type to a subclass
 Wrapper classes - primitive data types into objects
 enum -group of constants
-Singleton class -that only one instance of the class
-Singleton -only one instance
-Factory-Defines an interface for creating objects
-Builder-Separates the construction of a complex object
-Adapter-interface of a class into another interface
-Decorator-Adds new functionality
-facade - Provides a simplified interface
-obsrever-Defines a one-to-many dependency between objects
-Strategy-Defines a family of algorithms
-Template Method: Defines the skeleton of an algorithm
-generics-Template Method: Defines the skeleton of an algorithm
 new - created
 runnable - ready
 running -executing
@@ -602,9 +602,10 @@ static -belong to the class
 wait-wait until another thread calls notify or notifyAll.
 notify-single waiting thread
 notifyAll- all waiting threads
-Callable - returning a result and throwing checked exceptions
+Callable - returning a result and throwing checked exceptions-If you have multiple return values possible from a task, we can use the Callable interface.
 Future -asynchronous computation
-ExecutorService - provides methods to manage a pool of threads etc
+ExecutorService - provides methods to manage a pool of threads etc-
+                  new way of executing tasks asynchronously in the background
 classLoader-loading class files -(bootstrap,extension,system/application)
 packages-grouping related types
 local variables-scope of varibles
@@ -624,7 +625,7 @@ aggregation- container and contained objects are weakly associated
 composition-strongly associated
 java APi -collection of pre-built classes and packages
 throws clause- method declarations , may throw one or more exceptions
-try-with-resources statement-automatically close resources (like files, sockets) 
+try-with-resources statement-automatically close resources (like files, sockets)-When the try block ends the resources are automatically released
 assert statement work-debugging purposes and checks a boolean expression
  synchronized keyword-control access to shared resources by multiple threads
 thread safety.-s without causing data corruption or unexpected behavior.
@@ -638,6 +639,7 @@ FileReader-as a stream of characters
 BufferedReader-character-based input stream, buffering characters
 FileInputStream- read as a stream of bytes
 FileOutputStream-write as a stream of bytes.
+
 JDBC-to interact with relational databases
 Connection interface-connection to a relational database
  JDBC driver-to interact with a database
@@ -658,10 +660,10 @@ Connection interface-connection to a relational database
   Spring Framework-open-source framework for building enterprise Java applications
   AOP-Separates cross-cutting concerns like logging and transaction management
   Spring Bean lifecycle-instantiation, population of properties, and initialization
- Spring MVC-k for building web applications
+ Spring MVC- for building web applications
  Spring Boot-configuration and deployment of Spring applications
  Spring AOP- cross-cutting concerns like logging and transaction management
- Auto-configuration-y configures the application based on the JAR dependencies
+ Auto-configuration- configures the application based on the JAR dependencies
  Spring Data JPA-data access using the Java Persistence API
  Spring Security-authentication and access control framework for Java applications
  
@@ -695,14 +697,14 @@ synchronus communication -waits for response from other service(rest template,fe
 asynchrouns communication - does not wait for response(activemq,rabbitmq,kafka)
 synchronization - only one thread is allowed to execute
 deadlock -infinite waiting
-wait()-relases lock when recives notify and notify all
+wait()-relases lock when recives notify and notify all-thread to wait until it is notified
 sleep()- do not release lock until time expires
-notify - notify one thread
-notifyall - notify all threads
+notify - notify one thread-object to notify other waiting threads
+notifyall - notify all threads-notify all the threads by using notifyAll methods
 thread priority - precedence execution 
 sleep-pauses for specific time
 yield-pause and chance to another thread
-join-pauses and joins with completes task
+join-pauses and joins with completes task-order of execution of threads
 content switching -cpu from one thread
 start-begin execution
 run - called using run method
@@ -713,6 +715,7 @@ user thread-user,jvm wait
 thread scheduler - decides which should run
 process -instance of a program 
 thread-part of process
+
 design patterns - solve common problems
 creational - object creation
 structural-larger strucure of classes
@@ -722,6 +725,17 @@ factory-define a abstract class or interface for object creation
 abstarctfactory-same but without concrete subclasses
 singleton -only one object for class created
 builder-builds complex object
+Singleton class -that only one instance of the class
+Singleton -only one instance
+Factory-Defines an interface for creating objects
+Builder-Separates the construction of a complex object
+Adapter-interface of a class into another interface
+Decorator-Adds new functionality
+facade - Provides a simplified interface
+obsrever-Defines a one-to-many dependency between objects
+Strategy-Defines a family of algorithms
+Template Method: Defines the skeleton of an algorithm
+generics-Template Method: Defines the skeleton of an algorithm
 
 structural -class and object composition
 adaptor -existing class with new interface
@@ -729,23 +743,129 @@ proxy - object representing another object
 
 
 
+SessionFactory: A heavyweight, thread-safe object created once per application to manage database connections and provide Session objects.
+Session: A lightweight, non-thread-safe object created per transaction or request to perform CRUD operations and manage a single unit of work with the database.
+
+SessionFactory: A heavyweight, thread-safe object
+Session: A lightweight, non-thread-safe object
+JPA -standard API  for ORM in Java
+Hibernate is an ORM framework
+BeanFactory provides basic IoC functionality
+ApplicationContext:adds more enterprise-specific functionality
+Dependency Injection (DI)-object’s dependencies are injected rather than instantiated by the object itself
+                          to achieve Inversion of Control (IoC) between classes and their dependencies
+AOP allows separation of cross-cutting concerns
+  IOC-the control of object creation and dependency management                        
+
+Profiles - used to load environment-specific configurations
+API gateway - entry point of microservices                       
+External configuration-achieved through properties or YAML files, environment variables etc
+application.properties-define application configurations
+MVC -implements the Model-View-Controller pattern to separate concerns in web applications
+OAuth-open standard protocol that allows secure authorization
+defaults to Logback for logging
+Filters are used in web applications to perform various tasks such as logging, authentication,
+Spring Data REST is a project within the Spring ecosystem that automatically creates RESTful APIs based on your Spring Data repositories
+
+
+In summary, @RequestMapping can be used at both the class and method levels, with class-level usage setting a base URL for all methods in the class 
+and method-level usage defining specific request mappings.                          
+                          
+                          
+
+spring Boot is a framework built on top of the Spring framework that simplifies the process of building production-ready applications with minimal configuration.
+
+ SF -A comprehensive and flexible framework for building enterprise Java applications.
+ SB -An extension of the Spring Framework designed to simplify the development of stand-alone, production-ready Spring applications
+
+
+JPA is a specification that defines the standard for ORM in Java, while Hibernate is an ORM framework that implements JPA and provides additional features. JPA provides a unified approach to ORM, 
+and Hibernate enhances it with more robust capabilities.
+
+The IoC container in Spring manages the creation, configuration, and lifecycle of beans. The main types are BeanFactory for basic needs and ApplicationContext for advanced features,
+facilitating flexible and decoupled application development.
+
+BeanFactory
+Description: The simplest container that provides basic IoC functionality.
+Features: Lazy initialization (beans are created when needed).
+
+ApplicationContext:
+Description: Extends BeanFactory and adds more enterprise-specific functionality.
+Features: Eager initialization (beans are created at startup), support for event propagation, internationalization, and more.
+          Common Implementations:
+ClassPathXmlApplicationContext: Loads context from an XML file located in the classpath.
+FileSystemXmlApplicationContext: Loads context from an XML file in the file system.
+AnnotationConfigApplicationContext: Loads context from Java-based configuration using annotations.
+
+c) is a design pattern used in software development to achieve Inversion of Control (IoC) between classes and their dependencies. It allows objects to receive their dependencies 
+from an external source rather than creating them internally, promoting loose coupling and easier testing.
+
+
+Dependency Injection (DI) is a design pattern where an object’s dependencies are injected rather than instantiated by the object itself. 
+Spring implements DI through constructor injection, setter injection, and field injection
+
+AOP allows separation of cross-cutting concerns (e.g., logging, security) from business logic. Spring supports AOP through @Aspect, @Around, @Before, @After annotations, 
+and AspectJ integration
+
+
+Dependency Injection inverts the control of managing dependencies from the class itself to an external container or framework, enhancing modularity and testability.
+   
+
+Inversion of Control (IoC) is a design principle in which the control of object creation and dependency management is transferred from the application code to a container or framework. In Spring, 
+the IoC container is responsible for instantiating, configuring, and managing the lifecycle of beans (objects).
 
 
 
+External configuration in Spring Boot is achieved through properties or YAML files, environment variables, command-line arguments, application profiles, and Spring Cloud Config, providing flexibility
+and separation of concerns for different deployment environments.
+The application.properties file is a central place to define application configurations in Spring Boot, enabling easy management and customization of settings without changing the codebase.
+
+The flow of a Spring Boot application involves starting with SpringApplication.run(), applying auto-configuration, setting up the application context, starting an embedded server,
+handling requests via controllers, and managing the lifecycle of beans. This flow leverages Spring’s powerful dependency injection and IoC capabilities to streamline application development.
+
+Spring MVC implements the Model-View-Controller pattern to separate concerns in web applications, enhancing modularity and maintainability. The Model represents the data, 
+the View displays the data, and the Controller handles user requests and interactions, coordinating between the Model and the View
+
+ OAuth (Open Authorization) is an open standard protocol that allows secure authorization and resource access between applications without exposing user credentials.
+OAuth enables third-party applications to access user resources without sharing passwords, using a secure, token-based authorization process.
+
+In Spring Boot, passwords are securely stored by hashing them with a password encoder such as BCryptPasswordEncoder. This involves hashing the password before saving it to the database and
+verifying the hashed password during authentication.
+
+Spring Boot uses Spring Boot Logging which defaults to Logback for logging.
+
+ADDING A FILTER TO SPRING BOOT APPLICATION: Filters are used in web applications to perform various tasks such as logging, authentication, and modifying requests and responses.
+Spring Data REST is a project within the Spring ecosystem that automatically creates RESTful APIs based on your Spring Data repositories. It simplifies the creation of RESTful services by eliminating 
+the need to write controller code manually for CRUD operations
+
+Auto-Configuration: Reduces manual setup.
+Starters: Simplify dependency management.
+Embedded Servers: Run apps standalone.
+CLI: Rapid development.
+Actuator: Monitoring and management.
+Initializer: Quick project setup.
+DevTools: Enhances development productivity.
+Externalized Configuration: Easy configuration management.
+Security: Easy integration with Spring Security.
+Microservice Support: Ideal for microservices architecture.
 
 
+Starters: Simplify dependency management.
+Auto-Configuration: Reduces boilerplate configuration.
+CLI: Quick development with Groovy.
+Actuator: Adds monitoring and management endpoints.
+DevTools: Enhances development productivity.
+Embedded Servers: Run applications standalone.
+Initializr: Quick project setup.
 
 
+ 
+Rest-representational state transfer-used to transfer state of the object
+Soap(simple object access protocol)-xml based protocol for accessing web services
+REST - architecural style runs on HTTP protocol
+webservice -communicate between different applications in different languages
 
-
-
-
-
-
-
-
-
-
+statelessness - every HTTP request happens in complete isolation- it don't remember the previous request and it will not store any data
 
 
 

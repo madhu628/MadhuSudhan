@@ -73,8 +73,10 @@ ANNOTATIONS:
 @responseEntity-domain object to response format
 @primary - higher preference to abean
 @scope - define scope either singleton,prototype,request,session,global session etc
+@Qualifier-When there are multiple beans of the same type and you want to specify which one to inject.
+@primary-When defining multiple beans of the same type, you can use @Primary to indicate which bean should be used by default.
 
-API gateway - entry point of microservices
+
 
 
 
