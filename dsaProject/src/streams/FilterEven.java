@@ -2,6 +2,7 @@ package streams;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class FilterEven {
 		System.out.println("****************");
 
 		// reverseOreder
-		numbers.stream().sorted(Collections.reverseOrder()).forEach(System.out::print);
+		numbers.stream().sorted(Comparator.reverseOrder()).forEach(System.out::print);
 
 	}
 

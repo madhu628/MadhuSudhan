@@ -18,11 +18,18 @@ public class Duplicates {
 		for (Integer num : list) {
 			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
-		for (int num : map.keySet()) {
-			if (map.get(num) > 1) {
-				duplicates.add(num);
+//		for (int num : map.keySet()) {
+//			if (map.get(num) > 1) {
+//				duplicates.add(num);
+//			}
+//		}
+		
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			if (entry.getValue() > 1) {
+				System.out.println(entry.getKey() + ": " + entry.getValue());
 			}
 		}
+		
 		return duplicates;
 	}
 

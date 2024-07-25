@@ -26,6 +26,10 @@ public class MaximumSalary {
 
 		System.out.println("***********************");
 
+//		Map<String, Employee17> maxSalariesByDept1 = employees.stream()
+//				.collect(Collectors.groupingBy(Employee17::getDepartment, Collectors.collectingAndThen(
+//						Collectors.maxBy(Comparator.comparingDouble(Employee17::getSalary)), Optional::get)));
+		
 		Map<String, Employee17> maxSalariesByDept1 = employees.stream()
 				.collect(Collectors.groupingBy(Employee17::getDepartment, Collectors.collectingAndThen(
 						Collectors.maxBy(Comparator.comparingDouble(Employee17::getSalary)), Optional::get)));

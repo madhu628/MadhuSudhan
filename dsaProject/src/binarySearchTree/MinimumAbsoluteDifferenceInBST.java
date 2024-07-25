@@ -14,7 +14,7 @@ public class MinimumAbsoluteDifferenceInBST {
 
 	public static void main(String[] args) {
 
-		//MinimumAbsoluteDifferenceInBST solution = new MinimumAbsoluteDifferenceInBST();
+		MinimumAbsoluteDifferenceInBST solution = new MinimumAbsoluteDifferenceInBST();
 
 		TreeNode root1 = new TreeNode(4);
 		root1.left = new TreeNode(2);
@@ -22,14 +22,14 @@ public class MinimumAbsoluteDifferenceInBST {
 		root1.left.left = new TreeNode(1);
 		root1.left.right = new TreeNode(3);
 
-		System.out.println(getMinimumDifference(root1)); // Output: 1
+		System.out.println(solution.getMinimumDifference(root1)); // Output: 1
 
 	}
 
-	private static Integer prev;
+	private Integer prev;
 	private int minDiff;
 
-	public static int getMinimumDifference(TreeNode root) {
+	public int getMinimumDifference(TreeNode root) {
 
 		prev = null;
 		minDiff = Integer.MAX_VALUE;

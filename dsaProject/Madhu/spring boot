@@ -42,7 +42,6 @@ ANNOTATIONS:
 @SpringBootTest: Indicates that the class is a Spring Boot test, loading the complete application context for integration tests. It can be configured to run with different properties and profiles
 
 @RequestBody:Binds the body of an HTTP request to a Java object,Typically used in RESTful APIs to accept JSON input from clients
-             Used in method parameters
              Converts the JSON or XML request body into a Java object using HttpMessageConverters.
              
 @ResponseBody:Binds a method's return value to the HTTP response body,Typically used in RESTful APIs to send JSON output to clients

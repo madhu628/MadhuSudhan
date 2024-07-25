@@ -31,6 +31,8 @@ public class PrintAndRemoveDuplicates {
 		
 		frequencyMap.entrySet().stream().filter(entry -> entry.getValue() > 1)
 				.forEach(entry -> System.out.println(entry.getKey()));//output 32,22,11
+		
+		frequencyMap.entrySet().stream().filter(entry -> entry.getValue() > 1).map(Map.Entry::getKey).forEach(System.out::println);
 
 		//print unique
 		 //integers.stream().distinct().forEach(System.out::println);

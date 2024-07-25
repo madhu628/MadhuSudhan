@@ -326,17 +326,6 @@ Returns the Cartesian product of both tables; every row in the first table is pa
 SELF JOIN:
 Joins a table with itself, typically used to compare rows within the same table.
 
-
-
-
-
-
-
-
-
-
-
-
 denormalization-combining tables or introducing redundancy to optimize read performance
 self join-Triggers are automatic actions executed in response to certain events
 normalization- process of organizing data to reduce redundancy and improve data integrity
