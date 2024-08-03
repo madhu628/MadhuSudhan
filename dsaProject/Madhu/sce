@@ -1,0 +1,213 @@
+Designing Pagination for Large Datasets
+Question: How would you design an endpoint to handle pagination for a list of users in your Spring Boot application?
+Answer:
+Use Spring Data JPA’s Pageable interface.
+Add parameters for page number and page size to your controller method.
+Return a Page object that contains the requested data.
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping
+    public Page<User> getAllUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
+    }
+}
+
+public interface UserRepository extends JpaRepository<User, Long>, PagingAndSortingRepository<User, Long> {
+}
+
+
+Question: How would you implement an endpoint that supports conditional GET requests using ETag to reduce bandwidth and improve performance?
+Answer:
+Generate an ETag based on the resource's current state.
+Use If-None-Match header to check if the resource has changed.
+Return 304 Not Modified if the ETag matches.
+
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id, @RequestHeader(value = HttpHeaders.IF_NONE_MATCH, required = false) String ifNoneMatch) {
+        Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            String eTag = String.valueOf(user.hashCode());
+            if (eTag.equals(ifNoneMatch)) {
+                return ResponseEntity.status(HttpStatus.NOT_MODIFIED).build();
+            } else {
+                return ResponseEntity.ok().eTag(eTag).body(user);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+}
+
+3.Implementing Soft Deletes
+Question: How would you implement a soft delete for a user entity, ensuring the record is not actually removed from the database but marked as deleted?
+
+Answer:
+Add a deleted flag to the User entity.
+Update the repository methods to filter out deleted records.
+Implement a delete endpoint that sets the flag instead of removing the record.
+
+@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+    private boolean deleted = false;
+
+    // Getters and Setters
+}
+
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    @Query("SELECT u FROM User u WHERE u.deleted = false")
+    List<User> findAllActiveUsers();
+}
+
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public void deleteUser(Long id) {
+        Optional<User> userOpt = userRepository.findById(id);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            user.setDeleted(true);
+            userRepository.save(user);
+        }
+    }
+
+    public List<User> getAllActiveUsers() {
+        return userRepository.findAllActiveUsers();
+    }
+}
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public List<User> getAllActiveUsers() {
+        return userService.getAllActiveUsers();
+    }
+}
+
+
+4. Bulk Operations
+Question: How would you design an endpoint to handle bulk creation of users in a single request?
+Answer:
+Accept a list of users in the request body.
+Validate and save all users in a single transaction.
+
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/bulk")
+    public ResponseEntity<List<User>> createUsers(@RequestBody List<User> users) {
+        List<User> savedUsers = userService.createUsers(users);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUsers);
+    }
+}
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Transactional
+    public List<User> createUsers(List<User> users) {
+        return userRepository.saveAll(users);
+    }
+}
+
+5. Handling Partial Updates with PATCH
+Question: How would you implement an endpoint to handle partial updates (PATCH) for user entities?
+Answer:
+Accept a JSON object with the fields to be updated.
+Merge the changes with the existing entity.
+Save the updated entity.
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService userService;
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+        User updatedUser = userService.updateUser(id, updates);
+        return ResponseEntity.ok(updatedUser);
+    }
+}
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Transactional
+    public User updateUser(Long id, Map<String, Object> updates) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(User.class, key);
+            if (field != null) {
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, user, value);
+            }
+        });
+        return userRepository.save(user);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

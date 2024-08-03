@@ -128,3 +128,75 @@ Implementing Asynchronous Processing with @Async:
 Use Spring’s @Async annotation for asynchronous method execution
 Asynchronous Service:CompletableFuture<String> asyncMethod()
 Controller to Call Asynchronous Method:CompletableFuture<String> getAsync()
+
+
+Question: Explain what a REST API is and describe its key characteristics.
+Answer: A REST API (Representational State Transfer Application Programming Interface) is a set of rules and conventions for building and interacting with web services.
+Key characteristics include statelessness, a uniform interface, resource-based interactions, and the use of standard HTTP methods (GET, POST, PUT, DELETE).
+ 
+Question: Map the CRUD operations to the appropriate HTTP methods in a REST API.
+Answer:
+Create: POST
+Read: GET
+Update: PUT or PATCH
+Delete: DELETE
+ 
+
+Question: What are some best practices for naming resources in REST APIs?
+Answer:
+Use nouns to represent resources (e.g., /users, /orders).
+Use plural names for collections (e.g., /users for the collection of user resources).
+Use hierarchical URLs to represent relationships (e.g., /users/{userId}/orders).
+
+Question: What HTTP status codes would you use for the following scenarios?
+Successful resource creation
+Resource not found
+Invalid request data
+Server error
+Answer:
+Successful resource creation: 201 Created
+Resource not found: 404 Not Found
+Invalid request data: 400 Bad Request
+Server error: 500 Internal Server Error
+
+Question: When should you use query parameters versus path variables in REST APIs?
+Answer:
+Path Variables: Use for identifying specific resources (e.g., /users/{userId}).
+Query Parameters: Use for filtering, sorting, or pagination (e.g., /users?age=30&sort=name).
+
+Question: What does it mean for an HTTP method to be idempotent? Which HTTP methods are idempotent?
+Answer: An HTTP method is idempotent if multiple identical requests have the same effect as a single request. Idempotent methods include GET, PUT, DELETE, and HEAD.
+
+Question: How can you handle versioning in a REST API?
+Answer:
+URI Versioning: Include the version number in the URI (e.g., /v1/users).
+Query Parameters: Use a query parameter to specify the version (e.g., /users?version=1).
+Custom Headers: Include the version in a custom header (e.g., X-API-Version: 1).
+
+Question: How do you handle content negotiation in a REST API?
+Answer: Content negotiation is handled using the Accept header in the request to specify the desired response format (e.g., application/json, application/xml). The server responds with the content type specified in the Content-Type header.
+
+Question: Describe how you would implement authentication and authorization in a REST API.
+Answer:
+Authentication: Use methods like Basic Auth, Token-based Auth (e.g., JWT), or OAuth.
+Authorization: Implement role-based access control (RBAC) or access control lists (ACLs) to control what authenticated users can do.
+
+Question: How should you handle errors in a REST API?
+Answer:
+Use appropriate HTTP status codes.
+Provide a clear and consistent error response format, typically including an error code, message, and possibly details.
+
+
+REST API Implementation with Spring Boot
+covering entity definition, repository, service, and controller layers. You can extend this by adding features like error handling, authentication etc.
+
+
+
+
+
+
+
+
+
+
+

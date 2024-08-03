@@ -1,0 +1,144 @@
+ORM - object relational mapping -is used to map the data between the Java objects and the relational database.
+
+JPA -it is a specification-t specifies how to access,manage and persist data with the database
+hibernate is one of the implementations of jpa
+
+Hibernate -it is a Java framework and it is mainly used to perform operations with the DB that is like storing manipulating and retrieving data from the database.
+Advantages
+open source and it is lightweight
+faster performance 
+lazy loading and catching
+
+
+hibernate query language-it is a query language of hibernate framework and it is very similar to SQL only except here it uses class names instead of table names
+advantages are
+it is easy to learn 
+it avoids complex queries 
+it is database independent
+
+
+jdbc - it is a database connectivity technology whereas hibernate it is a Java framework 
+jdbc uses SQL 
+coding time will be more whereas and also there will be lesser performance
+database dependent 
+
+
+hibernate it is a Java framework 
+hibernate it uses hql
+it removes boilerplate code so coding time will be reduced and also performance will be improved.
+database independent
+
+list some databases that hibernate can support-db2 ,MySQL, Oracle, hsql ,postgresql
+
+what are the Core Concepts of hibernate:
+configuration- it involves setting database connection properties and session factory configurations, usually defined in a file (e.g., `hibernate.cfg.xml`).
+Session Factory -This is a thread-safe factory for creating `Session` objects, which means one session factory should be created per database. It is created during application startup.
+A `Session` provides a mechanism to connect to the database and perform CRUD operations. It is not thread-safe, meaning it should not be shared across multiple threads.
+Transactions in Hibernate represent a unit of work that ensures all operations succeed or none at all. If any operation fails, all changes should be rolled back.
+
+
+Hibernate Configuration:
+Hibernate configuration entails defining essential parameters like:
+Database URL
+Username
+Password
+Properties for initializing the session factory, including mapping files and entity classes
+
+hibernate configuration methods:
+XML based configuration
+programmatic configuration
+
+
+## Query and Criteria
+The `Session` interface includes both `Query` and `Criteria` methods for data retrieval.
+### Criteria
+Used to fetch data based on object-oriented queries.
+### Query
+Allows both retrieval and modification of data in a database.
+
+
+Hibernate defines different states for objects:
+Transient State
+: A new object that is not associated with a session.
+Persistent State
+: An object associated with an open session.
+Detached State
+: An object that was once persistent but is now disconnected from the session.
+
+
+## Lazy Loading
+Lazy loading is a performance optimization technique that delays loading associated data until it is explicitly requested, enhancing system performance.
+
+
+
+## Save vs SaveOrUpdate vs Persist
+These methods are used to save entities in the database but have key differences:
+save()
+: Inserts new records and fails if duplicate records exist.
+saveOrUpdate()
+: Inserts new records or updates existing ones.
+persist()
+: Similar to save but only works within transaction boundaries and has no return type.
+
+## Caching in Hibernate
+Caching is vital for performance. Hibernate employs two levels of caching:
+First-Level Cache
+: Enabled by default and tied to the `Session` object.
+Second-Level Cache
+: Must be explicitly enabled. It is shared among sessions and improves performance for repetitive data requests
+
+## Integrating Hibernate with Spring Boot
+Integration involves adding necessary dependencies and defining configurations. The essential steps are:
+1. Add dependencies in `pom.xml`.
+2. Configure data sources and mappings.
+3. Define entity classes (POJOs).
+4. Create REST endpoints in controllers.
+5. Handle business logic in service layers.
+6. Utilize the repository layer for CRUD operations.\
+
+
+@Entity
+: Defines a class as an entity.
+@Table
+: Specifies the table associated with the entity.
+@Id
+: Defines the primary key.
+@GeneratedValue
+: Specifies the strategy for primary key generation.
+@Column
+: Defines column properties.
+Relationship annotations:
+@OneToOne
+@OneToMany
+@ManyToOne
+@ManyToMany
+@Transient
+: Ignores fields that should not be persisted to the database.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

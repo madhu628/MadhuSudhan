@@ -82,6 +82,8 @@ ANNOTATIONS:
 @CacheEvict-one or more caches should be cleared
 @Transactional-method or class should be executed within a transaction
 
+
+
 @RestControllerAdvice- @ControllerAdvice and @ResponseBody.
                        is used to handle exceptions, modify the model, and perform global configurations for multiple controllers. It acts as a centralized configuration for @Controller components.
 @ExceptionHandler- to handle specific exceptions thrown by request handling methods
@@ -376,7 +378,8 @@ FileSystemXmlApplicationContext: Loads context from an XML file in the file syst
 AnnotationConfigApplicationContext: Loads context from Java-based configuration using annotations.
 
 Summary:
-The IoC container in Spring manages the creation, configuration, and lifecycle of beans. The main types are BeanFactory for basic needs and ApplicationContext for advanced features,
+The IoC container in Spring manages the creation, configuration, and lifecycle of beans. 
+The main types are BeanFactory for basic needs and ApplicationContext for advanced features,
 facilitating flexible and decoupled application development.
 
 

@@ -89,13 +89,162 @@ Composite pattern
 Decorator pattern
 
 Adapter pattern-
-→an adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly
+→an adapter pattern acts as a connector between two incompatible interfaces that otherwise cannot be connected directly.
 
 
 
+Creational Patterns
+Singleton:
+Ensures a class has only one instance and provides a global point of access to it.
+Example: A configuration manager that loads settings from a file only once and provides access to these settings throughout the application
+Example: Database connection pool manager in an application.
 
 
+Factory Method:
+Defines an interface for creating an object, but lets subclasses alter the type of objects that will be created.
+A document creator application that can produce different types of documents (Word, PDF) using a factory method.
+Example: Vehicle factory where the factory produces different types of vehicles like cars, bikes, etc.
 
 
+Abstract Factory:
+Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+ A GUI toolkit that provides interfaces for creating different UI components (buttons, text fields) for different operating systems (Windows, MacOS).
+Example: GUI toolkits where you can create window components like buttons, checkboxes, etc., for different operating systems.
+
+Builder:
+Separates the construction of a complex object from its representation so that the same construction process can create different representations.
+A meal planner application where users can build custom meals by selecting various components (main dish, side, drink).
+Example: Building a house with different configurations like rooms, windows, and doors.
+
+
+Prototype:
+Specifies the kind of objects to create using a prototypical instance, and creates new objects by copying this prototype.
+Example: A graphic design application that allows users to duplicate shapes and other objects to create new ones.
+Example: Creating clones of a graphic object like a tree in a forest simulation
+
+
+Structural Patterns
+Adapter:
+Allows incompatible interfaces to work together by wrapping an existing class with a new interface.
+Example: A card reader that acts as an adapter between memory cards and a USB port.
+Example: Adapter for a media player that can play different formats like mp3, mp4, etc.
+
+
+Bridge:
+Separates an object’s abstraction from its implementation, allowing the two to vary independently.
+Example: A remote control that can work with different types of devices (TV, Radio) through a common interface.
+Example: A remote control and TV where the remote control can operate different brands of TVs.
+
+
+Composite:
+Composes objects into tree structures to represent part-whole hierarchies, allowing clients to treat individual objects and compositions uniformly.
+Example: A file system where files and directories are represented as tree structures
+Example: File and folder system in an operating system where folders can contain files and other folders.
+
+Decorator:
+Adds additional responsibilities to an object dynamically, providing a flexible alternative to subclassing for extending functionality.
+Example: A text editor that allows users to add different decorations to text (bold, italic, underline).
+Example: Adding features like encryption or compression to a file output stream
+
+Facade:
+Provides a simplified interface to a complex subsystem, making it easier to use.
+Example: A home automation system with a single interface to control lighting, heating, and security.
+Example: Simplified interface to a complex library like a video conversion library.
+
+Flyweight:
+Reduces the cost of creating and managing a large number of similar objects by sharing as much data as possible among them.
+Example: A text editor that uses flyweight objects to manage thousands of character objects efficiently.
+Example: Characters in a text editor where the same character object is reused.
+
+Proxy:
+Provides a surrogate or placeholder for another object to control access to it.
+Example: An internet proxy that controls access to certain websites.
+Example: Proxy server that controls access to a real server.
+
+Behavioral Patterns
+Chain of Responsibility:
+Passes a request along a chain of handlers, where each handler decides either to process the request or to pass it to the next handler.
+Example: An event handling system where an event can be handled by multiple handlers in a specific sequence
+Example: Logging systems with different levels of logging (INFO, DEBUG, ERROR).
+
+
+Command:
+Encapsulates a request as an object, thereby allowing for parameterization of clients with queues, requests, and operations.
+Example: A remote control with buttons for different actions where each button click is a command.
+Example: GUI buttons that perform different actions.
+
+Interpreter:
+Defines a grammatical representation for a language and provides an interpreter to deal with this grammar.
+Example: A SQL query interpreter that translates SQL queries into commands for a database.
+Example: Simple programming languages or expressions evaluators.
+
+Iterator:
+Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+Example: A collection of songs in a playlist with an iterator to play them one by one
+Example: Iterating through a list of elements in a collection.
+
+Mediator:
+Defines an object that encapsulates how a set of objects interact, promoting loose coupling by preventing objects from referring to each other explicitly.
+Example: A chat room mediator that manages communication between different users.
+Example: Chat room where participants send messages through a mediator.
+
+Memento:
+Captures and externalizes an object’s internal state without violating encapsulation, so that the object can be restored to this state later.
+Example: An undo feature in a text editor that allows users to revert to previous states.
+Example: Undo functionality in text editors
+
+Observer:
+Defines a one-to-many dependency between objects, so that when one object changes state, all its dependents are notified and updated automatically.
+Example: A news agency where news updates are automatically sent to all subscribers.
+Example: News agency where subscribers get updates when news is published
+
+State:
+Allows an object to alter its behavior when its internal state changes, appearing as if the object changed its class.
+Example: A traffic light system that changes behavior based on its current state (red, green, yellow).
+Example: Vending machine that changes behavior based on the state (e.g., has coin, no coin).
+
+Strategy:
+Defines a family of algorithms, encapsulates each one, and makes them interchangeable. Allows the algorithm to vary independently from the clients that use it.
+Example: A sorting application that can use different sorting algorithms (quick sort, merge sort) based on user selection.
+Example: Sorting algorithms like bubble sort, merge sort, etc.
+
+ Template Method:
+Defines the skeleton of an algorithm in a method, deferring some steps to subclasses, allowing them to redefine certain steps of the algorithm without changing its structure.
+Example: A data processing framework where the main process is defined, but specific steps can be overridden by subclasses.
+Example: Cooking recipes where the structure is the same but the steps vary
+
+Visitor:
+Represents an operation to be performed on the elements of an object structure, allowing you to define a new operation without changing the classes of the elements on which it operates.
+Example: A document processing system where different operations (spell check, grammar check) can be performed on elements (paragraphs, tables).
+Example: Applying different tax calculations on various products
+
+concept and coding:
+prototype - it is used when we have to make copy/clone from Existing Object.
+singleton - it is used when we have to create only 1 instance of the class
+factory - it is used when all the object creation and its business logic we need to keep at one place
+abstarct factory - its a factory of factory 
+Builder - when you want to create Object step by step
+
+
+Decorator  - this pattern helps to add more functionality to existing object ,without changing it's structure
+proxy - this pattern helps to provide control access to original object
+composite - this pattern helps in scenarios where we have object inside object (tree like structure)
+Adapter - this pattern act as a bridge or intermediate between 2 incompatible interfaces.
+bridge - this patten helps to decouple an abstraction from its implementation ,so that two can vary independently.
+facade - this pattern helps to hide the system complexity from the client.
+flyweight- this pattern helps to reduce memory usage by sharing data among multiple objects.
+
+
+state- allows an object to alter its behaviour when its internal state changes
+observer-in this an object (observable) maintains a list of its dependents (observers) and notifies them of any changes in its state.
+strategy -helps to define multiple algorithm for the task and we can select any algorithm depending on the situation.
+CRP - allows multiple objects to handle a request without the sender needing to know which object will ultimately process it.
+template method - when you want all classes to follow specific steps to process the tasks but provide flexibility that each class can have their own logic in that specific step.
+Interpreter- defines a grammer for interpreting and evaluvationg an expression
+command - turns requests into objects ,allowing you to either paramerized or queue them.this will help to decouple the request sender and receiver.
+Iterator - that provides a way to access element of a collection sequentially without exposing the underlying representation of the collection.
+visitor - allows adding new operations to existing classes without modifying them and encourage OPEN/CLOSED principle.
+Mediator - it encourage loose coupling by keeping objects from referring to each other explicitly and allows them to communicate through a mediator object.
+Memento - provides an ability to revert an object to a previous state i,e UNDO capability,and it does not expose the object internal implementation.
 
 

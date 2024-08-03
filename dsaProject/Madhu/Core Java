@@ -767,10 +767,10 @@ ApplicationContext:adds more enterprise-specific functionality
 Dependency Injection (DI)-object’s dependencies are injected rather than instantiated by the object itself
                           to achieve Inversion of Control (IoC) between classes and their dependencies
 AOP allows separation of cross-cutting concerns
-  IOC-the control of object creation and dependency management                        
+IOC-the control of object creation and dependency management                        
 
 Profiles - used to load environment-specific configurations
-API gateway - entry point of microservices                       
+API gateway - entry point of microservices.                   
 External configuration-achieved through properties or YAML files, environment variables etc
 application.properties-define application configurations
 MVC -implements the Model-View-Controller pattern to separate concerns in web applications
@@ -881,6 +881,127 @@ statelessness - every HTTP request happens in complete isolation- it don't remem
 
 
 
+Normal Interface: No method implementation is allowed. All methods are abstract by default.
+Default Interface: Can have method implementations using the default keyword. These methods can be overridden by implementing classes.
+
+
+@PathVariable: Extracts data from the URI path. Ideal for identifying specific resources./users/123
+Query Parameter: Extracts data from the query string. Ideal for filtering and optional parameters. /users?age=25
+
+
+
+A CI/CD (Continuous Integration/Continuous Deployment) pipeline automates the process of software development, testing, and deployment. It typically consists of several stages to ensure code quality and facilitate smooth deployments. Here's a breakdown of common stages in a CI/CD pipeline:
+
+Source Stage:
+Code Repository: Code is stored in a version control system (e.g., Git).
+Trigger: Changes in the repository (e.g., commits, merges) trigger the pipeline.
+
+Build Stage:
+Compilation: Source code is compiled.
+Dependencies: Dependencies are resolved and managed.
+Packaging: The application is packaged (e.g., into a JAR, WAR, or Docker image).
+
+Test Stage:
+Unit Tests: Automated tests to validate individual components or units of the code.
+Integration Tests: Tests to ensure different components work together.
+Static Code Analysis: Tools to check code quality, security vulnerabilities, and style guidelines.
+Code Coverage: Measure of how much of the code is exercised by the tests.
+
+Deploy to Staging:
+Staging Environment: The application is deployed to a staging environment that mirrors production.
+Smoke Tests: Basic tests to ensure the deployment is successful.
+Acceptance Tests: End-to-end tests to validate the application's behavior in a production-like environment.
+
+Approval Stage (Optional):
+Manual Approval: Human intervention may be required to approve deployment to production.
+Automated Approval: Based on predefined criteria or additional automated tests.
+
+Deploy to Production:
+Production Environment: The application is deployed to the live production environment.
+Blue-Green Deployment / Canary Releases: Strategies to minimize downtime and risk by gradually shifting traffic to the new version.
+Monitoring and Alerts: Continuous monitoring of the production environment to catch issues early.
+
+Post-Deployment Verification:
+Performance Tests: Ensure the application meets performance benchmarks.
+User Acceptance Testing (UAT): Feedback from end-users to validate the application.
+
+Feedback Loop:
+Logging and Monitoring: Collect logs and metrics from the application.
+Incident Management: Tools to handle and resolve any issues or incidents.
+Continuous Improvement: Use feedback to improve the development process and pipeline.
+
+
+XML (Extensible Markup Language) configurations are commonly used in various applications to define settings, parameters, and data structures.
+ Here are a few examples of XML configurations for different purposes:
+ 
+ 1. Maven pom.xml Configuration
+Maven uses an pom.xml file to manage project dependencies and build configurations.
+
+
+2.Spring applicationContext.xml Configuration
+Spring Framework uses XML to configure beans and application context.
+
+3. Tomcat server.xml Configuration
+Apache Tomcat uses server.xml to configure server settings.
+
+4. Android AndroidManifest.xml Configuration
+Android applications use AndroidManifest.xml to declare application components and permissions.
+
+5. Jenkins config.xml Configuration
+Jenkins uses config.xml files to configure jobs and pipelines.
+
+
+Step 1: Setting Up the Project
+
+Step 2: Define the Database Schema
+Create an entity to represent a transaction and a repository to interact with the database.
+Transaction Entity:
+Transaction Repository:
+
+Step 3: Create the Service Layer
+Implement the business logic for handling transactions(proceed and cancel) and save the transaction in database
+
+Step 4: Create the Controller Layer
+Expose RESTful endpoints to interact with the vending machine.(buy and cancel)
+
+Step 5: Configuration
+Configure the application properties for database connectivity.
+application.properties (for H2 Database):
+application.properties (for MySQL Database):
+
+Step 6: Run the Application
+Run your Spring Boot application and test the endpoints using a tool like Postman or curl.
+
+Additional Considerations
+Error Handling: Implement proper error handling and validation in your service and controller layers.
+Cache Management: Use a caching mechanism (e.g., Redis) for temporary storage if needed.
+Security: Secure your endpoints with proper authentication and authorization mechanisms.
+UI Integration: Develop a UI (using frameworks like Angular, React, or plain HTML/JavaScript) that interacts with these REST APIs for a complete user experience.
+
+
+@Transactional annotation in Spring Boot is used to manage transactions declaratively. This means you can specify transactional behavior on methods or classes
+ without having to write the transaction management code yourself. Here’s a concise overview:
+Purpose
+Atomicity: Ensures that a sequence of operations within the transaction scope either all succeed or all fail.
+Consistency: Maintains data integrity by ensuring the database transitions from one consistent state to another.
+Isolation: Ensures transactions are isolated from one another until they are completed.
+Durability: Ensures that the results of a committed transaction are permanently recorded in the database.
+Usage
+
+1. At the Method Level:
+You can annotate individual methods that should be executed within a transaction.
+2. At the Class Level:
+All methods within the class will be transactional.
+
+Summary
+The @Transactional annotation simplifies transaction management by allowing you to declaratively control transaction boundaries.
+It can be applied at both the method and class levels.
+Attributes like propagation, isolation, timeout, readOnly, rollbackFor, and noRollbackFor allow for fine-grained transaction control.
+Proper usage of @Transactional ensures data integrity and consistency in your applications.
+
+
+Thread pooling is a technique used to manage multiple threads efficiently in concurrent programming. It involves creating a pool of reusable threads that can be used to execute tasks,
+rather than creating a new thread every time a task needs to be executed.
 
 
 

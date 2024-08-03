@@ -1,0 +1,274 @@
+1. Handling Multiple Environments
+Question: How would you manage different configurations for development, testing, and production environments in a Spring Boot application?
+Answer:
+Profiles: Use Spring Boot profiles to define different configurations for each environment.
+Application Properties: Create separate properties files for each profile, such as application-dev.properties, application-test.properties, and application-prod.properties.
+Activating Profiles: Activate the desired profile using the spring.profiles.active property or through command-line arguments.
+
+
+application.properties:
+spring.profiles.active=dev
+application-dev.properties:
+server.port=8081
+spring.datasource.url=jdbc:h2:mem:devdb
+application-prod.properties:
+server.port=8080
+spring.datasource.url=jdbc:mysql://prod-db:3306/proddb
+
+
+2. Transaction Management
+Question: Describe a scenario where you need to ensure a sequence of database operations is completed successfully. How would you achieve this using Spring Boot?
+
+Answer:
+Use the @Transactional annotation to manage transactions declaratively. Ensure all operations within the annotated method complete successfully, or none at all (rollback on failure).
+
+@Service
+public class AccountService {
+
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @Transactional
+    public void transferFunds(Long fromAccountId, Long toAccountId, double amount) {
+        Account fromAccount = accountRepository.findById(fromAccountId).orElseThrow();
+        Account toAccount = accountRepository.findById(toAccountId).orElseThrow();
+
+        fromAccount.debit(amount);
+        toAccount.credit(amount);
+
+        accountRepository.save(fromAccount);
+        accountRepository.save(toAccount);
+    }
+}
+
+3. Exception Handling
+Question: How would you handle exceptions globally in a Spring Boot REST API?
+
+Answer:
+Use @ControllerAdvice to handle exceptions globally. Define a class annotated with @ControllerAdvice and methods annotated with @ExceptionHandler to handle specific exceptions.
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<String> handleResourceNotFoundException(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericException(Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + ex.getMessage());
+    }
+}
+
+
+4. Caching
+Question: Explain how you would implement caching in a Spring Boot application to improve performance.
+Answer:
+Use Spring Boot’s caching support. Enable caching in the application using @EnableCaching and annotate methods with @Cacheable, @CachePut, and @CacheEvict as needed.
+
+@Configuration
+@EnableCaching
+public class CacheConfig {
+    // Additional cache configurations if necessary
+}
+
+@Service
+public class UserService {
+
+    @Cacheable("users")
+    public User getUserById(Long id) {
+        // Simulate a slow database query
+        try { Thread.sleep(3000); } catch (InterruptedException e) { e.printStackTrace(); }
+        return new User(id, "John Doe");
+    }
+}
+
+5. Security
+Question: How would you secure your Spring Boot REST API to ensure that only authenticated users can access it?
+Answer:
+Use Spring Security to secure your REST API. Configure security settings to require authentication for specific endpoints.
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/api/public/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .httpBasic();
+        return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new InMemoryUserDetailsManager(
+                User.withDefaultPasswordEncoder()
+                    .username("user")
+                    .password("password")
+                    .roles("USER")
+                    .build()
+        );
+    }
+}
+
+
+6. File Uploads
+Question: Describe how you would handle file uploads in a Spring Boot REST API.
+Answer:
+Use @RequestParam to handle file uploads in a controller. Save the uploaded file to the server or process it as needed.
+
+@RestController
+@RequestMapping("/api/files")
+public class FileController {
+
+    @PostMapping("/upload")
+    public String uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+        String uploadDir = "/uploads/";
+        File destinationFile = new File(uploadDir + file.getOriginalFilename());
+        file.transferTo(destinationFile);
+        return "File uploaded successfully: " + file.getOriginalFilename();
+    }
+}
+
+
+7. Integration with External APIs
+Question: How would you integrate with an external REST API in a Spring Boot application?
+Answer:
+Use RestTemplate or WebClient to make HTTP requests to an external API.
+Example using RestTemplate:
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+}
+
+@Service
+public class ExternalApiService {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String getExternalData() {
+        String apiUrl = "https://api.example.com/data";
+        return restTemplate.getForObject(apiUrl, String.class);
+    }
+}
+
+
+8. Scheduled Tasks
+Question: How would you implement a scheduled task in Spring Boot?
+
+Answer:
+Use @Scheduled annotation to schedule tasks at fixed intervals or cron expressions.
+
+@Configuration
+@EnableScheduling
+public class SchedulingConfig {
+    // Additional configurations if necessary
+}
+
+
+@Service
+public class ScheduledTaskService {
+
+    @Scheduled(fixedRate = 60000) // Run every 60 seconds
+    public void performTask() {
+        System.out.println("Scheduled task executed at: " + new Date());
+    }
+}
+
+9. Event-Driven Architecture
+Question: How would you implement event-driven architecture in a Spring Boot application?
+Answer:
+Use Spring’s ApplicationEvent and ApplicationListener to publish and listen to events.
+
+public class UserCreatedEvent extends ApplicationEvent {
+
+    private final User user;
+
+    public UserCreatedEvent(Object source, User user) {
+        super(source);
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+}
+
+
+@Service
+public class UserService {
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
+    public void createUser(User user) {
+        // Save user to the database
+        // ...
+        
+        // Publish event
+        eventPublisher.publishEvent(new UserCreatedEvent(this, user));
+    }
+}
+
+@Component
+public class UserCreatedListener {
+
+    @EventListener
+    public void handleUserCreatedEvent(UserCreatedEvent event) {
+        User user = event.getUser();
+        System.out.println("User created: " + user.getName());
+    }
+}
+
+
+10. Microservices Communication
+Question: How would you handle communication between microservices in a Spring Boot application?
+Answer:
+Use RESTful APIs, messaging queues (e.g., RabbitMQ, Kafka), or service discovery tools like Eureka for inter-service communication.
+
+
+@Service
+public class ServiceA {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String callServiceB() {
+        String serviceBUrl = "http://localhost:8081/api/serviceB";
+        return restTemplate.getForObject(serviceBUrl, String.class);
+    }
+}
+
+
+@RestController
+@RequestMapping("/api/serviceB")
+public class ServiceBController {
+
+    @GetMapping
+    public String getServiceBResponse() {
+        return "Response from Service B";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
